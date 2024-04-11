@@ -1,0 +1,32 @@
+{% extends "quiz_layout.html" %}
+
+{% block content %}
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+	<style>
+		.container {
+			margin-top: 80px;
+		}
+
+		
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		
+		<div class="image">
+			<img id="main_img" src= "{{ information.images[0] }}" alt="zeus" class="bleh">
+			<img id="hint_img" src= "{{ information.hints[0] }}" alt="zeus_hint" style="display: none;">
+		</div>
+		<!-- <div class="navigation-buttons">
+			<button class="previous-button" onclick="navigatePrevious()">&#9664;</button>
+			<button class="next-button" onclick="navigateNext()">&#9654;</button>
+		</div> -->
+		Fill in
+		{{information.id}}
+		
+		
+	</div>
+</body>
+{% endblock %}

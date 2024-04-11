@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+	<style>
+		
+	</style>
+</head>
+
+<body>
+	<div>
+		<button id="hint_button" onclick="displayHint()">Hint</button>
+	</div>
+	<div class="image">
+		<img id="main_img" src= {{ ftb.images[0] }} alt="zeus" class="bleh">
+		<img id="hint_img" src= {{ ftb.hints[0] }} alt="zeus_hint" style="display: none;">
+	</div>
+
+	<script>
+		function displayHint() {
+			let img_thing = document.getElementById('main_img');
+			let img_hint = document.getElementById('hint_img');
+			img_thing.style.display = 'none';
+			img_hint.style.display = 'block';
+		}
+	</script>
+</body>
+{% endblock %}
