@@ -57,7 +57,7 @@ multiple_choice_pics = [
 {
 	"id": 0,
 	"difficulty": "easy",
-	"pic_options": ["zeus_url", "hera_url", "hermes_url"],
+	"pic_options": ["https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/zeus1.jpg", "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/apollo1.jpg", "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/hermes1.jpg"],
 	"question": "Find Zeus",
 	"answer": "0", #0, 1, 2,... answers index of pic options
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
@@ -72,14 +72,14 @@ multiple_choice_text = [
 {
 	"id": 0,
 	"difficulty": "easy",
-	"image": "url",
-	"options": ["zeus", "hera", "hermes"],
-	"question": "......",
+	"image": "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/zeus2.jpg",
+	"options": ["Zeus", "Hera", "Hermes"],
+	"question": "To which mythological figure does this piece of statue belong?",
 	"answer": "zeus",
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
 	"explain_pics": ["url1_zeus", "url2_hera"],
 	"more_info": "....background, forklores...",
-	"hints": "url_annotated",
+	"hints": "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/zeus1.jpg",
 }
 
 ]
@@ -109,6 +109,10 @@ def quiz(question_number):
     else:
         return render_template('score.html', score=score)
 
+@app.route('/submit_answer/<int:question_id>', methods=['POST'])
+def submit_answer(question_id):
+    # pass for sake of test
+    pass
 
 
 if __name__ == '__main__':

@@ -1,18 +1,50 @@
 {% extends "quiz_layout.html" %}
 
 {% block content %}
+
 <head>
 	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 	<style>
-		.container{
-			margin-top: 10px;;
+		.container {
+			margin-top: 100px;
+		}
+
+		.quiz-content {
+			display: flex;
+			align-items: center;
+		}
+
+		.option-image {
+			width: auto;
+			height: 300px;
+			margin-right: 40px;
+			margin-top: 30px;
 		}
 	</style>
 </head>
 
-<body>
+<!-- <body>
 	<div class="container">
 		Multi pics {{information.id}}
 	</div>
+</body> -->
+
+<body>
+	<div class="container">
+		<h1>{{ information.question }}</h1>
+		<div class="quiz-content">
+			<form class="options" action="{{ url_for('submit_answer', question_id=information.id) }}" method="post">
+				{% for pic_option in information.pic_options %}
+
+				<input type="radio" id="{{ pic_option }}" name="answer" value="{{ pic_option }}">
+				<label for="{{ pic_option }}">
+					<img src="{{ pic_option }}" alt="{{ pic_option }}" class="option-image">
+				</label>
+				{% endfor %}
+				<button>Submit Answer</button>
+			</form>
+		</div>
+	</div>
 </body>
+
 {% endblock %}
