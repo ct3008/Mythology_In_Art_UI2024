@@ -6,7 +6,7 @@ figures = {"1": {
    "name": "Zeus",
    "description": "zeus description",
    "symbols": "symbols for zeus",
-   "data": []
+   "data": ["/static/zeus1.jpg"]
 },
 "2": {
    "id": "2",
@@ -84,7 +84,7 @@ def contents():
 
 @app.route('/learn/<id>')
 def learn(id):
-   return render_template('learn.html', figures=figures)
+   return render_template('learn.html', figures=figures, figure=figures[id])
 
 if __name__ == '__main__':
    app.run(debug = True)

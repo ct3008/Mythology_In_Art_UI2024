@@ -22,6 +22,18 @@ body {
     background-color: rgb(227, 217, 199);
 }
 
+.next-button{
+    color: white;
+    background-color: rgb(139, 124, 109);
+    border-color: rgb(139, 124, 109);
+}
+
+.back-button{
+    color: white;
+    background-color: rgb(139, 124, 109);
+    border-color: rgb(139, 124, 109);
+}
+
 .figureName {
     justify-content: center;
     font-size: 40px;
