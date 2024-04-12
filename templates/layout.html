@@ -1,44 +1,55 @@
 <!doctype html>
 <html lang="en">
-	<head>
-    		<!-- Required meta tags -->
-    		<meta charset="utf-8">
-    		<meta name="viewport" content="width=device-width, initial-scale=1">
-     		<link rel="icon" href="data:,">
 
-		<!-- jquery -->
-		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
-		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="data:,">
 
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-		
-		<!--Stylesheet-->
-		<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    		<title>Greek Mythology in Art</title>
-  	</head>
-  	<body>
-    
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-    
-		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-			<div class="container-fluid p-2">
-				<a class="navbar-brand" href="/">Greek Mythology in Art</a>
-				<a class="btn btn-secondary" href="/quiz">Take Quiz</a>
+	<!--Stylesheet-->
+	<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+
+	<title>Greek Mythology in Art</title>
+</head>
+
+<body>
+
+
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+		<div class="container-fluid p-2">
+			<a class="navbar-brand" href="/">Greek Mythology in Art</a>
+			<a class="btn btn-secondary navbar-button" href="/quiz">Take Quiz</a>
+			<div class="btn-group">
+				<a class="btn btn-secondary navbar-button" href="/learn">Figures</a>
+				<a class="btn btn-secondary dropdown-toggle dropdown-toggle-split navbar-button"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/learn/zeus">Zeus</a>
+				</div>
 			</div>
-		</nav>
-
-		<div class=" mt-5 pt-3">   
-			{% block content %}
-			{% endblock %}
 		</div>
+	</nav>
+
+	<div class=" mt-5 pt-3">
+		{% block content %}
+		{% endblock %}
+	</div>
 
 
-  	</body>
+</body>
+
 </html>
-
-
-
-
