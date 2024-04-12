@@ -7,7 +7,7 @@ figures = {"1": {
    "name": "Zeus",
    "description": "zeus description",
    "symbols": "symbols for zeus",
-   "data": []
+   "data": ["/static/zeus1.jpg"]
 },
 "2": {
    "id": "2",

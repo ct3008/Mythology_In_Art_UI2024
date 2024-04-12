@@ -4,7 +4,7 @@
 {% block content %}
 
 	{% for figure in figures.values() %}
-		<a class="dropdown-item" href="/learn/{{figure.name}}">{{figure.name}}</a>
+		<a class="dropdown-item" href="/learn/{{figure.id}}">{{figure.name}}</a>
 	{% endfor %}
 
 {% endblock %}

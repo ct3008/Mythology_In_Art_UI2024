@@ -4,13 +4,29 @@
 {% block content %}
 
 	<div id="learnPage">
-		<div class="row figureName">Zeus</div>
+		<div class="row figureName">{{figure.name}}</div>
 		<div class="row figureDetails">
 			<div class="col-2">
-				<img src="/static/zeus1.jpg"/> 
+				<img class="img-fluid" src="{{figure.data[0]}}"/> 
 			</div>
-			<div class="col-2"></div>
+			<div class="col-2">
+				<div>{{figure.description}}</div>
+			</div>
+			<div class="col-2">
+				<div>{{figure.symbols}}</div>
+			</div>
 		</div>
+		{% if (figure.id | int) > 1 %}
+			<a class="btn btn-secondary next-button" href="/learn/{{figure.id | int - 1}}">Back</a>
+		{% else %}
+			<a class="btn btn-secondary next-button" href="/learn">Back</a>
+		{% endif %}
+
+		{% if (figure.id | int) < figures|length %}
+			<a class="btn btn-secondary next-button" href="/learn/{{figure.id | int + 1}}">Next</a>
+		{% else %}
+			<a class="btn btn-secondary next-button" href="/quiz">Take Quiz</a>
+		{% endif %}
 	</div>
 
 {% endblock %}
