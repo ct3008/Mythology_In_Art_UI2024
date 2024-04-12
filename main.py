@@ -99,7 +99,7 @@ def contents():
 def learn(id):
 	user_sequence.append("learn/"+id)
 	user_progress["learn/"+id] = datetime.datetime.now()
-	return render_template('learn.html', figures=figures)
+	return render_template('learn.html', figures=figures, figure=figures[id])
 
 if __name__ == '__main__':
    app.run(debug = True)
