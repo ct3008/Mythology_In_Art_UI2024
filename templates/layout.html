@@ -21,6 +21,8 @@
 	<!--Stylesheet-->
 	<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
 
+	<script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
+
 	<title>Greek Mythology in Art</title>
 </head>
 
@@ -38,7 +40,9 @@
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
 				</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="/learn/zeus">Zeus</a>
+					{% for figure in figures.values() %}
+						<a class="dropdown-item" href="/learn/{{figure.name}}">{{figure.name}}</a>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
