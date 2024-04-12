@@ -1,0 +1,28 @@
+body {
+    background-color: rgb(239, 235, 224);
+}
+
+.navbar {
+    background-color: rgb(139, 124, 109) !important;
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+.navbar-button{
+    color: black;
+    background-color: rgb(239, 235, 224);
+    border-color: rgb(227, 217, 199);
+}
+
+.navbar-button:hover {
+    border-color: rgb(239, 235, 224);
+    color: black;
+    background-color: rgb(227, 217, 199);
+}
+
+.figureName {
+    text-align: center;
+    font-size: 40px;
+}
