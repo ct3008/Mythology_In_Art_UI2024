@@ -23,6 +23,10 @@ body {
 }
 
 .figureName {
-    text-align: center;
+    justify-content: center;
     font-size: 40px;
+}
+
+#learnPage {
+    padding: 10px;
 }
