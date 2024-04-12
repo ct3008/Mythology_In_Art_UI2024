@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+	{% for figure in figures.values() %}
+		<a class="dropdown-item" href="/learn/{{figure.name}}">{{figure.name}}</a>
+	{% endfor %}
+
+{% endblock %}
