@@ -42,6 +42,6 @@
 }
 
 .navigation-buttons button:hover {
-	color: red;
+	background-color: red;
 }
 

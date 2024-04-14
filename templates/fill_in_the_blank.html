@@ -8,25 +8,87 @@
 			margin-top: 80px;
 		}
 
+
+		.info_block {
+			display: none;
+		}
+
 		
 	</style>
 </head>
 
 <body>
 	<div class="container">
-		
-		<div class="image">
-			<img id="main_img" src= "{{ information.images[0] }}" alt="zeus" class="bleh">
-			<img id="hint_img" src= "{{ information.hints[0] }}" alt="zeus_hint" style="display: none;">
+		<div class="row">
+			<div class="col-6 col3 container">
+				<div class="image">
+					<img id="main_img" src= "{{ information.images[0] }}" alt="zeus" class="bleh">
+					<img id="hint_img" src= "{{ information.hints[0] }}" alt="zeus_hint" style="display: none;">
+				</div>
+			</div>
+			<div class="col-6 col3 container">
+				{% for fib in information.answers %}
+				
+				<label>Fill in the blank:
+                    <input class="fib-input" list="browsers_{{ loop.index }}" name="fib_answer_{{ loop.index }}" />
+                </label>
+				{{loop.index}}
+				<!-- <label>Choose a browser from this list:
+					<input id="browser_input" list="browsers" name="myBrowser"/>
+				</label> -->
+					<datalist id="browsers_{{ loop.index }}">
+						<option value="Artemis">
+						<option value="Apollo">
+						<option value="Athena">
+						<option value="Dionysus">
+						<option value="Hades">
+						<option value="Hephaestus">
+						<option value="Herakles">
+						<option value="Hermes">
+						<option value="Poseidon">
+						<option value="Zeus">
+					</datalist>
+				
+				<div class="info_block" id="info_block_{{ loop.index }}">
+					{{ information.explanation_text[loop.index - 1 ] }}
+				</div>
+				{% endfor %}
+			</div>
 		</div>
-		<!-- <div class="navigation-buttons">
-			<button class="previous-button" onclick="navigatePrevious()">&#9664;</button>
-			<button class="next-button" onclick="navigateNext()">&#9654;</button>
-		</div> -->
-		Fill in
-		{{information.id}}
+		
+		
 		
 		
 	</div>
+	<script>
+		function checkSubmit(){
+			// Want to check that everything is filled out and then keep track of the fact that question was answered and store the answers
+			var fibInputs = document.querySelectorAll('.fib-input');
+
+			fibInputs.forEach(function(input, index){
+				console.log(index);
+				var inputValue = input.value.trim();
+				if (inputValue !== '') {
+                    // Show the corresponding information block
+                    document.getElementById('info_block_' + (index + 1)).style.display = 'block';
+                }
+			});
+
+        }
+
+        function reset(){
+			
+        }
+		// function showDropdown() {
+		// 	var input = document.getElementById('browser_input');
+        //     var dropdown = document.getElementById('browsers');
+        //     if (input.value.trim() !== '') { // Check if input is not empty
+        //         dropdown.style.display = 'block';
+        //     } else {
+        //         dropdown.style.display = 'none';
+        //     }		
+		// }
+	</script>
 </body>
+
 {% endblock %}

@@ -7,15 +7,15 @@ app = Flask(__name__)
 fill_in_the_blank = [
    {"id": 0,
 	"difficulty": "easy",#hard or easy, if hard, no hints,
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/data/zeus3.jpg?raw=true"],
-	"answers": ["zeus"], #names left to right,
+	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus3.jpg?raw=true"],
+	"answers": ["zeus", "bob", "cork", "alkdsf"], #names left to right,
 	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
 	"more_info":".... history of image + lore", 
-	"explanation_text": ["zeus has symbols that..."]
+	"explanation_text": ["zeus has symbols that...", "bob is short..."]
 	},
    {"id": 1,
 	"difficulty": "easy",#hard or easy, if hard, no hints,
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/data/zeus3.jpg?raw=true"],
+	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus3.jpg?raw=true"],
 	"answers": ["zeus"], #names left to right,
 	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
 	"more_info":".... history of image + lore", 
@@ -23,7 +23,7 @@ fill_in_the_blank = [
 	},
    {"id": 2,
 	"difficulty": "easy",#hard or easy, if hard, no hints,
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/data/zeus3.jpg?raw=true"],
+	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus3.jpg?raw=true"],
 	"answers": ["zeus"], #names left to right,
 	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
 	"more_info":".... history of image + lore", 
@@ -57,7 +57,7 @@ multiple_choice_pics = [
 {
 	"id": 0,
 	"difficulty": "easy",
-	"pic_options": ["https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/zeus1.jpg", "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/apollo1.jpg", "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/hermes1.jpg"],
+	"pic_options": ["https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/static/zeus1.jpg", "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/static/apollo1.jpg", "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/static/hermes1.jpg"],
 	"question": "Find Zeus",
 	"answer": "0", #0, 1, 2,... answers index of pic options
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
@@ -72,14 +72,14 @@ multiple_choice_text = [
 {
 	"id": 0,
 	"difficulty": "easy",
-	"image": "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/zeus2.jpg",
+	"image": "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/static/zeus2.jpg",
 	"options": ["Zeus", "Hera", "Hermes"],
 	"question": "To which mythological figure does this piece of statue belong?",
 	"answer": "zeus",
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
 	"explain_pics": ["url1_zeus", "url2_hera"],
 	"more_info": "....background, forklores...",
-	"hints": "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/data/zeus1.jpg",
+	"hints": "https://raw.githubusercontent.com/ct3008/Mythology_In_Art_UI2024/claudia/static/zeus1.jpg",
 }
 
 ]
