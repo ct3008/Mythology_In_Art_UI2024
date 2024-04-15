@@ -69,7 +69,7 @@ multiple_choice_pics = [
 	"difficulty": "easy",
 	"pic_options": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true", "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/apollo1.jpg?raw=true", "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/hermes1.jpg?raw=true"],
 	"question": "Find Zeus",
-	"answer": "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true", #0, 1, 2,... answers index of pic options
+	"answers": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true"], #0, 1, 2,... answers index of pic options
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
 	"more_info": ".... history of image + lore",
 	"hints": ["zeus_url_annotated","hera_url_annotated", "hermes_url_annotated"],
@@ -87,7 +87,7 @@ multiple_choice_text = [
 	"image": "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus2.jpg?raw=true",
 	"options": ["Zeus", "Hera", "Hermes"],
 	"question": "To which mythological figure does this piece of statue belong?",
-	"answer": "Zeus",
+	"answers": ["Zeus"],
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
 	"explain_pics": ["url1_zeus", "url2_hera"],
 	"more_info": "....background, forklores...",
@@ -98,11 +98,14 @@ multiple_choice_text = [
 
 ]
 
-score = 0
 
 @app.route('/')
 def home():
    return render_template('home.html')
+
+@app.route('/quiz')
+def quiz_home():
+   return render_template('quiz.html')
 
 
 @app.route('/quiz/<int:question_number>')
@@ -137,7 +140,25 @@ def quiz(question_number):
             prev_answered = 1
         return render_template('multiple_choice_text.html', information=information, prev_answered = prev_answered)
     else:
-        return render_template('score.html', score=score)
+        score = 0
+        total_score = 0
+        score_1, total_score_1 = find_score(fill_in_the_blank)
+        score += score_1
+        total_score += total_score_1
+        
+        score_2, total_score_2 = find_score(drag_and_drop)
+        score += score_2
+        total_score += total_score_2
+        
+        score_3, total_score_3 = find_score(multiple_choice_pics)
+        score += score_3
+        total_score += total_score_3
+        
+        score_4, total_score_4 = find_score(multiple_choice_text)
+        score += score_4
+        total_score += total_score_4
+
+        return render_template('score.html', score=score, total_score=total_score)
 
 @app.route('/submit_answer/<int:question_id>', methods=['POST'])
 def submit_answer(question_id):
@@ -163,6 +184,19 @@ def update_information(id, questionType):
     # Update the information list based on the received data, pageNum, and questionType
     # Logic to update the information list...
     return jsonify({'message': 'Information updated successfully'})
+
+def find_score(list):
+    score = 0
+    total_score = 0
+    for item in list:
+        print(item)
+        for idx, answer in enumerate(item['answers']):
+            if item['user_answers'][idx].lower() == answer.lower():
+                # print("____________INCREASE SCORE________________________________________________________________")
+                score += 1
+            total_score += 1
+    return score, total_score
+    
 
 
 if __name__ == '__main__':

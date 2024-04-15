@@ -1,4 +1,4 @@
-{% extends "quiz_layout.html" %}
+{% extends "layout.html" %}
 
 {% block content %}
 <head>
@@ -12,7 +12,8 @@
 
 <body>
 	<div class="container">
-		GOOD JOB Score = {{score}}
+		<!-- insult player if they do bad job -->
+		GOOD JOB Score = {{score}} / {{total_score}}
 	</div>
 </body>
 {% endblock %}
