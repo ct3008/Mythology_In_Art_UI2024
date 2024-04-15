@@ -87,7 +87,7 @@ multiple_choice_text = [
 	"image": "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus2.jpg?raw=true",
 	"options": ["Zeus", "Hera", "Hermes"],
 	"question": "To which mythological figure does this piece of statue belong?",
-	"answer": "zeus",
+	"answer": "Zeus",
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
 	"explain_pics": ["url1_zeus", "url2_hera"],
 	"more_info": "....background, forklores...",

@@ -124,11 +124,13 @@
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
 						}
 					}
+					input.disabled = true;
 				});
 				if (selectedOption !== null) {
 					console.log("Selected option: ", selectedOption);
 					information.answered = 1;
 					information.user_answers[0] = selectedOption;  // Assuming a single answer can be stored
+					submitted = true;
 					submitQuiz();
 					next_button.style.display = 'block';
 				} else {
@@ -144,16 +146,18 @@
 				var selectedOption = null;
 				console.log("radio inputs:", radioInputs);
 				radioInputs.forEach(function (input, index) {
-					if (input.checked) {
-						selectedOption = input.value;  // Get the value of the selected radio button
-						console.log(selectedOption);
+					if (input.value == information.user_answers[0]) {
+						// selectedOption = input.value;  // Get the value of the selected radio button
+						// console.log(selectedOption);
+						input.checked = true;
 						document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
-						if (selectedOption == information.answer) {
+						if (input.value == information.answer) {
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
 						} else {
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
 						}
 					}
+					input.disabled = true;
 				});
 				next_button.style.display = 'block';
 				// buttons.style.display = 'none';
