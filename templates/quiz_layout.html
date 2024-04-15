@@ -54,6 +54,19 @@
             height: 40px;
             margin-left: 10px;
         }
+
+        .learn_more {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            margin-top: 100px;
+        }
+
+        .learn-more-button {
+            border-radius: 18px 18px 18px 18px;
+            width: 300px;
+            height: 60px;
+        }
     </style>
 </head>
 
@@ -85,12 +98,17 @@
     </div>
 
     
+
+    
     <div class="container">
         {% block content %}
         {% endblock %}
-        <div class="buttons">
+        <div class="buttons" id="buttons-id">
             <button class="reset-button" onclick="reset()">Reset</button>
             <button class="submit-button" onclick="checkSubmit()">Submit</button>
+        </div>
+        <div class="learn_more" id="learn-more-id">
+            <button class="learn-more-button" onclick="learnMore()">Click Here to Learn the Lore!</button>
         </div>
     </div>
 
@@ -98,6 +116,11 @@
 
     <script>
 		const pageNum = parseInt(window.location.pathname.split('/').pop());
+        var prev_answered = {{ prev_answered | tojson | safe }};
+        var buttons = document.querySelectorAll('.buttons');
+        var learnMore = document.querySelectorAll('.learn-more');
+        var submitted = false;
+
         function displayHint() {
             let img_thing = document.getElementById('main_img');
             let img_hint = document.getElementById('hint_img');
@@ -106,12 +129,24 @@
 
         }
 		function navigatePrevious(){
-			window.location.href = `/quiz/${pageNum - 1}`;
+            window.location.href = `/quiz/${pageNum - 1}`;
+            
+			
 		}
 		function navigateNext(){
             window.location.href = `/quiz/${pageNum + 1}`;
-			
 		}
+
+        function replaceButtons(){
+            if (buttons.style.display == 'block'){
+                buttons.style.display = 'none';
+            }
+            if (learnMore.style.display == 'none'){
+                learnMore.style.display = 'block';
+            }
+        }
+
+        
 
         
     </script>
