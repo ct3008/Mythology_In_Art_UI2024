@@ -69,7 +69,7 @@ multiple_choice_pics = [
 	"difficulty": "easy",
 	"pic_options": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true", "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/apollo1.jpg?raw=true", "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/hermes1.jpg?raw=true"],
 	"question": "Find Zeus",
-	"answer": "0", #0, 1, 2,... answers index of pic options
+	"answer": "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true", #0, 1, 2,... answers index of pic options
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
 	"more_info": ".... history of image + lore",
 	"hints": ["zeus_url_annotated","hera_url_annotated", "hermes_url_annotated"],
