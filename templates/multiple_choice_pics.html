@@ -1,0 +1,190 @@
+{% extends "quiz_layout.html" %}
+
+{% block content %}
+
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+	<style>
+		.container {
+			margin-top: 100px;
+		}
+
+		.quiz-content {
+			display: flex;
+			align-items: center;
+		}
+
+		.option-image {
+			width: auto;
+			height: 300px;
+			margin-right: 40px;
+			margin-top: 30px;
+		}
+
+		.info_block {
+			border-radius: 18px 18px 18px 18px;
+			border: 2px solid black;
+			height: 60px;
+			width: 100px;
+			width: 70%;
+			/* margin-top:100px; */
+			margin-bottom: 10px;
+			border: 2px solid black;
+			display: none;
+			text-align: center;
+			/* display: flex; */
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			bottom: -100px;
+			left: 10px;
+			right: -5px;
+			width: 90%;
+		}
+	</style>
+</head>
+
+<!-- <body>
+	<div class="container">
+		Multi pics {{information.id}}
+	</div>
+</body> -->
+
+<body>
+	<div class="container">
+		<h1>{{ information.question }}</h1>
+		<div class="row">
+			<form class="options row" action="{{ url_for('submit_answer', question_id=information.id) }}" method="post">
+				{% for pic_option in information.pic_options %}
+				<div class="col-4">
+					<input type="radio" id="option_{{ loop.index }}" name="answer" value="{{ pic_option }}">
+					<label for="option_{{ loop.index }}">
+						<img src="{{ pic_option }}" alt="{{ pic_option }}" class="option-image">
+					</label>
+					<div class="info_block" id="info_block_{{ loop.index }}">
+						{{ information.explanation_text[loop.index - 1] }}
+					</div>
+				</div>
+				{% endfor %}
+			</form>
+		</div>
+	</div>
+
+	<script>
+		var information = {{ information | tojson | safe }};
+		var next_button = document.querySelector('.next-button');
+		var buttons = document.getElementById('buttons-id');
+		var learn_more = document.getElementById('learn-more-id');
+		// console.log(information.answered);
+		var questionType = 'mcp';
+		console.log(information);
+
+		updateInputs();
+
+		// Disable the next button initially
+
+
+		function submitQuiz() {
+			var formData = {
+				user_answers: information.user_answers
+			};
+
+			fetch(`/update_information/${information.id}/${questionType}`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(formData)
+			})
+				.then(response => {
+					if (response.ok) {
+						console.log('Quiz submitted successfully');
+					} else {
+						console.error('Failed to submit quiz');
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+		}
+
+		function checkSubmit() {
+			if (information.answered == 0) {
+				var radioInputs = document.querySelectorAll('input[name="answer"]');
+				var selectedOption = null;
+				console.log("radio inputs:", radioInputs);
+				radioInputs.forEach(function (input, index) {
+					if (input.checked) {
+						selectedOption = input.value;  // Get the value of the selected radio button
+						console.log(selectedOption);
+						document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
+						if (selectedOption == information.answers[0]) {
+							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
+						} else {
+							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
+						}
+					}
+					input.disabled = true;
+				});
+				if (selectedOption !== null) {
+					console.log("Selected option: ", selectedOption);
+					information.answered = 1;
+					information.user_answers[0] = selectedOption;  // Assuming a single answer can be stored
+					submitted = true;
+					submitQuiz();
+					next_button.style.display = 'block';
+				} else {
+					console.log("No option selected");
+				}
+
+			}
+		}
+
+		function updateInputs() {
+			if (information.answered == 1) {
+				var radioInputs = document.querySelectorAll('input[name="answer"]');
+				var selectedOption = null;
+				console.log("radio inputs:", radioInputs);
+				radioInputs.forEach(function (input, index) {
+					if (input.value == information.user_answers[0]) {
+						// selectedOption = input.value;  // Get the value of the selected radio button
+						// console.log(selectedOption);
+						input.checked = true;
+						document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
+						if (input.value == information.answers[0]) {
+							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
+						} else {
+							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
+						}
+					}
+					input.disabled = true;
+				});
+				next_button.style.display = 'block';
+				// buttons.style.display = 'none';
+				// reset_button.style.display = 'none';
+				// submit_button.style.display = 'none';
+				// learn_more.style.display = 'block';
+
+			} else {
+				next_button.style.display = 'none';
+			}
+
+		}
+
+		function reset() {
+			console.log("reset");
+			if (!information.answered) {
+				var infoBlocks = document.querySelectorAll('.info_block');
+				var radioInputs = document.querySelectorAll('input[name="answer"]');
+				infoBlocks.forEach(function (block) {
+					block.style.display = 'none';
+				});
+				radioInputs.forEach(function (input, index) {
+					input.checked = null;
+				});
+			}
+		}
+	</script>
+</body>
+
+{% endblock %}
