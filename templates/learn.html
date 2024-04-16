@@ -17,9 +17,9 @@
 			</div>
 		</div>
 		{% if (figure.id | int) > 1 %}
-			<a class="btn btn-secondary next-button" href="/learn/{{figure.id | int - 1}}">Back</a>
+			<a class="btn btn-secondary back-button" href="/learn/{{figure.id | int - 1}}">Back</a>
 		{% else %}
-			<a class="btn btn-secondary next-button" href="/learn">Back</a>
+			<a class="btn btn-secondary back-button" href="/learn">Back</a>
 		{% endif %}
 
 		{% if (figure.id | int) < figures|length %}

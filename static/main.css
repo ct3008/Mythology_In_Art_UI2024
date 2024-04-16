@@ -42,3 +42,49 @@ body {
 #learnPage {
     padding: 10px;
 }
+
+/* Hint for quiz.html layout */
+#hint_button {
+	float: right;
+	margin-right: 20px;
+	width: 150px;
+	height: 50px;
+    font-size: 20px;
+    font-family: tahoma;
+	border-radius: 18px 18px 18px 18px;
+	background-color: red;
+
+}
+
+#hint_button:hover {
+    background-color: darkred; 
+}
+
+.previous-button {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 10px;
+	display: flex;
+	align-items: center; /* Center the buttons vertically */
+	z-index: 9999;
+	/* position: absolute; */
+	/* background-color: black; */
+	/* left: 10px; */
+}
+
+.next-button {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 10px;
+	display: flex;
+	align-items: center; 
+	z-index: 9999;
+	
+}
+
+.navigation-buttons button:hover {
+	background-color: red;
+}
+

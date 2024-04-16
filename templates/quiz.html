@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+	<style>
+		.easy-button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100px;
+			font-size: 25px;
+		}
+
+		.difficult-button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100px;
+			font-size: 25px;
+		}
+
+		.title {
+			margin: 30px 0px;
+			justify-content: center;
+			align-items: center;
+			font-size: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row title">
+			Choose Quiz Difficulty
+		</div>
+		<div class="row">
+			<div class="col-6 justify-content-center align-items-center">
+				<button class="easy-button" onclick="redirect_easy()">EASY</button>
+			</div>
+			<div class="col-6 justify-content-center align-items-center">
+				<button class="difficult-button" disabled>DIFFICULT</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function redirect_easy() {
+			window.location.href = `/quiz/0`;
+		}
+	</script>
+</body>
+{% endblock %}
