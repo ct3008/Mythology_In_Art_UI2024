@@ -167,31 +167,7 @@
             }
             
         }
-
-		function submitQuiz() {
-            var formData = {
-                user_answers: information.user_answers
-            };
-    
-            fetch(`/update_information/${information.id}/${questionType}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Quiz submitted successfully');
-                } else {
-                    console.error('Failed to submit quiz');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    
+  
         function checkSubmit() {
             if (information.answered == 0) {
                 var dropInputs = document.querySelectorAll('.drop-zone');

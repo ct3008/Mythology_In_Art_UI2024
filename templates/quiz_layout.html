@@ -53,7 +53,9 @@
         <button id="hint_button" onclick="displayHint()">Hint</button>
     </div>
     <div class="navigation-buttons">
-        <button class="previous-button" onclick="navigatePrevious()">&#9664;</button>
+        {% if (information.id | int) > 0 %}
+            <button class="previous-button" onclick="navigatePrevious()">&#9664;</button>
+        {% endif %}
         <button class="next-button" onclick="navigateNext()">&#9654;</button>
     </div>
 
@@ -63,13 +65,13 @@
     <div class="container">
         {% block quiz_content %}
         {% endblock %}
-        <div class="buttons" id="buttons-id">
-            <button class="reset-button" onclick="reset()">Reset</button>
-            <button class="submit-button" onclick="checkSubmit()">Submit</button>
-        </div>
-        <div class="learn_more" id="learn-more-id">
-            <button class="learn-more-button" onclick="learnMore()">Click Here to Learn the Lore!</button>
-        </div>
+            <div class="buttons" id="buttons-id">
+                <button class="reset-button" onclick="reset()">Reset</button>
+                <button class="submit-button" onclick="checkSubmit()">Submit</button>
+            </div>
+            <div class="learn_more" id="learn-more-id">
+                <button class="learn-more-button" onclick="learnMore()">Click Here to Learn the Lore!</button>
+            </div>
     </div>
 
 

@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 import datetime
+import random
 app = Flask(__name__)
 
 
 
-
 fill_in_the_blank = [
    {"id": 0,
 	"difficulty": "easy",#hard or easy, if hard, no hints,
@@ -101,101 +101,8 @@ multiple_choice_text = [
 
 
 
-
-fill_in_the_blank = [
-   {"id": 0,
-	"difficulty": "easy",#hard or easy, if hard, no hints,
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus3.jpg?raw=true"],
-	"answers": ["zeus", "artemis"], #names left to right,
-	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
-	"more_info":".... history of image + lore", 
-	"explanation_text": ["zeus has symbols that...", "bob is short..."],
-    "answered": 0,
-    "user_answers":[]
-	},
-   {"id": 1,
-	"difficulty": "easy",#hard or easy, if hard, no hints,
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus3.jpg?raw=true"],
-	"answers": ["zeus"], #names left to right,
-	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
-	"more_info":".... history of image + lore", 
-	"explanation_text": ["zeus has symbols that..."],
-    "answered": 0,
-    "user_answers":[]
-	},
-   {"id": 2,
-	"difficulty": "easy",#hard or easy, if hard, no hints,
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus3.jpg?raw=true"],
-	"answers": ["zeus"], #names left to right,
-	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
-	"more_info":".... history of image + lore", 
-	"explanation_text": ["zeus has symbols that..."],
-    "answered": 0,
-    "user_answers":[]
-	}
-   
-]
-
-drag_and_drop = [
-   {"id": 0,
-	"difficulty":"easy",
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/athena3.jpg?raw=true","https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/herakles5.jpg?raw=true"],
-	"options": ["Athena", "Herakles", "John"],
-	"answers": ["Athena", "Herakles"], # from left to right
-	"hints": "url_annotated",
-	"more_info": ".... history of image + lore", 
-	"explanation_text": ["Athena has symbols that...", "Herakles is characterized by symbols"],
-    "answered": 0,
-    "user_answers":[]
-   },
-   {"id": 1,
-	"difficulty":"easy",
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/athena3.jpg?raw=true","https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/herakles5.jpg?raw=true"],
-	"options": ["Athena", "Herakles", "John"],
-	"answers": ["Athena", "Herakles"], # from left to right
-	"hints": "url_annotated",
-	"more_info": ".... history of image + lore", 
-	"explanation_text": ["Athena has symbols that...", "Herakles is characterized by symbols"],
-    "answered": 0,
-    "user_answers":[]
-   }
-]
-
-multiple_choice_pics = [
-{
-	"id": 0,
-	"difficulty": "easy",
-	"pic_options": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true", "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/apollo1.jpg?raw=true", "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/hermes1.jpg?raw=true"],
-	"question": "Find Zeus",
-	"answers": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true"], #0, 1, 2,... answers index of pic options
-	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
-	"more_info": ".... history of image + lore",
-	"hints": ["zeus_url_annotated","hera_url_annotated", "hermes_url_annotated"],
-    "answered": 0,
-    "user_answers":[]
-}
-
-]
-
-
-multiple_choice_text = [
-{
-	"id": 0,
-	"difficulty": "easy",
-	"image": "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus2.jpg?raw=true",
-	"options": ["Zeus", "Hera", "Hermes"],
-	"question": "To which mythological figure does this piece of statue belong?",
-	"answers": ["Zeus"],
-	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
-	"explain_pics": ["url1_zeus", "url2_hera"],
-	"more_info": "....background, forklores...",
-	"hints": "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true",
-    "answered": 0,
-    "user_answers":[]
-}
-
-]
-
+############################
+#data
 figures = {
    "1": {
       "id": "1",
@@ -270,6 +177,53 @@ figures = {
    }
 }
 
+figures_list = []
+for v in figures.values():
+    figures_list.append(v['name'])
+
+#TODO: Each image has an associated explanation and list of symbols that appear
+# (for 'hint', 'learn more', and correct/incorrect answers)
+
+#############################
+#generate 10 questions of varying type and content
+questions = []
+used_images = []
+
+#track user answers and progress
+score = 0
+current_question = 0 #prevent users from jumping ahead in the quiz
+user_answers = []
+
+def gen_fill_in_the_blank():
+    correct_answer = random.choice(figures_list)
+    #get an unused image
+    image = correct_answer.lower() + "1.jpg" #1 for now
+    second_option = random.choice(list(set(figures_list) - set([correct_answer])))
+    ret = {
+        "id": 0,
+        "type": "fill_in_the_blank",
+        "images":[image],
+        "hints":[], #'get 'hint' from image dictionary
+        "explanation_text":["text"], #get 'explanation' from image dictionary
+        "answers":[correct_answer, second_option],
+        "answered":0,
+        "user_answers":[]
+    }
+    return ret
+
+question_types = [gen_fill_in_the_blank]
+def generate_questions():
+    for i in range(5):
+       new_question = random.choice(question_types)()
+       new_question["id"] = str(i)
+       questions.append(new_question)
+    return questions
+        
+
+questions = generate_questions()
+
+
+
 #ask: reset for a new user
 
 #time stamp for each page
@@ -300,6 +254,15 @@ def learn(id):
 @app.route('/quiz')
 def quiz_home():
    return render_template('quiz.html', figures=figures)
+
+#combine all question types
+@app.route('/quiz2/<id>')
+def quiz2(id):
+    question = questions[int(id)]
+    if (int(id) < len(questions)):
+        return render_template(question['type']+'.html', figures=figures, information=question, prev_answered = (current_question >= int(id)))
+    else:
+        return render_template('score.html', figures=figures, score=score, total_score=len(questions))
 
 
 @app.route('/quiz/<int:question_number>')
@@ -354,7 +317,7 @@ def quiz(question_number):
 
         return render_template('score.html', figures=figures, score=score, total_score=total_score)
 
-@app.route('/submit_answer/<int:question_id>', methods=['POST'])
+@app.route('/submit_answer2/<int:question_id>', methods=['POST'])
 def submit_answer(question_id):
     # pass for sake of test
     pass
