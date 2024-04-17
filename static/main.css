@@ -6,10 +6,24 @@ body {
 	text-align: center;
 }
 
+#symbols {
+	padding-top: 10px;
+	font-weight: bold;
+}
+
 #learn_buttons {
+	bottom: 10px;
 	display: flex;
 	justify-content: space-between;
-	padding: 10px 20px 0px 20px;
+	position: absolute;
+	width: 100%;
+	padding: 0px 15px 0px 0px;
+}
+
+.learn-button:hover {
+    border-color: rgb(239, 235, 224);
+    color: black;
+    background-color: rgb(227, 217, 199);
 }
 
 .navbar {
@@ -55,10 +69,11 @@ body {
 .figureName {
     justify-content: center;
     font-size: 40px;
+	padding: 0px 0px 10px 0px;
 }
 
 #learnPage {
-    padding: 10px;
+	padding: 10px 20px 0px 20px;
 }
 
 /* Hint for quiz.html layout */

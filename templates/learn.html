@@ -9,11 +9,10 @@
 		<div class="col-2">
 			<img class="img-fluid" src="/static/{{figure.data[0]}}" />
 		</div>
-		<div class="col-2">
-			<div>{{figure.description}}</div>
-		</div>
-		<div class="col-2">
-			<div>{{figure.symbols}}</div>
+		<div class="col-10">
+			<div class="row">{{figure.description}}</div>
+			<a class="row" id="symbols">Symbols:</a>
+			<a>{{ ", ".join(figure.symbols).capitalize() }}.</a>
 		</div>
 	</div>
 	<div class="row" id="learn_buttons">
