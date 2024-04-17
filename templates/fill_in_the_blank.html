@@ -1,6 +1,6 @@
 {% extends "quiz_layout.html" %}
 
-{% block content %}
+{% block quiz_content %}
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <style>
@@ -29,28 +29,21 @@
         <div class="row">
             <div class="col-md-6 col6 container">
                 <div class="image">
-                    <img id="main_img" src= "{{ information.images[0] }}" alt="zeus" class="bleh">
+                    <img id="main_img" class="img-fluid" src= "/static/{{ information.images[0] }}" alt="zeus">
                     <img id="hint_img" src= "{{ information.hints[0] }}" alt="zeus_hint" style="display: none;">
                 </div>
             </div>
             <div class="col-md-6 col6 container">
                 {% for fib in information.answers %}
                 
-                <label> {{ loop.index }}) Fill in the blank:
+                <label> {{ loop.index }} Fill in the blank:
                     <input class="fib-input" list="browsers" name="fib_answer_{{ loop.index }}" />
                 </label>
                
                 <datalist id="browsers">
-                    <option value="Artemis">Artemis</option>
-					<option value="Apollo">Apollo</option>
-					<option value="Athena">Athena</option>
-					<option value="Dionysus">Dionysus</option>
-					<option value="Hades">Hades</option>
-					<option value="Hephaestus">Hephaestus</option>
-					<option value="Herakles">Herakles</option>
-					<option value="Hermes">Hermes</option>
-					<option value="Poseidon">Poseidon</option>
-					<option value="Zeus">Zeus</option>
+                    {% for figure in figures.values() %}
+                        <option value="{{figure.name}}">{{figure.name}}</option>
+                    {% endfor %}
                 </datalist>
                 
                 <div class="info_block" id="info_block_{{ loop.index }}">
@@ -74,31 +67,7 @@
     
         // Disable the next button initially
         
-    
-        function submitQuiz() {
-            var formData = {
-                user_answers: information.user_answers
-            };
-    
-            fetch(`/update_information/${information.id}/${questionType}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Quiz submitted successfully');
-                } else {
-                    console.error('Failed to submit quiz');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    
+
         function checkSubmit() {
             if (information.answered == 0) {
                 var fibInputs = document.querySelectorAll('.fib-input');
@@ -109,13 +78,16 @@
                     }
                     if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
                         document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
-                    } else {
+                    } 
+                    else {
                         document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
                     }
+                    console.log("set answers:")
                     information.user_answers[index] = inputValue;
+
                 });
                 information.answered = 1;
-                // console.log(information);
+                console.log(information);
                 
                 submitted = true;
     
