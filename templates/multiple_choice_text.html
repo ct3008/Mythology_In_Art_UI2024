@@ -3,7 +3,6 @@
 {% block quiz_content %}
 
 <head>
-	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 	<style>
 		.container {
 			margin-top: 100px;
@@ -55,18 +54,13 @@
 	</style>
 </head>
 
-<!-- <body>
-	<div class="container">
-		Multi Text {{information.id}}
-	</div>
-</body> -->
 
 <body>
 	<div class="container">
 		<h1>{{ information.question }}</h1>
 		<div class="row">
 			<div class="col-6">
-				<img id="main_img" class="image" src="{{ information.image }}" alt="Question Image">
+				<img id="main_img" class="image" src="/static/{{ information.image }}" alt="Question Image">
 				<img id="hint_img" src="{{ information.hints }}" alt="zeus_hint" style="display: none;">
 			</div>
 			<div class="col-6 align-items-center justify-content-center">
@@ -176,5 +170,6 @@
 			}
 		}
 	</script>
+
 </body>
 {% endblock %}

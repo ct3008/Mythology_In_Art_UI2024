@@ -85,7 +85,7 @@
 			<div class="col-md-9 col9 row" style="display: flex;">
 				{% for pic in information.images %}
 					<div class="col-md-{{ 12 // loop.length }} image-container" style="flex: 1; position: relative;">
-						<img src="{{ pic }}" alt="zeus" class="bleh img-fluid" style="height: 100%; width: auto;">
+						<img src="/static/{{ pic }}" alt="zeus" class="bleh img-fluid" style="height: 100%; width: auto;">
 						<div class="drop-zone" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" name="drop_{{ loop.index }}">
 							Drop Zone
 						</div>

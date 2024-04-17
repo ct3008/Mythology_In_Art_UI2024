@@ -59,7 +59,7 @@
 				<div class="col-4">
 					<input type="radio" id="option_{{ loop.index }}" name="answer" value="{{ pic_option }}">
 					<label for="option_{{ loop.index }}">
-						<img src="{{ pic_option }}" alt="{{ pic_option }}" class="option-image">
+						<img src="/static/{{ pic_option }}" alt="/static/{{ pic_option }}" class="option-image">
 					</label>
 					<div class="info_block" id="info_block_{{ loop.index }}">
 						{{ information.explanation_text[loop.index - 1] }}

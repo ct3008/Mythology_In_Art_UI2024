@@ -10,6 +10,7 @@ function submitQuiz() {
 	let formData = {
 	    user_answers: information.user_answers
 	};
+	console.log(formData)
 
 	fetch(`/update_information/${information.id}/${questionType}`, {
 	    method: 'POST',

@@ -1,14 +1,14 @@
 from flask import Flask, render_template, request, jsonify
 import datetime
 import random
+import re
 app = Flask(__name__)
 
 
 
 fill_in_the_blank = [
    {"id": 0,
-	"difficulty": "easy",#hard or easy, if hard, no hints,
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus3.jpg?raw=true"],
+	"images": ["zeus3.jpg"],
 	"answers": ["zeus", "artemis"], #names left to right,
 	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
 	"more_info":".... history of image + lore", 
@@ -17,8 +17,7 @@ fill_in_the_blank = [
     "user_answers":[]
 	},
    {"id": 1,
-	"difficulty": "easy",#hard or easy, if hard, no hints,
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus3.jpg?raw=true"],
+	"images": ["zeus3.jpg"],
 	"answers": ["zeus"], #names left to right,
 	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
 	"more_info":".... history of image + lore", 
@@ -27,8 +26,7 @@ fill_in_the_blank = [
     "user_answers":[]
 	},
    {"id": 2,
-	"difficulty": "easy",#hard or easy, if hard, no hints,
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus3.jpg?raw=true"],
+	"images": ["zeus3.jpg"],
 	"answers": ["zeus"], #names left to right,
 	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
 	"more_info":".... history of image + lore", 
@@ -42,7 +40,7 @@ fill_in_the_blank = [
 drag_and_drop = [
    {"id": 0,
 	"difficulty":"easy",
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/athena3.jpg?raw=true","https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/herakles5.jpg?raw=true"],
+	"images": ["athena3.jpg","herakles5.jpg"],
 	"options": ["Athena", "Herakles", "John"],
 	"answers": ["Athena", "Herakles"], # from left to right
 	"hints": "url_annotated",
@@ -53,7 +51,7 @@ drag_and_drop = [
    },
    {"id": 1,
 	"difficulty":"easy",
-	"images": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/athena3.jpg?raw=true","https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/herakles5.jpg?raw=true"],
+	"images": ["athena3.jpg","herakles5.jpg"],
 	"options": ["Athena", "Herakles", "John"],
 	"answers": ["Athena", "Herakles"], # from left to right
 	"hints": "url_annotated",
@@ -68,9 +66,9 @@ multiple_choice_pics = [
 {
 	"id": 0,
 	"difficulty": "easy",
-	"pic_options": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true", "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/apollo1.jpg?raw=true", "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/hermes1.jpg?raw=true"],
+	"pic_options": ["zeus1.jpg", "apollo1.jpg", "hermes1.jpg"],
 	"question": "Find Zeus",
-	"answers": ["https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true"], #0, 1, 2,... answers index of pic options
+	"answers": ["zeus1.jpg"], #0, 1, 2,... answers index of pic options
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
 	"more_info": ".... history of image + lore",
 	"hints": ["zeus_url_annotated","hera_url_annotated", "hermes_url_annotated"],
@@ -85,14 +83,14 @@ multiple_choice_text = [
 {
 	"id": 0,
 	"difficulty": "easy",
-	"image": "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus2.jpg?raw=true",
+	"image": "zeus2.jpg",
 	"options": ["Zeus", "Hera", "Hermes"],
 	"question": "To which mythological figure does this piece of statue belong?",
 	"answers": ["Zeus"],
 	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
 	"explain_pics": ["url1_zeus", "url2_hera"],
 	"more_info": "....background, forklores...",
-	"hints": "https://github.com/ct3008/Mythology_In_Art_UI2024/blob/main/static/zeus1.jpg?raw=true",
+	"hints": "zeus1.jpg",
     "answered": 0,
     "user_answers":[]
 }
@@ -177,50 +175,64 @@ figures = {
    }
 }
 
-figures_list = []
-for v in figures.values():
-    figures_list.append(v['name'])
+# figures_list = []
+# for v in figures.values():
+#     figures_list.append(v['name'])
 
 #TODO: Each image has an associated explanation and list of symbols that appear
 # (for 'hint', 'learn more', and correct/incorrect answers)
 
 #############################
 #generate 10 questions of varying type and content
-questions = []
-used_images = []
+# questions = []
+# used_images = []
+# all_images = [
+#     { 
+#         "name": "zeus1.jpg",
+#         "symbols":[], #symbols that appear in this image
+#         "learn_more":"" #description of the myth in the image
+#     }
+# ]
+# all_images = ["zeus1.jpg", ""]
 
 #track user answers and progress
-score = 0
-current_question = 0 #prevent users from jumping ahead in the quiz
-user_answers = []
+# score = 0
+# current_question = 0 #prevent users from jumping ahead in the quiz
+# user_answers = []
 
-def gen_fill_in_the_blank():
-    correct_answer = random.choice(figures_list)
-    #get an unused image
-    image = correct_answer.lower() + "1.jpg" #1 for now
-    second_option = random.choice(list(set(figures_list) - set([correct_answer])))
-    ret = {
-        "id": 0,
-        "type": "fill_in_the_blank",
-        "images":[image],
-        "hints":[], #'get 'hint' from image dictionary
-        "explanation_text":["text"], #get 'explanation' from image dictionary
-        "answers":[correct_answer, second_option],
-        "answered":0,
-        "user_answers":[]
-    }
-    return ret
+# def gen_fill_in_the_blank():
+#     #choose a god and an unused image
+#     while True:
+#         image = random.choice(all_images)
+#         if (image not in used_images):
+#             break
 
-question_types = [gen_fill_in_the_blank]
-def generate_questions():
-    for i in range(5):
-       new_question = random.choice(question_types)()
-       new_question["id"] = str(i)
-       questions.append(new_question)
-    return questions
+#     # if any(image in i for i in figures_list):
+#     #     correct_answers = s
+#     correct_answers = []
+#     # second_option = random.choice(list(set(figures_list) - set([correct_answer])))
+#     ret = {
+#         "id": 0,
+#         "type": "fill_in_the_blank",
+#         "images":[image],
+#         "hints":[], #'get 'hint' from symbols list in image dictionary
+#         "explanation_text":["text"], #get 'explanation' from symbols list in image dictionary
+#         "answers": correct_answers,
+#         "answered":0,
+#         "user_answers":[]
+#     }
+#     return ret
+
+# question_types = [gen_fill_in_the_blank]
+# def generate_questions():
+#     for i in range(5):
+#        new_question = random.choice(question_types)()
+#        new_question["id"] = str(i)
+#        questions.append(new_question)
+#     return questions
         
 
-questions = generate_questions()
+# questions = generate_questions()
 
 
 
@@ -255,14 +267,14 @@ def learn(id):
 def quiz_home():
    return render_template('quiz.html', figures=figures)
 
-#combine all question types
-@app.route('/quiz2/<id>')
-def quiz2(id):
-    question = questions[int(id)]
-    if (int(id) < len(questions)):
-        return render_template(question['type']+'.html', figures=figures, information=question, prev_answered = (current_question >= int(id)))
-    else:
-        return render_template('score.html', figures=figures, score=score, total_score=len(questions))
+# #combine all question types
+# @app.route('/quiz2/<id>')
+# def quiz2(id):
+#     question = questions[int(id)]
+#     if (int(id) < len(questions)):
+#         return render_template(question['type']+'.html', figures=figures, information=question, prev_answered = (current_question >= int(id)))
+#     else:
+#         return render_template('score.html', figures=figures, score=score, total_score=len(questions))
 
 
 @app.route('/quiz/<int:question_number>')
@@ -317,7 +329,7 @@ def quiz(question_number):
 
         return render_template('score.html', figures=figures, score=score, total_score=total_score)
 
-@app.route('/submit_answer2/<int:question_id>', methods=['POST'])
+@app.route('/submit_answer/<int:question_id>', methods=['POST'])
 def submit_answer(question_id):
     # pass for sake of test
     pass
@@ -346,7 +358,6 @@ def find_score(list):
     score = 0
     total_score = 0
     for item in list:
-        print(item)
         for idx, answer in enumerate(item['answers']):
             if item['user_answers'][idx].lower() == answer.lower():
                 # print("____________INCREASE SCORE________________________________________________________________")
