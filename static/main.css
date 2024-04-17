@@ -2,12 +2,29 @@ body {
     background-color: rgb(239, 235, 224);
 }
 
+#home {
+	text-align: center;
+}
+
 .navbar {
     background-color: rgb(139, 124, 109) !important;
 }
 
 .navbar-brand {
     color: white !important;
+}
+
+#start_learning {
+	font-size: 25px;
+	color: white;
+	background-color: rgb(139, 124, 109);
+	border-color: rgb(139, 124, 109);
+}
+
+#start_learning:hover {
+    border-color: rgb(239, 235, 224);
+    color: black;
+    background-color: rgb(227, 217, 199);
 }
 
 .navbar-button{
