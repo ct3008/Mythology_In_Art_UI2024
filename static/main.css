@@ -6,6 +6,12 @@ body {
 	text-align: center;
 }
 
+#learn_buttons {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 20px 0px 20px;
+}
+
 .navbar {
     background-color: rgb(139, 124, 109) !important;
 }
@@ -39,16 +45,11 @@ body {
     background-color: rgb(227, 217, 199);
 }
 
-.next-button{
+.learn-button{
     color: white;
     background-color: rgb(139, 124, 109);
     border-color: rgb(139, 124, 109);
-}
-
-.back-button{
-    color: white;
-    background-color: rgb(139, 124, 109);
-    border-color: rgb(139, 124, 109);
+	width: 20%;
 }
 
 .figureName {
@@ -104,4 +105,3 @@ body {
 .navigation-buttons button:hover {
 	background-color: red;
 }
-

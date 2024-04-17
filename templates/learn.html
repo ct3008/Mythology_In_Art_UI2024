@@ -3,30 +3,32 @@
 
 {% block content %}
 
-	<div id="learnPage">
-		<div class="row figureName">{{figure.name}}</div>
-		<div class="row figureDetails">
-			<div class="col-2">
-				<img class="img-fluid" src="/static/{{figure.data[0]}}"/> 
-			</div>
-			<div class="col-2">
-				<div>{{figure.description}}</div>
-			</div>
-			<div class="col-2">
-				<div>{{figure.symbols}}</div>
-			</div>
+<div id="learnPage">
+	<div class="row figureName">{{figure.name}}</div>
+	<div class="row figureDetails">
+		<div class="col-2">
+			<img class="img-fluid" src="/static/{{figure.data[0]}}" />
 		</div>
+		<div class="col-2">
+			<div>{{figure.description}}</div>
+		</div>
+		<div class="col-2">
+			<div>{{figure.symbols}}</div>
+		</div>
+	</div>
+	<div class="row" id="learn_buttons">
 		{% if (figure.id | int) > 1 %}
-			<a class="btn btn-secondary back-button" href="/learn/{{figure.id | int - 1}}">Back</a>
+		<a class="btn btn-secondary learn-button" href="/learn/{{figure.id | int - 1}}">Back</a>
 		{% else %}
-			<a class="btn btn-secondary back-button" href="/learn">Back</a>
+		<a class="btn btn-secondary learn-button" href="/learn">Back</a>
 		{% endif %}
 
-		{% if (figure.id | int) < figures|length %}
-			<a class="btn btn-secondary next-button" href="/learn/{{figure.id | int + 1}}">Next</a>
-		{% else %}
-			<a class="btn btn-secondary next-button" href="/quiz">Take Quiz</a>
-		{% endif %}
+		{% if (figure.id | int) < figures|length %} <a class="btn btn-secondary learn-button"
+			href="/learn/{{figure.id | int + 1}}">Next</a>
+			{% else %}
+			<a class="btn btn-secondary learn-button" href="/quiz">Take Quiz</a>
+			{% endif %}
 	</div>
+</div>
 
 {% endblock %}
