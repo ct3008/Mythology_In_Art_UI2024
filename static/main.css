@@ -6,6 +6,11 @@ body {
 	text-align: center;
 }
 
+.home_image {
+	max-width: 300px;
+	text-align: center;
+}
+
 #symbols {
 	padding-top: 10px;
 	font-weight: bold;
@@ -39,6 +44,7 @@ body {
 	color: white;
 	background-color: rgb(139, 124, 109);
 	border-color: rgb(139, 124, 109);
+	margin-top: 20px;
 }
 
 #start_learning:hover {
