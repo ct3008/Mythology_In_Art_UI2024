@@ -258,7 +258,7 @@ figures = {
       "id": "9",
       "name": "Dionysus",
       "description": "Dionysus is the god of wine and of theater. He is associated with altered states of mind (from the wine) and is the youngest god. He is Zeus' son. His entourage include sailors and Maenads (crazy women).",
-      "symbols": ['“exotic” animals and clothing', "wine", "Often with Maenad and Satyrs (his followers)", "vines", "grapes"],
+      "symbols": ['“Exotic” animals and clothing', "wine", "Often with Maenad and Satyrs (his followers)", "vines", "grapes"],
 	   "data": ["dionysus1.jpg","dionysus2.jpg","dionysus3.jpg","dionysus4.jpg","dionysus5.jpg","hephaistosDionysus.jpg"]
    },
    "10": {
