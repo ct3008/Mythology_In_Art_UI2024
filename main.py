@@ -182,6 +182,25 @@ figures = {
 #TODO: Each image has an associated explanation and list of symbols that appear
 # (for 'hint', 'learn more', and correct/incorrect answers)
 
+all_images = {
+    "1": {
+        "name": "zeus1",
+        "symbols":["thunderbolt"]
+    },
+    "2": {
+        "name": "zeus2",
+        "symbols":["thunderbolt"]
+    },
+    "3": {
+        "name": "zeus3",
+        "symbols":["thunderbolt","eagle"]
+    },
+    "4": {
+        "name": "zeus4",
+        "symbols":["throne","sceptor","eagle"]
+    }
+}
+
 #############################
 #generate 10 questions of varying type and content
 # questions = []
@@ -236,32 +255,24 @@ figures = {
 
 
 
-#ask: reset for a new user
-
-#time stamp for each page
-user_progress = {}
-
-#sequence of pages visited
-user_sequence = []
 
 @app.route('/')
 def home():
-   user_sequence.append("home")
-   user_progress["home"] = datetime.datetime.now()
-   print(user_sequence)
    return render_template('home.html', figures=figures)
 
 @app.route('/learn')
 def contents():
-	user_sequence.append("learn")
-	user_progress["learn"] = datetime.datetime.now()
 	return render_template('contents.html', figures=figures)
 
 @app.route('/learn/<id>')
 def learn(id):
-	user_sequence.append("learn/"+id)
-	user_progress["learn/"+id] = datetime.datetime.now()
-	return render_template('learn.html', figures=figures,  figure=figures[id])
+    figure=figures[id]
+    images = []
+    for v in all_images.values():
+        if v['name']+".jpg" in figure['data'][:2]: #first two images are for the learning portion
+            images.append(v)
+    print(images)
+    return render_template('learn.html', figures=figures, figure=figure, images=images)
 
 @app.route('/quiz')
 def quiz_home():

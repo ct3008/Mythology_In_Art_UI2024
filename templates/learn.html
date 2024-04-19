@@ -12,11 +12,11 @@
 		position:absolute;
 		opacity:0.5	
 	}
-	.zeus1 .thunderbolt .left{
+	.zeus1.thunderbolt.left{
 		height:100%;
 		width:55%;
 	}
-	.zeus1 .thunderbolt .bottom{
+	.zeus1.thunderbolt.bottom{
 		height:70%;
 		width:45%;
 		bottom: 0;
@@ -36,15 +36,19 @@
 <div id="learnPage">
 	<div class="row figureName">{{figure.name}}</div>
 	<div class="row figureDetails">
-		<div class="col-2 p-0">
-			{% for symbol in image.symbols %}
-				<div class="opacity_div {{image.name}} {{symbol}} left"></div>
-				<div class="opacity_div {{image.name}} {{symbol}} bottom"></div>
-			{% endfor %}
-			<div id="solid_div {{image.name}}"></div>
-			<img class="img-fluid w-100" src="/static/{{figure.data[0]}}" />
-		</div>
-		<div class="col-10">
+		{% for image in images %}
+			<div class="col-2">
+				<div class="m-0 p-0">
+					{% for symbol in image.symbols %}
+						<div class="opacity_div {{image.name}} {{symbol}} left"></div>
+						<div class="opacity_div {{image.name}} {{symbol}} bottom"></div>
+					{% endfor %}
+					<div id="solid_div {{image.name}}"></div>
+					<img class="img-fluid w-100" src="/static/{{figure.data[0]}}" />
+				</div>
+			</div>
+		{% endfor %}
+		<div class="col-8">
 			<a class="row" id="specific">Description:</a>
 			<div class="row">{{figure.description}}</div>
 			<a class="row" id="specific">Symbols:</a>
