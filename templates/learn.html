@@ -3,11 +3,46 @@
 
 {% block content %}
 
+<style>
+	/* 1) get the src 
+	2) from the dict, apply the corresponding opacity_divs */
+	/*make the %s variables*/
+	.opacity_div {
+		background:#fff;
+		position:absolute;
+		opacity:0.5	
+	}
+	.zeus1 .thunderbolt .left{
+		height:100%;
+		width:55%;
+	}
+	.zeus1 .thunderbolt .bottom{
+		height:70%;
+		width:45%;
+		bottom: 0;
+     	right: 0;
+	}
+	.solid_div{
+		border-style:solid;
+		height: 30%;
+		width: 45%;
+		border-color: green;
+		top: 0;
+		right: 0;
+		position:absolute;
+	}
+
+</style>
 <div id="learnPage">
 	<div class="row figureName">{{figure.name}}</div>
 	<div class="row figureDetails">
-		<div class="col-2">
-			<img class="img-fluid" src="/static/{{figure.data[0]}}" />
+		<div class="col-2 p-0">
+			{% for symbol in image.symbols %}
+				<div class="opacity_div {{image.name}} {{symbol}} left"></div>
+				<div class="opacity_div {{image.name}} {{symbol}} bottom"></div>
+			{% endfor %}
+			<div id="solid_div {{image.name}}"></div>
+			<img class="img-fluid w-100" src="/static/{{figure.data[0]}}" />
 		</div>
 		<div class="col-10">
 			<a class="row" id="specific">Description:</a>
@@ -18,16 +53,17 @@
 	</div>
 	<div class="row" id="learn_buttons">
 		{% if (figure.id | int) > 1 %}
-		<a class="btn btn-secondary learn-button" href="/learn/{{figure.id | int - 1}}">Back</a>
+			<a class="btn btn-secondary learn-button" href="/learn/{{figure.id | int - 1}}">Back</a>
 		{% else %}
-		<a class="btn btn-secondary learn-button" href="/learn">Back</a>
+			<a class="btn btn-secondary learn-button" href="/learn">Back</a>
 		{% endif %}
 
-		{% if (figure.id | int) < figures|length %} <a class="btn btn-secondary learn-button"
+		{% if (figure.id | int) < figures|length %} 
+			<a class="btn btn-secondary learn-button"
 			href="/learn/{{figure.id | int + 1}}">Next</a>
-			{% else %}
+		{% else %}
 			<a class="btn btn-secondary learn-button" href="/quiz">Take Quiz</a>
-			{% endif %}
+		{% endif %}
 	</div>
 </div>
 
