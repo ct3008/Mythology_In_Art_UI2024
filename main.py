@@ -107,28 +107,28 @@ figures = {
       "name": "Zeus",
       "description": "Zeus is the ruler of the cosmos. He is related to right and wrong, justice, political wisdom, law, kingship, and oaths, in addition to physical, social and mental powers. Zeus is married to Hera.",
       "symbols": ["lightning bolt", "sceptre", "eagle"],
-      "data": ["zeus1.jpg", "zeus2.jpg", "zeus3.jpg", "zeus4.jpg", "zeus5.jpg", "athenaZeusHephaistos.jpg"]
+      "data": ["zeus1.jpg", "zeus3.jpg", "zeus2.jpg", "zeus4.jpg", "zeus5.jpg", "athenaZeusHephaistos.jpg"]
    },
    "2": {
       "id": "2",
       "name": "Poseidon",
       "description": "Poseidon is the ruler of the sea. He is related to earthquakes, horses, seas, ships, and physical stability. Poseidon is married to Amphitrite.",
       "symbols": ["trident", "horses", "sea creatures"],
-      "data": ["poseidon1.jpg", "poseidon2.jpg", "poseidon3.jpg", "poseidon4.jpg", "poseidon5.jpg"]
+      "data": ["poseidon1.jpg", "poseidon5.jpg", "poseidon2.jpg", "poseidon3.jpg", "poseidon4.jpg"]
    },
    "3": {
       "id": "3",
       "name": "Hades",
       "description": "Hades is the ruler of the Underworld. He is he is seen as a figure of earth fertility and riches. Hades is married to Persephone.",
       "symbols": ["scepter", "cornucopia", "riches", "Often shown with Persephone or Kerberos"],
-      "data": ["hades1.jpg", "hades2.jpg", "hades3.jpg", "hades4.jpg", "hades5.jpg"]
+      "data": ["hades2.jpg", "hades5.jpg", "hades1.jpg", "hades3.jpg", "hades4.jpg"]
    },
    "4": {
       "id": "4",
       "name": "Athena",
       "description": "Athena is the goddess of wisdom, war, and weaving (soft crafts). She's in charge of the rational and tactical sides of war. Athena is the daughter of Zeus and often helps heroes in their quests.",
       "symbols": ["aegis (breastplate)", "helmet", "shield", "spear"],
-      "data": ["athena1.jpg", "athena2.jpg", "athena3.jpg", "athena4.jpg", "athena5.jpg", "athenaZeusHephaistos.jpg", "heraklesAthena.jpg", "mainAthenaJason.jpg"],
+      "data": ["athena3.jpg", "athena5.jpg", "athena1.jpg", "athena2.jpg", "athena4.jpg", "athenaZeusHephaistos.jpg", "heraklesAthena.jpg", "mainAthenaJason.jpg"],
    },
    "5": {
       "id": "5",
@@ -142,7 +142,7 @@ figures = {
       "name": "Herakles",
       "description": "Herakles is known to be the greatest of all heroes. He is Zeus' son, and exceptional at birth. Herakles is famous for his 12 labors and is the only hero to be immortalized in the Olympus.",
       "symbols": ["lion skin", "bat", "Often shown fighting monsters"],
-      "data": ["herakles1.jpg", "herakles2.jpg", "herakles3.jpg", "herakles4.jpg", "herakles5.jpg", "heraklesAthena.jpg"],
+      "data": ["herakles1.jpg", "herakles5.jpg", "herakles2.jpg", "herakles3.jpg", "herakles4.jpg", "heraklesAthena.jpg"],
    },
    "7": {
       "id": "7",
@@ -156,7 +156,7 @@ figures = {
       "name": "Artemis",
       "description": "Artemis is the goddess of hunting, childhood and adolescence (for females), and wild animals. Shes is associated with childbirth, blood, and is also a destroyer and nurturer. She is Zeus' daughter.",
       "symbols": ["bow and arrow", "wild animals (alive and dead)", "Often with Apollo (her twin)"],
-      "data": ["artemis1.jpg","artemis2.jpg","artemis3.jpg","artemis4.jpg","artemis5.jpg","apolloArtemis.jpg"]
+      "data": ["artemis2.jpg", "artemis5.jpg", "artemis1.jpg", "artemis3.jpg", "artemis4.jpg", "apolloArtemis.jpg"]
 
    },
    "9": {
@@ -164,7 +164,7 @@ figures = {
       "name": "Dionysus",
       "description": "Dionysus is the god of wine and of theater. He is associated with altered states of mind (from the wine) and is the youngest god. He is Zeus' son. His entourage include sailors and Maenads (crazy women).",
       "symbols": ['“Exotic” animals and clothing', "wine", "Often with Maenad and Satyrs (his followers)", "vines", "grapes"],
-	   "data": ["dionysus1.jpg","dionysus2.jpg","dionysus3.jpg","dionysus4.jpg","dionysus5.jpg","hephaistosDionysus.jpg"]
+	   "data": ["dionysus1.jpg", "dionysus4.jpg", "dionysus2.jpg", "dionysus3.jpg", "dionysus5.jpg", "hephaistosDionysus.jpg"]
    },
    "10": {
       "id": "10",

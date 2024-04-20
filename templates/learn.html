@@ -16,14 +16,15 @@
 					{% endif %}
 				</div>
 				<div class="col-6 row">
-					<div class="col-2">
-						<img class="img-fluid" src="/static/{{figure.data[0]}}" />
+					<div class="row div_learn_img">
+						<img class="img-fluid learn_img" src="/static/{{figure.data[0]}}" />
+						<img class="img-fluid learn_img" src="/static/{{figure.data[1]}}" />
 					</div>
-					<div class="col-10">
+					<div class="col-10 div_description">
 						<a class="row" id="specific">Description:</a>
 						<div class="row">{{figure.description}}</div>
 						<a class="row" id="specific">Symbols:</a>
-						<a>{{ ", ".join(figure.symbols).capitalize() }}.</a>
+						<div class="row">{{", ".join(figure.symbols).capitalize() }}.</div>
 					</div>
 				</div>
 				<div class="col side">

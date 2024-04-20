@@ -41,6 +41,24 @@ body {
 	max-height: 100%;
 }
 
+.learn_img {
+	display: block;
+	max-width: 250px;
+	max-height: 300px;
+	width: auto;
+	height: auto;
+}
+
+.div_learn_img {
+	text-align: center;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.div_description {
+	margin-top: -100px;
+}
+
 .learn-button:hover {
     border-color: rgb(239, 235, 224);
     color: black;
