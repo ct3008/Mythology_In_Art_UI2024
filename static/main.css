@@ -177,7 +177,6 @@ body {
 .image {
 	position: relative;
 	overflow: hidden;
-	cursor: zoom-in;
 	display: flex;
 	justify-content: bottom;
 }
