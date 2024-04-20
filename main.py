@@ -8,29 +8,29 @@ app = Flask(__name__)
 
 fill_in_the_blank = [
    {"id": 0,
-	"images": ["zeus3.jpg"],
-	"answers": ["zeus", "artemis"], #names left to right,
-	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
-	"more_info":".... history of image + lore", 
-	"explanation_text": ["zeus has symbols that...", "bob is short..."],
+	"images": ["PoseidonAthena.jpg"],
+	"answers": ["Athena", "Poseidon"], #names left to right,
+	"hints": ["PoseidonAthena_annotated.jpg"],
+	"more_info":"Currently held in Cabinet des Médailles, Paris, this piece is dated from ca 540 - 530 B.C.", 
+	"explanation_text": ["Athena can be identified by her snake-trimmed vest, her spear, and her helmet.", "Poseidon can be identified by his trident."],
     "answered": 0,
     "user_answers":[]
 	},
    {"id": 1,
-	"images": ["zeus3.jpg"],
-	"answers": ["zeus"], #names left to right,
-	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
-	"more_info":".... history of image + lore", 
-	"explanation_text": ["zeus has symbols that..."],
+	"images": ["herakles6.jpg"],
+	"answers": ["Apollo", "Herakles", "Artemis"], #names left to right,
+	"hints": ["herakles6_annotated.jpg"],
+	"more_info":"This is depicts Herakles, Artemis and the Cerynitian Hind, Athenian black-figure amphora from 6th century BC. The Elaphos Kerynitis (Cerynitian Hind) was a golden-horned deer sacred to the goddess Artemis. Herakles was sent to fetch it as one of his twelve labours. After chasing the animal for a full year he finally captured it on Mount Artemision in Arkadia (Arcadia). The goddess Artemis complained about the treatment of her deer whose horn had broken off by the hero in the struggle. He nevertheless managed to persuade her to let him borrow it for the completion of his Labour. According to some the hind was one of five golden-horned deer gifted to Artemis by the Nymph Taygete. The other four drew the chariot of the goddess. The hind may once have been assigned a Constellation like the other beasts of Herakles' labours.", 
+	"explanation_text": ["Apollo can be seen donning similar apparel as his twin Artemis. One of them will likely have a bow", "Herakles can be identified here by the lion skin on his shoulders", "Artemis can be identified due to the bow in her hand and her twin Apollo"],
     "answered": 0,
     "user_answers":[]
 	},
    {"id": 2,
-	"images": ["zeus3.jpg"],
-	"answers": ["zeus"], #names left to right,
-	"hints": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOf0E92X98LAfnyTXbSBOG3TFHZsNR0oqoZSnSD7Rc4A&s"],
-	"more_info":".... history of image + lore", 
-	"explanation_text": ["zeus has symbols that..."],
+	"images": ["HAHA.jpg"],
+	"answers": ["Hermes", "Apollo", "Herakles", "Athena"], #names left to right,
+	"hints": ["HAHA_annotated.jpg"],
+	"more_info":"Found in museum collection Antikensammlung Berlin. Originated from around 500 B.C. Depicts the reception of Herakles into Olympus", 
+	"explanation_text": ["Hermes can be identified by the caduceus he's holding and his winged slippers.", "Apollo can be identified by the lyre he's holding.", "Herakles can be identified through his lionskin pelt and bat.", "Athena can be identified through her spear"],
     "answered": 0,
     "user_answers":[]
 	}
@@ -39,24 +39,22 @@ fill_in_the_blank = [
 
 drag_and_drop = [
    {"id": 0,
-	"difficulty":"easy",
-	"images": ["athena3.jpg","herakles5.jpg"],
-	"options": ["Athena", "Herakles", "John"],
-	"answers": ["Athena", "Herakles"], # from left to right
-	"hints": "url_annotated",
-	"more_info": ".... history of image + lore", 
-	"explanation_text": ["Athena has symbols that...", "Herakles is characterized by symbols"],
+	"images": ["HephDion_h.jpg","HephDion_d.jpg"],
+	"options": ["Dionysus","Hephaestus","Artemis", "Athena"],
+	"answers": ["Hephaestus","Dionysus"], # from left to right
+	"hints": ["HephDion_h_annotated.jpg","HephDion_d_annotated.jpg"],
+	"more_info": "Held in the Toledo Museum of Art. Originates from 430-420 B.C. It depicts Hephaestus' retur to Olympus atop a donkey. He is led by Thionysus and a Satyriscus (child Satyr) playing a flute. \n 'Hephaistos refused to listen to any other of the gods save Dionysos - in him he reposed the fullest trust - and after making him drunk Dionysos brought him to heaven' - Pausanias, Guide to Greece 1.20.3.", 
+	"explanation_text": ["Hephaestus is characterized by forging tools like his hammer and tongs.", "Dionysus can be characterized by the wine cup in his right hand, the thyrsus staff in his left hand, and the presence of a satyr near him."],
     "answered": 0,
     "user_answers":[]
    },
    {"id": 1,
-	"difficulty":"easy",
-	"images": ["athena3.jpg","herakles5.jpg"],
-	"options": ["Athena", "Herakles", "John"],
-	"answers": ["Athena", "Herakles"], # from left to right
-	"hints": "url_annotated",
-	"more_info": ".... history of image + lore", 
-	"explanation_text": ["Athena has symbols that...", "Herakles is characterized by symbols"],
+	"images": ["HAZ_z.jpg","HAZ_a.jpg","HAZ_h.jpg"],
+	"options": ["Hades","Zeus", "Dionysus","Athena", "Hermes","Hephaestus"],
+	"answers": ["Zeus", "Athena", "Hephaestus"], # from left to right
+	"hints": ["HAZ_z_annotated.jpg","HAZ_a_annotated.jpg","HAZ_h_annotated.jpg"],
+	"more_info": "", 
+	"explanation_text": ["Zeus can be identified by his lightning bolt.", "Athena here can be characterized by her emergence from Zeus's head as per her myth.", "Hephaestus can be classified by his forging hammer."],
     "answered": 0,
     "user_answers":[]
    }
@@ -163,7 +161,7 @@ figures = {
       "id": "9",
       "name": "Dionysus",
       "description": "Dionysus is the god of wine and of theater. He is associated with altered states of mind (from the wine) and is the youngest god. He is Zeus' son. His entourage include sailors and Maenads (crazy women).",
-      "symbols": ['“Exotic” animals and clothing', "wine", "Often with Maenad and Satyrs (his followers)", "vines", "grapes"],
+      "symbols": ['“Exotic” animals and clothing', "wine", "Often with Maenad and Satyrs (his followers)", "vines", "grapes", "thyrsus"],
 	   "data": ["dionysus1.jpg","dionysus2.jpg","dionysus3.jpg","dionysus4.jpg","dionysus5.jpg","hephaistosDionysus.jpg"]
    },
    "10": {

@@ -29,14 +29,14 @@
         <div class="row">
             <div class="col-md-6 col6 container">
                 <div class="image">
-                    <img id="main_img" class="img-fluid" src= "/static/{{ information.images[0] }}" alt="zeus">
-                    <img id="hint_img" src= "{{ information.hints[0] }}" alt="zeus_hint" style="display: none;">
+                    <img id="main_img" class="img-fluid" src= "/static/{{ information.images[0] }}" alt="img">
+                    <img id="hint_img" src= "/static/{{ information.hints[0] }}" alt="hint" style="display: none;">
                 </div>
             </div>
             <div class="col-md-6 col6 container">
                 {% for fib in information.answers %}
                 
-                <label> {{ loop.index }} Fill in the blank:
+                <label> Who is figure number {{loop.index}}:
                     <input class="fib-input" list="browsers" name="fib_answer_{{ loop.index }}" />
                 </label>
                
@@ -61,7 +61,7 @@
         var learn_more = document.getElementById('learn-more-id');
         // console.log(information.answered);
         var questionType = 'fitb';
-        console.log(information);
+        // console.log(information);
     
         updateInputs();
     

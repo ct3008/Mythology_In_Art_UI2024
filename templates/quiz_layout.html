@@ -84,10 +84,16 @@
         var submitted = false;
 
         function displayHint() {
-            let img_thing = document.getElementById('main_img');
-            let img_hint = document.getElementById('hint_img');
-            img_thing.style.display = 'none';
-            img_hint.style.display = 'block';
+            let images = document.querySelectorAll('.main_img');
+            let hints = document.querySelectorAll('.hint_img');
+            images.forEach(function(input, index) {
+                images[index].style.display = 'none';
+                hints[index].style.display = 'block';
+            });
+            // let img_thing = document.getElementById('main_img');
+            // let img_hint = document.getElementById('hint_img');
+            // img_thing.style.display = 'none';
+            // img_hint.style.display = 'block';
 
         }
 		function navigatePrevious(){

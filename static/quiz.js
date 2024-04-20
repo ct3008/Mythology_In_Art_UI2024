@@ -1,7 +1,14 @@
 $(document).ready(function(){
-
-	$('.buttons').css('display','block');
-	$('.learn_more').css('display','none');
+	// $('.buttons').css('display','block');
+	// $('.learn_more').css('display','none');
+	if(information.answered == 1){	
+		$('.buttons').css('display','none');
+		$('.learn_more').css('display','block');
+	}else{
+		$('.buttons').css('display','block');
+		$('.learn_more').css('display','none');
+	}
+	
 
 })
 
