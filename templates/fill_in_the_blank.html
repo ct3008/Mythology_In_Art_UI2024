@@ -21,6 +21,10 @@
             /* Adjust other styles as needed */
         }
 
+        #popup p {
+			display: inline; /* or inline-block */
+		}
+
     </style>
 </head>
 
@@ -29,8 +33,8 @@
         <div class="row">
             <div class="col-md-6 col6 container">
                 <div class="image">
-                    <img id="main_img" class="img-fluid" src= "/static/{{ information.images[0] }}" alt="img">
-                    <img id="hint_img" src= "/static/{{ information.hints[0] }}" alt="hint" style="display: none;">
+                    <img class="main_img img-fluid" src= "/static/{{ information.images[0] }}" alt="img">
+                    <img class="hint_img img-fluid" src= "/static/{{ information.hints[0] }}" alt="hint" style="display: none;">
                 </div>
             </div>
             <div class="col-md-6 col6 container">
@@ -67,6 +71,56 @@
     
         // Disable the next button initially
         
+        function learnStuff() {
+            // Create the white screen overlay element
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            overlay.style.zIndex = '9999';
+            overlay.style.display = 'flex';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+
+            // Create the container for information
+            const infoContainer = document.createElement('div');
+            infoContainer.style.backgroundColor = 'white';
+            infoContainer.style.padding = '20px';
+            infoContainer.style.borderRadius = '10px';
+            infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+            infoContainer.style.textAlign = 'center';
+
+            // Display the information
+            const infoText = document.createElement('p');
+            infoText.textContent = information.more_info;
+
+            // Create a close button
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Close';
+            closeButton.style.marginTop = '20px';
+            closeButton.style.padding = '10px 20px';
+            closeButton.style.border = 'none';
+            closeButton.style.backgroundColor = 'gray';
+            closeButton.style.color = 'white';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.addEventListener('click', function() {
+                overlay.style.display = 'none'; // Hide the overlay when close button is clicked
+            });
+
+            // Append information and close button to the container
+            infoContainer.appendChild(infoText);
+            infoContainer.appendChild(closeButton);
+
+            // Append the container to the overlay
+            overlay.appendChild(infoContainer);
+
+            // Append the overlay to the body
+            document.body.appendChild(overlay);
+        }
 
         function checkSubmit() {
             if (information.answered == 0) {

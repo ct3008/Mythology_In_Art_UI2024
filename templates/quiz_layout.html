@@ -70,8 +70,9 @@
                 <button class="submit-button" onclick="checkSubmit()">Submit</button>
             </div>
             <div class="learn_more" id="learn-more-id">
-                <button class="learn-more-button" onclick="learnMore()">Click Here to Learn the Lore!</button>
+                <button class="learn-more-button" onclick="learnStuff()">Click Here to Learn the Lore!</button>
             </div>
+            <div id="popup" style="display: none;"></div>
     </div>
 
 
@@ -86,6 +87,7 @@
         function displayHint() {
             let images = document.querySelectorAll('.main_img');
             let hints = document.querySelectorAll('.hint_img');
+            // console.log(images);
             images.forEach(function(input, index) {
                 images[index].style.display = 'none';
                 hints[index].style.display = 'block';
