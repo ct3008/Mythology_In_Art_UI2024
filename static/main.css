@@ -160,3 +160,50 @@ body {
 .navigation-buttons button:hover {
 	background-color: red;
 }
+
+.img-zoom-lens {
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	width: 40px;
+	height: 40px;
+  }
+  
+  .img-zoom-result {
+	border: 1px solid #d4d4d4;
+	width: 100px;
+	height: 100px;
+  }
+
+.image {
+	position: relative;
+	overflow: hidden;
+	cursor: zoom-in;
+	display: flex;
+	justify-content: bottom;
+}
+
+/* .product-img--main {
+	position: relative;
+   overflow: hidden;
+   width: 600px;
+   height: 600px;
+   float: left;
+   margin: 10px;
+ }
+ 
+ .product-img--main__image {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 background-position: center;
+	 background-size: cover;
+	 background-repeat: no-repeat;
+	 -webkit-transition: -webkit-transform .5s ease-out;
+	 transition: -webkit-transform .5s ease-out;
+	 transition: transform .5s ease-out;
+	 transition: transform .5s ease-out,-webkit-transform .5s ease-out;
+ } */
+ 
+ 

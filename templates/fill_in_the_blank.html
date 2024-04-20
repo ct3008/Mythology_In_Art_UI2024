@@ -30,8 +30,12 @@
             <div class="col-md-6 col6 container">
                 <div class="image">
                     <img id="main_img" class="img-fluid" src= "/static/{{ information.images[0] }}" alt="zeus">
+                    <div id="zoom_result" class="img-zoom-result"></div>
                     <img id="hint_img" src= "{{ information.hints[0] }}" alt="zeus_hint" style="display: none;">
                 </div>
+                    <!-- <img class="product-img--main" data-scale="1.6" src="/static/{{ information.images[0] }}">
+                    <img id="hint_img" src= "{{ information.hints[0] }}" alt="zeus_hint" style="display: none;">
+                    https://codepen.io/swarad07/pen/JxOpea -->
             </div>
             <div class="col-md-6 col6 container">
                 {% for fib in information.answers %}
@@ -140,6 +144,10 @@
             }
         }
     </script>
+
+<script>
+    imageZoom("main_img", "zoom_result");
+</script>
     
 </body>
 
