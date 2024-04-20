@@ -11,8 +11,14 @@
 		.image {
 			width: auto;
 			height: 500px;
-			margin-left: 200px;
+			margin-left: 100px;
 			margin-top: 20px;
+		}
+
+		.question-text {
+			font-weight: bold;
+			font-size: 35px;
+			margin-bottom: 10px;
 		}
 
 		.quiz-content {
@@ -31,7 +37,7 @@
 		.info_block {
 			border-radius: 18px 18px 18px 18px;
 			border: 2px solid black;
-			height: 50px;
+			height: auto;
 			width: 100px;
 			width: 70%;
 			/* margin-top:100px; */
@@ -46,6 +52,7 @@
 			left: 10px;
 			right: -5px;
 			width: 90%;
+			padding: 5px;
 		}
 		
 		.font{
@@ -57,11 +64,11 @@
 
 <body>
 	<div class="container">
-		<h1>{{ information.question }}</h1>
+		<div class="question-text">{{ information.question }}</div>
 		<div class="row">
 			<div class="col-6">
-				<img id="main_img" class="image" src="/static/{{ information.image }}" alt="Question Image">
-				<img id="hint_img" src="{{ information.hints }}" alt="zeus_hint" style="display: none;">
+				<img class="main_img image" src="/static/{{ information.image }}" alt="Question Image">
+				<img class="hint_img image" src=" /static/{{ information.hints }}" alt="zeus_hint" style="display: none;">
 			</div>
 			<div class="col-6 align-items-center justify-content-center">
 				<form class="options" action="{{ url_for('submit_answer', question_id=information.id) }}" method="post">
@@ -169,6 +176,57 @@
 				});
 			}
 		}
+
+		function learnStuff() {
+            // Create the white screen overlay element
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            overlay.style.zIndex = '9999';
+            overlay.style.display = 'flex';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+
+            // Create the container for information
+            const infoContainer = document.createElement('div');
+            infoContainer.style.backgroundColor = 'white';
+            infoContainer.style.padding = '20px';
+            infoContainer.style.borderRadius = '10px';
+            infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+            infoContainer.style.textAlign = 'center';
+
+            // Display the information
+            const infoText = document.createElement('p');
+            infoText.textContent = information.more_info;
+
+            // Create a close button
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Close';
+            closeButton.style.marginTop = '20px';
+            closeButton.style.padding = '10px 20px';
+            closeButton.style.border = 'none';
+            closeButton.style.backgroundColor = 'gray';
+            closeButton.style.color = 'white';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.addEventListener('click', function() {
+                overlay.style.display = 'none'; // Hide the overlay when close button is clicked
+            });
+
+            // Append information and close button to the container
+            infoContainer.appendChild(infoText);
+            infoContainer.appendChild(closeButton);
+
+            // Append the container to the overlay
+            overlay.appendChild(infoContainer);
+
+            // Append the overlay to the body
+            document.body.appendChild(overlay);
+        }
 	</script>
 
 </body>

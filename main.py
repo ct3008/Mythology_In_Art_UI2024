@@ -30,7 +30,7 @@ fill_in_the_blank = [
 	"answers": ["Hermes", "Apollo", "Herakles", "Athena"], #names left to right,
 	"hints": ["HAHA_annotated.jpg"],
 	"more_info":"Found in museum collection Antikensammlung Berlin. Originated from around 500 B.C. Depicts the reception of Herakles into Olympus", 
-	"explanation_text": ["Hermes can be identified by the caduceus he's holding and his winged slippers.", "Apollo can be identified by the lyre he's holding.", "Herakles can be identified through his lionskin pelt and bat.", "Athena can be identified through her spear"],
+	"explanation_text": ["Hermes can be identified by the caduceus he's holding and his winged slippers.", "Apollo can be identified by the lyre he's holding.", "Herakles can be identified through his lionskin pelt and bat.", "Athena can be identified through her spear."],
     "answered": 0,
     "user_answers":[]
 	}
@@ -63,32 +63,64 @@ drag_and_drop = [
 multiple_choice_pics = [
 {
 	"id": 0,
-	"difficulty": "easy",
-	"pic_options": ["zeus1.jpg", "apollo1.jpg", "hermes1.jpg"],
+	"pic_options": ["zeus5_1.jpg", "zeus5_2.jpg", "zeus5_3.jpg"],
 	"question": "Find Zeus",
-	"answers": ["zeus1.jpg"], #0, 1, 2,... answers index of pic options
-	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
-	"more_info": ".... history of image + lore",
-	"hints": ["zeus_url_annotated","hera_url_annotated", "hermes_url_annotated"],
+	"answers": ["zeus5_1.jpg"], #0, 1, 2,... answers index of pic options
+	"explanation_text": ["Zeus can be identified by his lightning bolt.", "This is Ganymedes holding an oinochoe jug.", "This is Hestia holding a flower the branch of a chaste-tree."],
+	"more_info": "hello",
+	"hints": ["zeus5_annotated_1.jpg","zeus5_annotated_2.jpg", "zeus5_annotated_3.jpg"],
     "answered": 0,
     "user_answers":[]
-}
+},
+{
+	"id": 1,
+	"pic_options": ["hades_mcp1.jpg", "hades_mcp2.jpg", "hades_mcp3.jpg"],
+	"question": "Find Hades",
+	"answers": ["hades_mcp3.jpg"], #0, 1, 2,... answers index of pic options
+	"explanation_text": ["This is Zeus with his sceptre.", "This is Apollo with bow and arrow, and laurel on his head.", "Hades can be identified by the riches and cornucopia."],
+	"more_info": "hello",
+	"hints": ["hades_mcp1_annotated.jpg", "hades_mcp2_annotated.jpg", "hades_mcp3_annotated.jpg"],
+    "answered": 0,
+    "user_answers":[]
+},
 
 ]
 
 
-multiple_choice_text = [
+multiple_choice_text = [ 
 {
-	"id": 0,
-	"difficulty": "easy",
-	"image": "zeus2.jpg",
-	"options": ["Zeus", "Hera", "Hermes"],
-	"question": "To which mythological figure does this piece of statue belong?",
-	"answers": ["Zeus"],
-	"explanation_text": ["zeus has symbols that...", "hera has symbols that...", "hermes has symbols that.."],
-	"explain_pics": ["url1_zeus", "url2_hera"],
+    "id": 0,
+	"image": "hermes3.jpg",
+	"options": ["Hermes", "Apollo", "Dionysus"],
+	"question": "To which mythological figure does this piece of art belong?",
+	"answers": ["Hermes"],
+	"explanation_text": ["Hermes can be identified by his traveler's cap and winged sandals.", "Apollo can be identified by lyre, bow and arrow.", "Dionysus can be indentified by “exotic” animals and clothing, wines, vines and grapes."],
 	"more_info": "....background, forklores...",
-	"hints": "zeus1.jpg",
+	"hints": "hermes3_annotated.jpg",
+    "answered": 0,
+    "user_answers":[]
+},
+{
+    "id": 1,
+	"image": "artemis1.jpg",
+	"options": ["Athena", "Zeus", "Artemis"],
+	"question": "To which mythological figure does this piece of art belong?",
+	"answers": ["Artemis"],
+	"explanation_text": ["Athena can be identified by breastplate, helmet, shield and spear.", "Zeus can be identified by his lightning bolt and sceptre.", "Artemis can be identified by her bow and arrow."],
+	"more_info": "....background, forklores...",
+	"hints": "artemis1_annotated.jpg",
+    "answered": 0,
+    "user_answers":[]
+},
+{
+    "id": 2,
+	"image": "dionysus6.jpg",
+	"options": ["Poseidon", "Dionysus", "Hephaestus"],
+	"question": "To which mythological figure does this piece of art belong?",
+	"answers": ["Dionysus"],
+	"explanation_text": ["Poseidon can be identified by trident and horses.", "Dionysus can be identified by vines, maenad and satyrs (his followers).", "Hephaestus can be identified by forging weapons and donkey."],
+	"more_info": "....background, forklores...",
+	"hints": "dionysus6_annotated.jpg",
     "answered": 0,
     "user_answers":[]
 }
@@ -261,9 +293,9 @@ def learn(id):
 	user_progress["learn/"+id] = datetime.datetime.now()
 	return render_template('learn.html', figures=figures,  figure=figures[id])
 
-@app.route('/quiz')
-def quiz_home():
-   return render_template('quiz.html', figures=figures)
+# @app.route('/quiz')
+# def quiz_home():
+#    return render_template('quiz.html', figures=figures)
 
 # #combine all question types
 # @app.route('/quiz2/<id>')
@@ -284,28 +316,28 @@ def quiz(question_number):
             prev_answered = fill_in_the_blank[question_number - 1]['answered']
         else:
             prev_answered = 1
-        return render_template('fill_in_the_blank.html', figures=figures, information=information, prev_answered = prev_answered)
+        return render_template('fill_in_the_blank.html', figures=figures, information=information, prev_answered=prev_answered, question_id=question_number)
     elif question_number < (len(fill_in_the_blank) + len(drag_and_drop)):
         information = drag_and_drop[question_number - len(fill_in_the_blank)]  # Render the first question
         if question_number > 0:
             prev_answered = drag_and_drop[question_number - len(fill_in_the_blank) - len(drag_and_drop)]['answered']
         else:
             prev_answered = 1
-        return render_template('drag_and_drop.html', figures=figures, information=information, prev_answered = prev_answered)
+        return render_template('drag_and_drop.html', figures=figures, information=information, prev_answered=prev_answered, question_id=question_number)
     elif question_number < (len(fill_in_the_blank) + len(drag_and_drop) + len(multiple_choice_pics)):
         information = multiple_choice_pics[question_number - len(fill_in_the_blank) - len(drag_and_drop)]  # Render the first question
         if question_number > 0:
             prev_answered = multiple_choice_pics[question_number - len(fill_in_the_blank) - len(drag_and_drop) - len(multiple_choice_pics)]['answered']
         else:
             prev_answered = 1
-        return render_template('multiple_choice_pics.html', figures=figures, information=information, prev_answered = prev_answered)
+        return render_template('multiple_choice_pics.html', figures=figures, information=information, prev_answered=prev_answered, question_id=question_number)
     elif question_number < (len(fill_in_the_blank) + len(drag_and_drop) + len(multiple_choice_pics) + len(multiple_choice_text)):
         information = multiple_choice_text[question_number - len(fill_in_the_blank) - len(drag_and_drop) - len(multiple_choice_pics)]  # Render the first question
         if question_number > 0:
             prev_answered = multiple_choice_text[question_number - len(fill_in_the_blank) - len(drag_and_drop) - len(multiple_choice_pics) - len(multiple_choice_text)]['answered']
         else:
             prev_answered = 1
-        return render_template('multiple_choice_text.html', figures=figures, information=information, prev_answered = prev_answered)
+        return render_template('multiple_choice_text.html', figures=figures, information=information, prev_answered=prev_answered, question_id=question_number)
     else:
         score = 0
         total_score = 0

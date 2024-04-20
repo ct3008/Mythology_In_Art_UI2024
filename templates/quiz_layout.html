@@ -53,15 +53,12 @@
         <button id="hint_button" onclick="displayHint()">Hint</button>
     </div>
     <div class="navigation-buttons">
-        {% if (information.id | int) > 0 %}
+        {% if (question_id | int) > 0 %}
             <button class="previous-button" onclick="navigatePrevious()">&#9664;</button>
         {% endif %}
         <button class="next-button" onclick="navigateNext()">&#9654;</button>
     </div>
 
-    
-
-    
     <div class="container">
         {% block quiz_content %}
         {% endblock %}
@@ -74,9 +71,6 @@
             </div>
             <div id="popup" style="display: none;"></div>
     </div>
-
-
-
     <script>
 		const pageNum = parseInt(window.location.pathname.split('/').pop());
         var prev_answered = {{ prev_answered | tojson | safe }};

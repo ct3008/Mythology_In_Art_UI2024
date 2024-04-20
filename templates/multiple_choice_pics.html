@@ -14,17 +14,21 @@
 			align-items: center;
 		}
 
-		.option-image {
+		.question-text {
+			font-weight: bold;
+			font-size: 35px;
+			margin-bottom: 10px;
+		}
+
+		.image {
 			width: auto;
-			height: 300px;
-			margin-right: 40px;
-			margin-top: 30px;
+			height: 450px;
 		}
 
 		.info_block {
 			border-radius: 18px 18px 18px 18px;
 			border: 2px solid black;
-			height: 60px;
+			height: auto;
 			width: 100px;
 			width: 70%;
 			/* margin-top:100px; */
@@ -35,31 +39,34 @@
 			/* display: flex; */
 			justify-content: center;
 			align-items: center;
-			position: absolute;
-			bottom: -100px;
+			/* position: absolute; */
+			bottom: -50px;
 			left: 10px;
 			right: -5px;
 			width: 90%;
+			padding: 5px;
+		}
+
+		.radio_button {
+			margin-left: 50%;
+
 		}
 	</style>
 </head>
 
-<!-- <body>
-	<div class="container">
-		Multi pics {{information.id}}
-	</div>
-</body> -->
 
 <body>
 	<div class="container">
-		<h1>{{ information.question }}</h1>
+		<div class="question-text">{{ information.question }}</div>
 		<div class="row">
 			<form class="options row" action="{{ url_for('submit_answer', question_id=information.id) }}" method="post">
 				{% for pic_option in information.pic_options %}
 				<div class="col-4">
-					<input type="radio" id="option_{{ loop.index }}" name="answer" value="{{ pic_option }}">
 					<label for="option_{{ loop.index }}">
-						<img src="/static/{{ pic_option }}" alt="/static/{{ pic_option }}" class="option-image">
+						<input type="radio" id="option_{{ loop.index }}" name="answer" value="{{ pic_option }}" class="radio_button">
+						<img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img image" style="display: none;">
+						<img src="/static/{{ pic_option }}" alt="/static/{{ pic_option }}" class="main_img image" style="display: flex;">
+						<!-- <img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img img-fluid" style="display: none;"> -->
 					</label>
 					<div class="info_block" id="info_block_{{ loop.index }}">
 						{{ information.explanation_text[loop.index - 1] }}
@@ -160,6 +167,57 @@
 				});
 			}
 		}
+
+		function learnStuff() {
+            // Create the white screen overlay element
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            overlay.style.zIndex = '9999';
+            overlay.style.display = 'flex';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+
+            // Create the container for information
+            const infoContainer = document.createElement('div');
+            infoContainer.style.backgroundColor = 'white';
+            infoContainer.style.padding = '20px';
+            infoContainer.style.borderRadius = '10px';
+            infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+            infoContainer.style.textAlign = 'center';
+
+            // Display the information
+            const infoText = document.createElement('p');
+            infoText.textContent = information.more_info;
+
+            // Create a close button
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Close';
+            closeButton.style.marginTop = '20px';
+            closeButton.style.padding = '10px 20px';
+            closeButton.style.border = 'none';
+            closeButton.style.backgroundColor = 'gray';
+            closeButton.style.color = 'white';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.addEventListener('click', function() {
+                overlay.style.display = 'none'; // Hide the overlay when close button is clicked
+            });
+
+            // Append information and close button to the container
+            infoContainer.appendChild(infoText);
+            infoContainer.appendChild(closeButton);
+
+            // Append the container to the overlay
+            overlay.appendChild(infoContainer);
+
+            // Append the overlay to the body
+            document.body.appendChild(overlay);
+        }
 	</script>
 </body>
 

@@ -84,18 +84,25 @@ body {
 /* Hint for quiz.html layout */
 #hint_button {
 	float: right;
+	margin-top: 20px;
 	margin-right: 20px;
 	width: 150px;
 	height: 50px;
     font-size: 20px;
     font-family: tahoma;
 	border-radius: 18px 18px 18px 18px;
-	background-color: red;
+	/* background-color: rgb(139, 124, 109);
+	border-color: rgb(139, 124, 109); */
+	border-color: rgb(239, 235, 224);
+    color: black;
+    background-color: rgb(227, 217, 199);
 
 }
 
 #hint_button:hover {
-    background-color: darkred; 
+    background-color: rgb(139, 124, 109);
+	border-color: rgb(139, 124, 109);
+
 }
 
 .previous-button {
