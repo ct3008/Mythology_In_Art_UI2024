@@ -102,11 +102,10 @@
 				let canSubmit = false;
 				// console.log("radio inputs:", radioInputs);
 				radioInputs.forEach(function (input, index) {
-					document.getElementById('info_block_' + (index + 1)).style.display = 'block';
 					if (input.checked) {
 						selectedOption = input.value;  // Get the value of the selected radio button
 						console.log(selectedOption);
-						// document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
+						// document.getElementById('info_block_' + (index + 1)).style.display = 'block';
 						if (selectedOption == information.answers[0]) {
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
 						} else {
@@ -114,7 +113,6 @@
 						}
 						canSubmit = true;
 					}
-					input.disabled = true;
 
 				});
 				if (canSubmit) {
@@ -123,6 +121,10 @@
 					information.user_answers[0] = selectedOption;  // Assuming a single answer can be stored
 					submitted = true;
 					submitQuiz();
+					radioInputs.forEach(function (input, index) {
+						document.getElementById('info_block_' + (index + 1)).style.display = 'block';
+						input.disabled = true;
+					});
 					next_button.style.display = 'block';
 				} else {
 					alert("Fucking answer");
