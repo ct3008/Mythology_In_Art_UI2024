@@ -2,18 +2,74 @@
 
 {% block content %}
 <head>
-	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-	<style>
-		.container{
-			margin-top: 10px;;
-		}
-	</style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <style>
+        .container {
+            margin-top: 10px;
+        }
+
+
+        /* .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        } */
+
+        .score-history {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
-	<div class="container">
-		<!-- insult player if they do bad job -->
-		GOOD JOB Score = {{score}} / {{total_score}}
-	</div>
+    <div class="container">
+        <!-- insult player if they do bad job -->
+        GOOD JOB Score = {{score}} / {{total_score}}
+        
+        <!-- <div class="dropdown">
+            <button class="dropdown-btn">Show History</button>
+            <div class="dropdown-content">
+                {% for score in all_scores %}
+                    <p>{{ score }}</p>
+                {% endfor %}
+            </div>
+        </div> -->
+        <div class="score-history">
+            <h3>Score History:</h3>
+            <ul>
+                {% for score_info in all_scores %}
+                    <li>{{ score_info }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+		<div clas="row">
+			<button onclick="restartQuiz()">Restart Quiz</button>
+            <button onclick="goToLearnPage()">Relearn</button>
+		</div>
+		
+    </div>
+	<script>
+        // JavaScript functions to handle button clicks
+        function restartQuiz() {
+            // Redirect to the restart quiz route
+            window.location.href = '/restart_quiz';
+            
+        }
+
+        function goToLearnPage() {
+            // Redirect to the learning page with ID 0
+            window.location.href = '/learn';
+        }
+    </script>
 </body>
 {% endblock %}

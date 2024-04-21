@@ -9,16 +9,18 @@
         }
 
         .info_block {
-            width: 70%;
+            width: 80%;
             margin-top: -8px;
             margin-bottom: 20px;
             border: 2px solid black;
             display: none;
+            padding: 5px;
         }
 
         .fib-input {
-            width: calc(100% + 10px); /* Adjust the width to match info_block and compensate for padding */
-            /* Adjust other styles as needed */
+            /* adjust width to make everything uniform */
+            width: calc(100% + 10px); 
+        
         }
 
         #popup p {
@@ -31,13 +33,13 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col6 container">
+            <div class="col-md-6 col-6 container">
                 <div class="image">
                     <img class="main_img img-fluid" src= "/static/{{ information.images[0] }}" alt="img">
                     <img class="hint_img img-fluid" src= "/static/{{ information.hints[0] }}" alt="hint" style="display: none;">
                 </div>
             </div>
-            <div class="col-md-6 col6 container">
+            <div class="col-md-6 col-6 container">
                 {% for fib in information.answers %}
                 
                 <label> Who is figure number {{loop.index}}:
@@ -49,10 +51,11 @@
                         <option value="{{figure.name}}">{{figure.name}}</option>
                     {% endfor %}
                 </datalist>
-                
+
                 <div class="info_block" id="info_block_{{ loop.index }}">
-                    {{ information.explanation_text[loop.index - 1] }}
-                </div>
+                        {{ information.explanation_text[loop.index - 1] }}
+                    </div>
+
                 {% endfor %}
             </div>
         </div>
@@ -61,6 +64,7 @@
     <script>
         var information = {{ information | tojson | safe }};
         var next_button = document.querySelector('.next-button');
+        console.log(next_button);
         var buttons = document.getElementById('buttons-id');
         var learn_more = document.getElementById('learn-more-id');
         // console.log(information.answered);
@@ -124,11 +128,17 @@
 
         function checkSubmit() {
             if (information.answered == 0) {
+                let canSubmit = true;
                 var fibInputs = document.querySelectorAll('.fib-input');
                 fibInputs.forEach(function(input, index) {
                     var inputValue = input.value.trim();
+                    console.log(inputValue);
+                    
                     if (inputValue !== '') {
                         document.getElementById('info_block_' + (index + 1)).style.display = 'block';
+                    }else{
+                        canSubmit = false;
+                        
                     }
                     if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
                         document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
@@ -136,19 +146,27 @@
                     else {
                         document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
                     }
-                    console.log("set answers:")
+                    // console.log("set answers:")
                     information.user_answers[index] = inputValue;
 
                 });
-                information.answered = 1;
-                console.log(information);
+                if (canSubmit){
+                    fibInputs.forEach(function(input, index) {
+                        input.disabled = true;
+                    });
+                    information.answered = 1;
+                    // console.log(information);
+                    
+                    submitted = true;
+        
+                    // Call submitQuiz function after updating user answers
+                    submitQuiz();
+                    // replaceButtons();
+                    next_button.style.display = 'block';
+                }else{
+                    alert("Fucking answer");
+                }
                 
-                submitted = true;
-    
-                // Call submitQuiz function after updating user answers
-                submitQuiz();
-                // replaceButtons();
-                next_button.style.display = 'block';
                 
             }
         }

@@ -7,21 +7,13 @@
     <style>
         .container {
             margin-top: 80px;
-			height: 550px;
         }
 
 		.image-container {
-			margin-top: 80px;
-			height: 400px; /* Set the desired height for the image containers */
+			margin-top: 50px;
+			height: 300px; /* Set the desired height for the image containers */
 		}
 
-		.draggable-option{
-			text-align: center;
-			border: 2px solid black;
-			border-radius: 18px 18px 18px 18px;
-			margin-top: 10px;
-			font-size: 20px;
-		}
 
 		.draggable-option {
 			text-align: center;
@@ -58,10 +50,9 @@
 		.info_block {
 			border-radius: 18px 18px 18px 18px;
 			border: 2px solid black;
-			height: 100px;
-			width: 100px;
-            width: 70%;
+			height: auto;
             /* margin-top:100px; */
+			margin-top: 10px;
             margin-bottom: -20px;
             border: 2px solid black;
             display: none;
@@ -69,12 +60,17 @@
 			/* display: flex; */
 			justify-content: center; 
 			align-items: center;
-			position: absolute; 
+			/* position: absolute;  */
 			bottom: -100px; 
 			left: 10px; 
 			right: -5px; 
-			width: 90%;
+			width: 100%;
+			padding: 5px;
+			
         }
+		.learn-more-button{
+			margin-top: 150px;
+		}
 
 		#popup p {
 			display: inline; /* or inline-block */
@@ -116,17 +112,17 @@
 		updateInputs();
 
 
-		// Function to handle drag start event
+		// Handle drag start event
 		function handleDragStart(event) {
 			event.dataTransfer.setData('text/plain', event.target.innerText);
 		}
 	
-		// Function to handle drag over event
+		// Handle drag over event
 		function handleDragOver(event) {
 			event.preventDefault();
 		}
 	
-		// Function to handle drop event
+		// Handle drop event
 		function handleDrop(event) {
 			event.preventDefault();
 			const data = event.dataTransfer.getData('text/plain');
@@ -134,9 +130,6 @@
 			const droppedItem = document.createElement('div');
 			console.log("dropped: " + droppedItem);
 			droppedItem.textContent = data;
-			
-			// Clear the drop zone before adding the new item
-			console.log("inner: " + event.target.innerHTML);
 
 			if(event.target.innerHTML.includes("Drop Zone")){
 				event.target.innerHTML = '';
@@ -193,7 +186,7 @@
             const infoText = document.createElement('p');
             infoText.textContent = information.more_info;
 
-            // Create a close button
+            // Close button
             const closeButton = document.createElement('button');
             closeButton.textContent = 'Close';
             closeButton.style.marginTop = '20px';
@@ -207,28 +200,33 @@
                 overlay.style.display = 'none'; // Hide the overlay when close button is clicked
             });
 
-            // Append information and close button to the container
+            // Add information and close button to the container
             infoContainer.appendChild(infoText);
             infoContainer.appendChild(closeButton);
 
-            // Append the container to the overlay
+            // Add the container to overlay
             overlay.appendChild(infoContainer);
 
-            // Append the overlay to the body
+            // Add overlay to body
             document.body.appendChild(overlay);
         }
   
         function checkSubmit() {
+			
             if (information.answered == 0) {
+				let canSubmit = true;
                 var dropInputs = document.querySelectorAll('.drop-zone');
 				
                 dropInputs.forEach(function(input, index) {
                     var inputValue = input.textContent;
 					console.log(input.textContent);
-                    if (inputValue !== 'Drop Zone') {
+                    if (inputValue.includes("Drop Zone") || inputValue == '') {
+						canSubmit = false;
+						
+                    }else{
 						input.style.display = 'none';
                         document.getElementById('info_block_' + (index + 1)).style.display = 'flex';
-                    }
+					}
                     if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
                         document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
                     } else {
@@ -237,50 +235,19 @@
                     information.user_answers[index] = inputValue;
 					console.log(information.user_answers);
                 });
-                information.answered = 1;
-                // console.log(information);
+				if(canSubmit == true){
+					information.answered = 1;
+					
+					submitted = true;
+					submitQuiz();
+					next_button.style.display = 'block';
+				}else{
+					alert("Fucking answer");
+				}
                 
-                submitted = true;
-    
-                // Call submitQuiz function after updating user answers
-                submitQuiz();
-                // replaceButtons();
-                next_button.style.display = 'block';
                 
             }
         }
-    
-        // function updateInputs() {
-        //     if(information.answered == 1){
-        //         var dropInputs = document.querySelectorAll('.drop-zone');
-        //         dropInputs.forEach(function(input, index) {
-        //             input.disabled = true;
-        //             input.textContent = information.user_answers[index];
-		// 			inputValue = input.textContent;
-
-					
-        //             // var inputValue = input.textContent;
-        //             if (inputValue !== '') {
-		// 				input.style.display = 'none';
-        //                 document.getElementById('info_block_' + (index + 1)).style.display = 'flex';
-        //             }
-        //             if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
-        //                 document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
-        //             } else {
-        //                 document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
-        //             }
-        //         });
-        //         next_button.style.display = 'block';
-        //         // buttons.style.display = 'none';
-        //         // reset_button.style.display = 'none';
-        //         // submit_button.style.display = 'none';
-        //         // learn_more.style.display = 'block';
-
-        //     }else{
-        //         next_button.style.display = 'none';
-        //     }
-            
-        // }
 
 		function updateInputs() {
 			if (information.answered == 1) {

@@ -9,16 +9,15 @@
 		}
 
 		.image {
-			width: auto;
-			height: 500px;
-			margin-left: 100px;
-			margin-top: 20px;
+			width: 100%;
+			height: auto;
 		}
 
 		.question-text {
 			font-weight: bold;
 			font-size: 35px;
 			margin-bottom: 10px;
+			color:rgb(139, 124, 109);
 		}
 
 		.quiz-content {
@@ -63,14 +62,14 @@
 
 
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="question-text">{{ information.question }}</div>
 		<div class="row">
-			<div class="col-6">
+			<div class="col-9" style="flex: 1; position: relative;">
 				<img class="main_img image" src="/static/{{ information.image }}" alt="Question Image">
 				<img class="hint_img image" src=" /static/{{ information.hints }}" alt="zeus_hint" style="display: none;">
 			</div>
-			<div class="col-6 align-items-center justify-content-center">
+			<div class="col-3 align-items-center justify-content-center" style="flex: 1; position: relative;">
 				<form class="options" action="{{ url_for('submit_answer', question_id=information.id) }}" method="post">
 					{% for option in information.options %}
 					<div class="col-12">
@@ -105,27 +104,31 @@
 			if (information.answered == 0) {
 				var radioInputs = document.querySelectorAll('input[name="answer"]');
 				var selectedOption = null;
+				let canSubmit = false;
 				// console.log("radio inputs:", radioInputs);
 				radioInputs.forEach(function (input, index) {
+					document.getElementById('info_block_' + (index + 1)).style.display = 'block';
 					if (input.checked) {
 						selectedOption = input.value;  // Get the value of the selected radio button
 						console.log(selectedOption);
-						document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
+						// document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
 						if (selectedOption == information.answers[0]) {
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
 						} else {
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
 						}
+						canSubmit = true;
 					}
 					input.disabled = true;
 				});
-				if (selectedOption !== null) {
+				if (canSubmit) {
 					console.log("Selected option: ", selectedOption);
 					information.answered = 1;
 					information.user_answers[0] = selectedOption;  // Assuming a single answer can be stored
 					submitQuiz();
 					next_button.style.display = 'block';
 				} else {
+					alert("Fucking answer");
 					console.log("No option selected");
 				}
 
@@ -139,10 +142,11 @@
 				// console.log("radio inputs:", radioInputs);
 				radioInputs.forEach(function (input, index) {
 					console.log(input);
+					document.getElementById('info_block_' + (index + 1)).style.display = 'block';
 					if (input.value == information.user_answers[0]) {
 						console.log("hello");
 						input.checked = true;
-						document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
+						// document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
 						if (input.value == information.answers[0]) {
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
 						} else {

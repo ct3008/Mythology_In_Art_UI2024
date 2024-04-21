@@ -18,11 +18,12 @@
 			font-weight: bold;
 			font-size: 35px;
 			margin-bottom: 10px;
+			color: rgb(139, 124, 109);
 		}
 
 		.image {
-			width: auto;
-			height: 450px;
+			width: 100%;
+			height: auto;
 		}
 
 		.info_block {
@@ -61,11 +62,14 @@
 		<div class="row">
 			<form class="options row" action="{{ url_for('submit_answer', question_id=information.id) }}" method="post">
 				{% for pic_option in information.pic_options %}
-				<div class="col-4">
+				<div class="col-md-4" style="flex: 1; position: relative;">
 					<label for="option_{{ loop.index }}">
-						<input type="radio" id="option_{{ loop.index }}" name="answer" value="{{ pic_option }}" class="radio_button">
-						<img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img image" style="display: none;">
-						<img src="/static/{{ pic_option }}" alt="/static/{{ pic_option }}" class="main_img image" style="display: flex;">
+						<input type="radio" id="option_{{ loop.index }}" name="answer" value="{{ pic_option }}"
+							class="radio_button">
+						<img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img image"
+							style="display: none;">
+						<img src="/static/{{ pic_option }}" alt="/static/{{ pic_option }}" class="main_img image"
+							style="display: flex; height: 300px;">
 						<!-- <img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img img-fluid" style="display: none;"> -->
 					</label>
 					<div class="info_block" id="info_block_{{ loop.index }}">
@@ -95,21 +99,25 @@
 			if (information.answered == 0) {
 				var radioInputs = document.querySelectorAll('input[name="answer"]');
 				var selectedOption = null;
-				console.log("radio inputs:", radioInputs);
+				let canSubmit = false;
+				// console.log("radio inputs:", radioInputs);
 				radioInputs.forEach(function (input, index) {
+					document.getElementById('info_block_' + (index + 1)).style.display = 'block';
 					if (input.checked) {
 						selectedOption = input.value;  // Get the value of the selected radio button
 						console.log(selectedOption);
-						document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
+						// document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
 						if (selectedOption == information.answers[0]) {
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
 						} else {
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
 						}
+						canSubmit = true;
 					}
 					input.disabled = true;
+
 				});
-				if (selectedOption !== null) {
+				if (canSubmit) {
 					console.log("Selected option: ", selectedOption);
 					information.answered = 1;
 					information.user_answers[0] = selectedOption;  // Assuming a single answer can be stored
@@ -117,6 +125,7 @@
 					submitQuiz();
 					next_button.style.display = 'block';
 				} else {
+					alert("Fucking answer");
 					console.log("No option selected");
 				}
 
@@ -129,6 +138,7 @@
 				var selectedOption = null;
 				console.log("radio inputs:", radioInputs);
 				radioInputs.forEach(function (input, index) {
+					document.getElementById('info_block_' + (index + 1)).style.display = 'block';
 					if (input.value == information.user_answers[0]) {
 						// selectedOption = input.value;  // Get the value of the selected radio button
 						// console.log(selectedOption);
@@ -169,55 +179,55 @@
 		}
 
 		function learnStuff() {
-            // Create the white screen overlay element
-            const overlay = document.createElement('div');
-            overlay.style.position = 'fixed';
-            overlay.style.top = '0';
-            overlay.style.left = '0';
-            overlay.style.width = '100%';
-            overlay.style.height = '100%';
-            overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-            overlay.style.zIndex = '9999';
-            overlay.style.display = 'flex';
-            overlay.style.alignItems = 'center';
-            overlay.style.justifyContent = 'center';
+			// Create the white screen overlay element
+			const overlay = document.createElement('div');
+			overlay.style.position = 'fixed';
+			overlay.style.top = '0';
+			overlay.style.left = '0';
+			overlay.style.width = '100%';
+			overlay.style.height = '100%';
+			overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+			overlay.style.zIndex = '9999';
+			overlay.style.display = 'flex';
+			overlay.style.alignItems = 'center';
+			overlay.style.justifyContent = 'center';
 
-            // Create the container for information
-            const infoContainer = document.createElement('div');
-            infoContainer.style.backgroundColor = 'white';
-            infoContainer.style.padding = '20px';
-            infoContainer.style.borderRadius = '10px';
-            infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
-            infoContainer.style.textAlign = 'center';
+			// Create the container for information
+			const infoContainer = document.createElement('div');
+			infoContainer.style.backgroundColor = 'white';
+			infoContainer.style.padding = '20px';
+			infoContainer.style.borderRadius = '10px';
+			infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+			infoContainer.style.textAlign = 'center';
 
-            // Display the information
-            const infoText = document.createElement('p');
-            infoText.textContent = information.more_info;
+			// Display the information
+			const infoText = document.createElement('p');
+			infoText.textContent = information.more_info;
 
-            // Create a close button
-            const closeButton = document.createElement('button');
-            closeButton.textContent = 'Close';
-            closeButton.style.marginTop = '20px';
-            closeButton.style.padding = '10px 20px';
-            closeButton.style.border = 'none';
-            closeButton.style.backgroundColor = 'gray';
-            closeButton.style.color = 'white';
-            closeButton.style.borderRadius = '5px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.addEventListener('click', function() {
-                overlay.style.display = 'none'; // Hide the overlay when close button is clicked
-            });
+			// Create a close button
+			const closeButton = document.createElement('button');
+			closeButton.textContent = 'Close';
+			closeButton.style.marginTop = '20px';
+			closeButton.style.padding = '10px 20px';
+			closeButton.style.border = 'none';
+			closeButton.style.backgroundColor = 'gray';
+			closeButton.style.color = 'white';
+			closeButton.style.borderRadius = '5px';
+			closeButton.style.cursor = 'pointer';
+			closeButton.addEventListener('click', function () {
+				overlay.style.display = 'none'; // Hide the overlay when close button is clicked
+			});
 
-            // Append information and close button to the container
-            infoContainer.appendChild(infoText);
-            infoContainer.appendChild(closeButton);
+			// Append information and close button to the container
+			infoContainer.appendChild(infoText);
+			infoContainer.appendChild(closeButton);
 
-            // Append the container to the overlay
-            overlay.appendChild(infoContainer);
+			// Append the container to the overlay
+			overlay.appendChild(infoContainer);
 
-            // Append the overlay to the body
-            document.body.appendChild(overlay);
-        }
+			// Append the overlay to the body
+			document.body.appendChild(overlay);
+		}
 	</script>
 </body>
 

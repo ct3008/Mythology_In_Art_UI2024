@@ -119,16 +119,32 @@ body {
 }
 
 .next-button {
-	position: fixed;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 10px;
-	display: flex;
-	align-items: center; 
-	z-index: 9999;
+	color: white !important;
+    background-color: rgb(139, 124, 109);
+    border-color: rgb(139, 124, 109);
 	
+	width: 20%;
+	margin-left: 30px;
 }
 
 .navigation-buttons button:hover {
-	background-color: red;
+	background-color: rgb(139, 124, 109);
+    border-color: rgb(139, 124, 109);
+}
+
+.side {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	box-sizing: border-box;
+}
+
+.div-column {
+	max-width: 100%;
+	max-height: 83%;
+	text-align: center;
+}
+
+.column {
+	max-height: 100%;
 }
