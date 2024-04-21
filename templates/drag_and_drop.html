@@ -224,8 +224,8 @@
 						canSubmit = false;
 						
                     }else{
-						input.style.display = 'none';
-                        document.getElementById('info_block_' + (index + 1)).style.display = 'flex';
+						// input.style.display = 'none';
+                        // document.getElementById('info_block_' + (index + 1)).style.display = 'flex';
 					}
                     if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
                         document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
@@ -236,6 +236,10 @@
 					console.log(information.user_answers);
                 });
 				if(canSubmit == true){
+					dropInputs.forEach(function(input, index){
+						input.style.display = 'none';
+						document.getElementById('info_block_' + (index + 1)).style.display = 'flex';
+					});
 					information.answered = 1;
 					
 					submitted = true;

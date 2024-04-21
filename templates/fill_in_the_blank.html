@@ -134,24 +134,23 @@
                     var inputValue = input.value.trim();
                     console.log(inputValue);
                     
-                    if (inputValue !== '') {
-                        document.getElementById('info_block_' + (index + 1)).style.display = 'block';
-                    }else{
+                    if (inputValue == '') {
                         canSubmit = false;
-                        
+                        //document.getElementById('info_block_' + (index + 1)).style.display = 'block';
+                    } else{
+                        if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
+                            document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
+                        } 
+                        else {
+                            document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
+                        }
+                        // console.log("set answers:")
+                        information.user_answers[index] = inputValue;
                     }
-                    if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
-                        document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
-                    } 
-                    else {
-                        document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
-                    }
-                    // console.log("set answers:")
-                    information.user_answers[index] = inputValue;
-
                 });
                 if (canSubmit){
                     fibInputs.forEach(function(input, index) {
+                        document.getElementById('info_block_' + (index + 1)).style.display = 'block';
                         input.disabled = true;
                     });
                     information.answered = 1;
