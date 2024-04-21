@@ -7,6 +7,7 @@
     <style>
 
         .container-fluid {
+            position: relative; /* Add position relative to act as a reference for absolute positioning */
             margin-left: 20px;
         }
         .buttons button:hover {
@@ -17,8 +18,13 @@
         .buttons {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
-            margin-top: 100px;
+            
+            margin-top: 150px;
+            margin-left: 12%;
+            /* margin-bottom: -20px; */
+            position: absolute;  
+            /* transform: translateX(-50%); */
+            bottom: 0px;
 
         }
 
@@ -26,7 +32,7 @@
             border-radius: 18px 18px 18px 18px;
             width: 200px;
             height: 40px;
-            margin-right: 10px;
+            
             border-color: rgb(239, 235, 224);
             color: black;
             background-color: rgb(227, 217, 199);
@@ -42,7 +48,7 @@
             border-radius: 18px 18px 18px 18px;
             width: 200px;
             height: 40px;
-            margin-left: 10px;
+            margin-left: 0px;
             border-color: rgb(239, 235, 224);
             color: black;
             background-color: rgb(227, 217, 199);
@@ -55,15 +61,25 @@
         } */
 
         .learn_more {
+            /* display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            margin-top: 150px; */
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
-            margin-top: 100px;
+            
+            /* margin-left: 20%;
+            margin-right: 40%; */
+            position: absolute; 
+            left: 50%;
+            bottom: -20px; 
+            transform: translateX(-50%);
         }
 
         .learn-more-button {
             border-radius: 18px 18px 18px 18px;
-            width: 300px;
+            width: 250px;
             height: 60px;
             border-color: rgb(239, 235, 224);
             color: black;
@@ -81,17 +97,41 @@
             /* Adjust as needed for space between the image and the button */
         }
 
-        .btn.learn-button {
-            display: block;
-            /* Ensures the button takes up the full width of its container */
-            width: 30%;
-            /* Optional: In case you want the button to fill the container */
-            /* Add any additional styling as needed */
+
+        /* .back-button {
+            margin-left: 160px;
+        } */
+
+        .btn.next-button{
+            width: 100% !important;
+            border-color: rgb(239, 235, 224) !important;
+            color: black;
+            background-color: rgb(227, 217, 199) !important;
         }
 
-        .back-button {
-            margin-left: 160px;
+        .btn.back-button{
+            width: 100% !important;
+            border-color: rgb(239, 235, 224) !important;
+            color: black;
+            background-color: rgb(227, 217, 199) !important;
         }
+
+        .btn.next-button:hover {
+            background-color: rgb(139, 124, 109) !important;
+            border-color: rgb(139, 124, 109) !important;
+        }
+
+        .btn.back-button:hover {
+            background-color: rgb(139, 124, 109) !important;
+            border-color: rgb(139, 124, 109) !important;
+        }
+
+        /* .next-button {
+            color: white !important;
+            
+            width: 20%;
+            margin-left: 30px;
+        } */
 
 
         /* .next-button {
@@ -102,19 +142,16 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <div>
-                <button id="hint_button" onclick="displayHint()">Hint</button>
-            </div>
-        </div>
+        
         <div class="row">
             <div class="col-3">
+                <button id="hint_button" onclick="" style="visibility: hidden;"></button>
                 <div class="image_container">
                     <div class="div-column"><img class="img-fluid" src="/static/column.jpg" /></div>
                 </div>
                 <div class="button-container">
                     {% if (question_id | int) > 0 %}
-                    <a class="btn btn-secondary learn-button back-button" href="/quiz/{{ question_id | int - 1 }}">Back</a>
+                    <a class="btn btn-secondary back-button" href="/quiz/{{ question_id | int - 1 }}">Back</a>
                     {% endif %}
                 </div>
             </div>
@@ -133,10 +170,11 @@
             </div>
 
             <div class="col-3">
+                <button id="hint_button" onclick="displayHint()">Hint</button>
                 <div class="image_container">
-                    <img class="img-fluid" src="/static/column.jpg" alt="Column Image" />
+                    <div class="div-column"><img class="img-fluid" src="/static/column.jpg" /></div>
                 </div>
-                <a class="btn btn-secondary learn-button next-button" onclick="navigateNext()">Next</a>
+                <a class="btn btn-secondary next-button" onclick="navigateNext()">Next</a>
 
             </div>
         </div>
@@ -144,8 +182,8 @@
     <script>
         const pageNum = parseInt(window.location.pathname.split('/').pop());
         var prev_answered = {{ prev_answered | tojson | safe }};
-        var buttons = document.querySelectorAll('.buttons');
-        var learnMore = document.querySelectorAll('.learn-more');
+        // var buttons = document.querySelectorAll('.buttons');
+        // var learnMore = document.querySelectorAll('.learn-more');
         var submitted = false;
 
         function displayHint() {
@@ -171,16 +209,6 @@
             
             window.location.href = `/quiz/${pageNum + 1}`;
         }
-
-        function replaceButtons() {
-            if (buttons.style.display == 'block') {
-                buttons.style.display = 'none';
-            }
-            if (learnMore.style.display == 'none') {
-                learnMore.style.display = 'block';
-            }
-        }
-
 
 
 

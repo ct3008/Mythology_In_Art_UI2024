@@ -9,28 +9,31 @@ app = Flask(__name__)
 fill_in_the_blank = [
    {"id": 0,
 	"images": ["PoseidonAthena.jpg"],
+    "question": "Fill in the Blank",
 	"answers": ["Athena", "Poseidon"], #names left to right,
 	"hints": ["PoseidonAthena_annotated.jpg"],
 	"more_info":"Currently held in Cabinet des Médailles, Paris, this piece is dated from ca 540 - 530 B.C.", 
-	"explanation_text": ["Athena can be identified by her snake-trimmed vest, her spear, and her helmet.", "Poseidon can be identified by his trident."],
+	"explanation_text": ["Athena: snake-trimmed vest, spear, and helmet", "Poseidon: trident"],
     "answered": 0,
     "user_answers":['','']
 	},
    {"id": 1,
 	"images": ["herakles6.jpg"],
+    "question": "Fill in the Blank",
 	"answers": ["Apollo", "Herakles", "Artemis"], #names left to right,
 	"hints": ["herakles6_annotated.jpg"],
 	"more_info":"This is depicts Herakles, Artemis and the Cerynitian Hind, Athenian black-figure amphora from 6th century BC. The Elaphos Kerynitis (Cerynitian Hind) was a golden-horned deer sacred to the goddess Artemis. Herakles was sent to fetch it as one of his twelve labours. After chasing the animal for a full year he finally captured it on Mount Artemision in Arkadia (Arcadia). The goddess Artemis complained about the treatment of her deer whose horn had broken off by the hero in the struggle. He nevertheless managed to persuade her to let him borrow it for the completion of his Labour. According to some the hind was one of five golden-horned deer gifted to Artemis by the Nymph Taygete. The other four drew the chariot of the goddess. The hind may once have been assigned a Constellation like the other beasts of Herakles' labours.", 
-	"explanation_text": ["Apollo can be seen donning similar apparel as his twin Artemis. One of them will likely have a bow", "Herakles can be identified here by the lion skin on his shoulders", "Artemis can be identified due to the bow in her hand and her twin Apollo"],
+	"explanation_text": ["Apollo: same apparel as his twin Artemis", "Herakles: lion skin", "Artemis: bow and her twin Apollo"],
     "answered": 0,
     "user_answers":['','','']
 	},
    {"id": 2,
 	"images": ["HAHA.jpg"],
+    "question": "Fill in the Blank",
 	"answers": ["Hermes", "Apollo", "Herakles", "Athena"], #names left to right,
 	"hints": ["HAHA_annotated.jpg"],
 	"more_info":"Found in museum collection Antikensammlung Berlin. Originated from around 500 B.C. Depicts the reception of Herakles into Olympus", 
-	"explanation_text": ["Hermes can be identified by the caduceus he's holding and his winged slippers.", "Apollo can be identified by the lyre he's holding.", "Herakles can be identified through his lionskin pelt and bat.", "Athena can be identified through her spear."],
+	"explanation_text": ["Hermes: caduceus and winged slippers", "Apollo: lyre", "Herakles: lionskin pelt and bat", "Athena: spear"],
     "answered": 0,
     "user_answers":['','','','']
 	}
@@ -39,22 +42,24 @@ fill_in_the_blank = [
 
 drag_and_drop = [
    {"id": 0,
+    "question": "Drag the Correct Name to Each Image",
 	"images": ["HephDion_h.jpg","HephDion_d.jpg"],
 	"options": ["Dionysus","Hephaestus","Artemis", "Athena"],
 	"answers": ["Hephaestus","Dionysus"], # from left to right
 	"hints": ["HephDion_h_annotated.jpg","HephDion_d_annotated.jpg"],
 	"more_info": "Held in the Toledo Museum of Art. Originates from 430-420 B.C. It depicts Hephaestus' retur to Olympus atop a donkey. He is led by Thionysus and a Satyriscus (child Satyr) playing a flute. \n 'Hephaistos refused to listen to any other of the gods save Dionysos - in him he reposed the fullest trust - and after making him drunk Dionysos brought him to heaven' - Pausanias, Guide to Greece 1.20.3.", 
-	"explanation_text": ["Hephaestus is characterized by forging tools like his hammer and tongs.", "Dionysus can be characterized by the wine cup in his right hand, the thyrsus staff in his left hand, and the presence of a satyr near him."],
+	"explanation_text": ["Hephaestus: hammer and tongs (forging tools)", "Dionysus: wine cup, thyrsus staff, and satyr"],
     "answered": 0,
     "user_answers":['','']
    },
    {"id": 1,
+    "question": "Drag the Correct Name to Each Image",
 	"images": ["HAZ_z.jpg","HAZ_a.jpg","HAZ_h.jpg"],
 	"options": ["Hades","Zeus", "Dionysus","Athena", "Hermes","Hephaestus"],
 	"answers": ["Zeus", "Athena", "Hephaestus"], # from left to right
 	"hints": ["HAZ_z_annotated.jpg","HAZ_a_annotated.jpg","HAZ_h_annotated.jpg"],
-	"more_info": "", 
-	"explanation_text": ["Zeus can be identified by his lightning bolt.", "Athena here can be characterized by her emergence from Zeus's head as per her myth.", "Hephaestus can be classified by his forging hammer."],
+	"more_info": "Held in the British Museum in London. Dates ca. 555 - 550 B.C. Hephaestus births Athena from the skull of Zeus with the blow of an axe. The king of the gods is seated on a throne decorated with the head of a swan and brandishes a lightning-bolt in his outstretched hand. Athena springs forth from his head, born ready-equipped with a shield. Hephaestus waves a hand, imitating an Eileithyia (birth-goddess), and holds a double-headed axe or mallet. He wears a short workman's chiton and boots.", 
+	"explanation_text": ["Zeus: lightning bolt", "Athena: emerging from Zeus' head", "Hephaestus: forging hammer."],
     "answered": 0,
     "user_answers":['','','']
    }

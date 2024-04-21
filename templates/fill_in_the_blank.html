@@ -9,17 +9,18 @@
         }
 
         .info_block {
-            width: 80%;
+            width: 100%;
             margin-top: -8px;
             margin-bottom: 20px;
             border: 2px solid black;
             display: none;
             padding: 5px;
+            
         }
 
         .fib-input {
             /* adjust width to make everything uniform */
-            width: calc(100% + 10px); 
+            width: 100%; 
         
         }
 
@@ -27,11 +28,19 @@
 			display: inline; /* or inline-block */
 		}
 
+        .question-text {
+			font-weight: bold;
+			font-size: 35px;
+			margin-bottom: 10px;
+			color: rgb(139, 124, 109);
+		}
+
     </style>
 </head>
 
 <body>
     <div class="container">
+        <div class="question-text">{{ information.question }}</div>
         <div class="row">
             <div class="col-md-6 col-6 container">
                 <div class="image">
