@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import datetime
 import random
-import re
+# import res
 app = Flask(__name__)
 
 
@@ -12,7 +12,7 @@ fill_in_the_blank = [
     "question": "Fill in the Blank",
 	"answers": ["Athena", "Poseidon"], #names left to right,
 	"hints": ["PoseidonAthena_annotated.jpg"],
-	"more_info":"Currently held in Cabinet des Médailles, Paris, this piece is dated from ca 540 - 530 B.C.", 
+	"more_info":"Currently held in Cabinet des Médailles, Paris, this piece is dated from ca 540 - 530 B.C. \n Athena competed with Poseidon to be the patron deity of Athens, which was yet unnamed, in a version of one founding myth. They agreed that each would give the Athenians one gift and that the Athenians would choose the gift they preferred. Poseidon struck the ground with his trident and a salt water spring sprang up; this gave them a means of trade and water - Athens at its height was a significant sea power, defeating the Persian fleet at the Battle of Salamis - but the water was salty and not very good for drinking. Athena, however, offered them the first domesticated olive tree. The Athenians (or their king, Cecrops) accepted the olive tree and with it the patronage of Athena, for the olive tree brought wood, oil, and food. Robert Graves was of the opinion that 'Poseidon's attempts to take possession of certain cities are political myths' which reflect the conflict between matriarchal and patriarchal religions.", 
 	"explanation_text": ["Athena: snake-trimmed vest, spear, and helmet", "Poseidon: trident"],
     "answered": 0,
     "user_answers":['','']
@@ -22,7 +22,7 @@ fill_in_the_blank = [
     "question": "Fill in the Blank",
 	"answers": ["Apollo", "Herakles", "Artemis"], #names left to right,
 	"hints": ["herakles6_annotated.jpg"],
-	"more_info":"This is depicts Herakles, Artemis and the Cerynitian Hind, Athenian black-figure amphora from 6th century BC. The Elaphos Kerynitis (Cerynitian Hind) was a golden-horned deer sacred to the goddess Artemis. Herakles was sent to fetch it as one of his twelve labours. After chasing the animal for a full year he finally captured it on Mount Artemision in Arkadia (Arcadia). The goddess Artemis complained about the treatment of her deer whose horn had broken off by the hero in the struggle. He nevertheless managed to persuade her to let him borrow it for the completion of his Labour. According to some the hind was one of five golden-horned deer gifted to Artemis by the Nymph Taygete. The other four drew the chariot of the goddess. The hind may once have been assigned a Constellation like the other beasts of Herakles' labours.", 
+	"more_info":"This is depicts Herakles, Artemis and the Cerynitian Hind, Athenian black-figure amphora from 6th century BC. \n The Elaphos Kerynitis (Cerynitian Hind) was a golden-horned deer sacred to the goddess Artemis. Herakles was sent to fetch it as one of his twelve labours. After chasing the animal for a full year he finally captured it on Mount Artemision in Arkadia (Arcadia). The goddess Artemis complained about the treatment of her deer whose horn had broken off by the hero in the struggle. He nevertheless managed to persuade her to let him borrow it for the completion of his Labour. According to some the hind was one of five golden-horned deer gifted to Artemis by the Nymph Taygete. The other four drew the chariot of the goddess. The hind may once have been assigned a Constellation like the other beasts of Herakles' labours.", 
 	"explanation_text": ["Apollo: same apparel as his twin Artemis", "Herakles: lion skin", "Artemis: bow and her twin Apollo"],
     "answered": 0,
     "user_answers":['','','']
@@ -32,7 +32,7 @@ fill_in_the_blank = [
     "question": "Fill in the Blank",
 	"answers": ["Hermes", "Apollo", "Herakles", "Athena"], #names left to right,
 	"hints": ["HAHA_annotated.jpg"],
-	"more_info":"Found in museum collection Antikensammlung Berlin. Originated from around 500 B.C. Depicts the reception of Herakles into Olympus", 
+	"more_info":"Found in museum collection Antikensammlung Berlin. Originated from around 500 B.C. \n Heracles, accompanied by the gods Hermes, Apollo and Athena, is ascending to Olympus. Hermes carries a ram and the herald's wand as he looks back at Apollo. Apollo, who holds a lyre, is attired in woman's robes and veiled. A deer stands behind him. Heracles, wearing lion skin, has a club in his hand and a quiver hung over his shoulder. Behind him stands Athena holding a spear in her hand.", 
 	"explanation_text": ["Hermes: caduceus and winged slippers", "Apollo: lyre", "Herakles: lionskin pelt and bat", "Athena: spear"],
     "answered": 0,
     "user_answers":['','','','']
@@ -47,7 +47,7 @@ drag_and_drop = [
 	"options": ["Dionysus","Hephaestus","Artemis", "Athena"],
 	"answers": ["Hephaestus","Dionysus"], # from left to right
 	"hints": ["HephDion_h_annotated.jpg","HephDion_d_annotated.jpg"],
-	"more_info": "Held in the Toledo Museum of Art. Originates from 430-420 B.C. It depicts Hephaestus' retur to Olympus atop a donkey. He is led by Thionysus and a Satyriscus (child Satyr) playing a flute. \n 'Hephaistos refused to listen to any other of the gods save Dionysos - in him he reposed the fullest trust - and after making him drunk Dionysos brought him to heaven' - Pausanias, Guide to Greece 1.20.3.", 
+	"more_info": "Held in the Toledo Museum of Art. Originates from 430-420 B.C. \n It depicts Hephaestus' return to Olympus atop a donkey. He is led by Thionysus and a Satyriscus (child Satyr) playing a flute. \n 'Hephaistos refused to listen to any other of the gods save Dionysos - in him he reposed the fullest trust - and after making him drunk Dionysos brought him to heaven' - Pausanias, Guide to Greece 1.20.3.", 
 	"explanation_text": ["Hephaestus: hammer and tongs (forging tools)", "Dionysus: wine cup, thyrsus staff, and satyr"],
     "answered": 0,
     "user_answers":['','']
@@ -58,7 +58,7 @@ drag_and_drop = [
 	"options": ["Hades","Zeus", "Dionysus","Athena", "Hermes","Hephaestus"],
 	"answers": ["Zeus", "Athena", "Hephaestus"], # from left to right
 	"hints": ["HAZ_z_annotated.jpg","HAZ_a_annotated.jpg","HAZ_h_annotated.jpg"],
-	"more_info": "Held in the British Museum in London. Dates ca. 555 - 550 B.C. Hephaestus births Athena from the skull of Zeus with the blow of an axe. The king of the gods is seated on a throne decorated with the head of a swan and brandishes a lightning-bolt in his outstretched hand. Athena springs forth from his head, born ready-equipped with a shield. Hephaestus waves a hand, imitating an Eileithyia (birth-goddess), and holds a double-headed axe or mallet. He wears a short workman's chiton and boots.", 
+	"more_info": "Held in the British Museum in London. Dates ca. 555 - 550 B.C. \n Hephaestus births Athena from the skull of Zeus with the blow of an axe. The king of the gods is seated on a throne decorated with the head of a swan and brandishes a lightning-bolt in his outstretched hand. Athena springs forth from his head, born ready-equipped with a shield. Hephaestus waves a hand, imitating an Eileithyia (birth-goddess), and holds a double-headed axe or mallet. He wears a short workman's chiton and boots.", 
 	"explanation_text": ["Zeus: lightning bolt", "Athena: emerging from Zeus' head", "Hephaestus: forging hammer."],
     "answered": 0,
     "user_answers":['','','']
@@ -72,7 +72,7 @@ multiple_choice_pics = [
 	"question": "Find Zeus",
 	"answers": ["zeus5_1.jpg"], #0, 1, 2,... answers index of pic options
 	"explanation_text": ["Zeus can be identified by his lightning bolt.", "This is Ganymedes holding an oinochoe jug.", "This is Hestia holding a flower the branch of a chaste-tree."],
-	"more_info": "hello",
+	"more_info": "The painting is from a kylix, a type of Greek drinking cup, is displayed at the National Archaeological Museum of Tarquinia and holds the catalogue number RC6848. It's part of the Attic Red Figure pottery style and is believed to be the work of Oltos, an artist from the Archaic period of ancient Greece. The cup's detailed red images against a black backdrop are typical of this style and era, capturing a piece of history in its design.",
 	"hints": ["zeus5_annotated_1.jpg","zeus5_annotated_2.jpg", "zeus5_annotated_3.jpg"],
     "answered": 0,
     "user_answers":['']
@@ -83,7 +83,7 @@ multiple_choice_pics = [
 	"question": "Find Hades",
 	"answers": ["hades_mcp3.jpg"], #0, 1, 2,... answers index of pic options
 	"explanation_text": ["This is Zeus with his sceptre.", "This is Apollo with bow and arrow, and laurel on his head.", "Hades can be identified by the riches and cornucopia."],
-	"more_info": "hello",
+	"more_info": "The painting with Hades is on a jar called pelike in The National Archaeological Museum in Athens, with the identification number Athens 16346. It features the red-figure pottery style and is thought to have been painted by the Orestes Painter, a known artist from ancient Greece's Classical period. The exact date it was made isn't recorded, but its style reflects that era's art.",
 	"hints": ["hades_mcp1_annotated.jpg", "hades_mcp2_annotated.jpg", "hades_mcp3_annotated.jpg"],
     "answered": 0,
     "user_answers":['']
@@ -281,6 +281,7 @@ user_sequence = []
 
 #holds the history of scores of the user
 all_scores = []
+dates = []
 
 @app.route('/')
 def home():
@@ -348,8 +349,8 @@ def quiz(question_number):
         return render_template('multiple_choice_text.html', figures=figures, information=information, prev_answered=prev_answered, question_id=question_number)
     else:
         score, total_score = calc_score()
-
-        return render_template('score.html', figures=figures, score=score, total_score=total_score, all_scores=all_scores[::-1])
+        combined_data = list(zip(all_scores[::-1], dates[::-1]))
+        return render_template('score.html', figures=figures, score=score, total_score=total_score, combined_data=combined_data)
 
 @app.route('/submit_answer/<int:question_id>', methods=['POST'])
 def submit_answer(question_id):
@@ -361,6 +362,8 @@ def restart_quiz():
     # Restart quiz
     score, _ = calc_score()
     all_scores.append(score)
+    formatted_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    dates.append(formatted_date)
     for question in fill_in_the_blank:
         question['answered'] = 0
         for i, _ in enumerate(question['user_answers']):

@@ -1,15 +1,19 @@
 $(document).ready(function () {
+	const pageNum = parseInt(window.location.pathname.split('/').pop());
 	// $('.buttons').css('display','block');
 	// $('.learn_more').css('display','none');
-	if (information.answered == 1) {
-		$('.next-button').css('display', 'block');
-		$('.buttons').css('display', 'none');
-		$('.learn_more').css('display', 'block');
-	} else {
-		$('.next-button').css('display', 'none');
-		$('.buttons').css('display', 'block');
-		$('.learn_more').css('display', 'none');
+	if(pageNum != 10){
+		if (information.answered == 1) {
+			$('.next-button').css('display', 'block');
+			$('.buttons').css('display', 'none');
+			$('.learn_more').css('display', 'block');
+		} else {
+			$('.next-button').css('display', 'none');
+			$('.buttons').css('display', 'block');
+			$('.learn_more').css('display', 'none');
+		}
 	}
+	
 
 
 })

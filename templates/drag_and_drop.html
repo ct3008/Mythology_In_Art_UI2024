@@ -93,6 +93,7 @@
 		<div class="row">
 			<div class="col-md-9 col9 row" style="display: flex;">
 				{% for pic in information.images %}
+				<div id="zoom_result" class="img-zoom-result"></div>
 				<div class="col-md-{{ 12 // loop.length }} image-container" style="flex: 1; position: relative;">
 					<img src="/static/{{ pic }}" class="main_img img-fluid" style="height: 100%; width: auto;">
 					<img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img img-fluid"
@@ -101,7 +102,6 @@
 						name="drop_{{ loop.index }}">
 						Drop Zone
 					</div>
-					<div id="zoom_result" class="img-zoom-result"></div>
 					<div class="info_block" id="info_block_{{ loop.index }}">
 						{{ information.explanation_text[loop.index - 1] }}
 					</div>
