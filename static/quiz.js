@@ -2,7 +2,7 @@ $(document).ready(function () {
 	const pageNum = parseInt(window.location.pathname.split('/').pop());
 	// $('.buttons').css('display','block');
 	// $('.learn_more').css('display','none');
-	if(pageNum != 10){
+	if (pageNum != 10) {
 		if (information.answered == 1) {
 			$('.next-button').css('display', 'block');
 			$('.buttons').css('display', 'none');
@@ -13,7 +13,7 @@ $(document).ready(function () {
 			$('.learn_more').css('display', 'none');
 		}
 	}
-	
+
 
 
 })
@@ -70,26 +70,46 @@ function imageZoom(imgID, imgIdx, resultID) {
 	img.addEventListener("touchmove", moveLens);
 
 	function moveLens(e) {
-		
+
 		var pos, x, y;
 		/* Prevent any other actions that may occur when moving over the image */
 		e.preventDefault();
 		/* Get the cursor's x and y positions: */
 		pos = getCursorPos(e);
 		/* Calculate the position of the lens: */
-		x = pos.x - (lens.offsetWidth / 2);
-		y = pos.y - (lens.offsetHeight / 2);
+		x = pos.x;
+		y = pos.y;
+		// console.log(img.height);
+		// console.log(img.width);
+		// console.log(x, y);
 		/* Prevent the lens from being positioned outside the image: */
-		if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
-		if (x < 0) { x = 0; }
-		if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
-		if (y < 0) { y = 0; }
+		if (x > img.width - 5) {
+			x = img.width - lens.offsetWidth;
+			result.style.display = 'none';
+			return;
+		}
+		if (x < 0) {
+			x = 0;
+			result.style.display = 'none';
+			return;
+		}
+		if (y > img.height - 5) {
+			y = img.height - lens.offsetHeight; result.style.display = 'none';
+			return;
+		}
+		if (y < 0) {
+			y = 0;
+			result.style.display = 'none';
+			return;
+		}
+		// console.log("why didnt get into this point?");
 		/* Set the position of the lens: */
 		lens.style.left = x + "px";
 		lens.style.top = y + "px";
 		/* Set the position of the result box to follow the cursor: */
-		result.style.left = (e.pageX + 10) + "px";
-    	result.style.top = (e.pageY + 10) + "px";
+		result.style.left = (e.pageX + 20) + "px";
+		result.style.top = (e.pageY + 20) + "px";
+		result.style.display = 'block';
 		/* Display what the lens "sees": */
 		result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
 	}

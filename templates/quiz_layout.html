@@ -5,11 +5,12 @@
 <head>
 
     <style>
-
         .container-fluid {
-            position: relative; /* Add position relative to act as a reference for absolute positioning */
+            position: relative;
+            /* Add position relative to act as a reference for absolute positioning */
             margin-left: 20px;
         }
+
         .buttons button:hover {
             background-color: rgb(139, 124, 109);
             border-color: rgb(139, 124, 109);
@@ -18,11 +19,11 @@
         .buttons {
             display: flex;
             justify-content: center;
-            
+
             margin-top: 150px;
             margin-left: 12%;
             /* margin-bottom: -20px; */
-            position: absolute;  
+            position: absolute;
             /* transform: translateX(-50%); */
             bottom: 0px;
 
@@ -32,7 +33,7 @@
             border-radius: 18px 18px 18px 18px;
             width: 200px;
             height: 40px;
-            
+
             border-color: rgb(239, 235, 224);
             color: black;
             background-color: rgb(227, 217, 199);
@@ -68,12 +69,12 @@
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
-            
+
             /* margin-left: 20%;
             margin-right: 40%; */
-            position: absolute; 
+            position: absolute;
             left: 50%;
-            bottom: -20px; 
+            bottom: -20px;
             transform: translateX(-50%);
         }
 
@@ -102,14 +103,14 @@
             margin-left: 160px;
         } */
 
-        .btn.next-button{
+        .btn.next-button {
             width: 100% !important;
             border-color: rgb(239, 235, 224) !important;
             color: black;
             background-color: rgb(227, 217, 199) !important;
         }
 
-        .btn.back-button{
+        .btn.back-button {
             width: 100% !important;
             border-color: rgb(239, 235, 224) !important;
             color: black;
@@ -142,7 +143,7 @@
 
 <body>
     <div class="container-fluid">
-        
+
         <div class="row">
             <div class="col-3">
                 <button id="hint_button" onclick="" style="visibility: hidden;"></button>
@@ -199,21 +200,22 @@
 
             tmp_hints.forEach(function (img, idx) {
                 img.addEventListener("mousemove", function (e) {
-                    let mouseX = e.clientX;
-                    let mouseY = e.clientY;
-                    let imgRect = img.getBoundingClientRect();
+                    // let mouseX = e.clientX;
+                    // let mouseY = e.clientY;
+                    // let imgRect = img.getBoundingClientRect();
 
-                    if (
-                        mouseX >= imgRect.left &&
-                        mouseX <= imgRect.right &&
-                        mouseY >= imgRect.top &&
-                        mouseY <= imgRect.bottom
-                    ) {
+                    // if (
+                    //     mouseX >= imgRect.left &&
+                    //     mouseX <= imgRect.right &&
+                    //     mouseY >= imgRect.top &&
+                    //     mouseY <= imgRect.bottom
+                    // ) {
                         imageZoom(".hint_img", idx, "zoom_result");
+                        // ocnsole.log("in quiz_layout, called imageZoom");
                         // Mouse is within the bounds of this image
                         // You can do something here, like showing a zoom box
                         // For example: imageZoom(img.className, "zoom_result");
-                    }
+                    // }
                 });
             });
 
@@ -230,7 +232,7 @@
 
         }
         function navigateNext() {
-            
+
             window.location.href = `/quiz/${pageNum + 1}`;
         }
 
