@@ -67,11 +67,12 @@
 						<input type="radio" id="option_{{ loop.index }}" name="answer" value="{{ pic_option }}"
 							class="radio_button">
 						<img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img image"
-							style="display: none;">
+							style="display: none; height: 300px">
 						<img src="/static/{{ pic_option }}" alt="/static/{{ pic_option }}" class="main_img image"
 							style="display: flex; height: 300px;">
 						<!-- <img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img img-fluid" style="display: none;"> -->
 					</label>
+					<div id="zoom_result" class="img-zoom-result"></div>
 					<div class="info_block" id="info_block_{{ loop.index }}">
 						{{ information.explanation_text[loop.index - 1] }}
 					</div>
@@ -154,14 +155,14 @@
 					}
 					input.disabled = true;
 				});
-				next_button.style.display = 'block';
+				// next_button.style.display = 'block';
 				// buttons.style.display = 'none';
 				// reset_button.style.display = 'none';
 				// submit_button.style.display = 'none';
 				// learn_more.style.display = 'block';
 
 			} else {
-				next_button.style.display = 'none';
+				// next_button.style.display = 'none';
 			}
 
 		}
@@ -230,6 +231,30 @@
 			// Append the overlay to the body
 			document.body.appendChild(overlay);
 		}
+
+		let tmp_imgs = document.querySelectorAll('.main_img');
+		let tmp_hints = document.querySelectorAll('.hint_img');
+
+		tmp_imgs.forEach(function (img, idx) {
+			img.addEventListener("mousemove", function (e) {
+				let mouseX = e.clientX;
+				let mouseY = e.clientY;
+				let imgRect = img.getBoundingClientRect();
+
+				if (
+					mouseX >= imgRect.left &&
+					mouseX <= imgRect.right &&
+					mouseY >= imgRect.top &&
+					mouseY <= imgRect.bottom
+				) {
+					imageZoom(".main_img", idx, "zoom_result");
+					// Mouse is within the bounds of this image
+					// You can do something here, like showing a zoom box
+					// For example: imageZoom(img.className, "zoom_result");
+				}
+			});
+		});
+
 	</script>
 </body>
 

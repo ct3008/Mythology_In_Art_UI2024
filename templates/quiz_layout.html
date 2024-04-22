@@ -189,11 +189,35 @@
         function displayHint() {
             let images = document.querySelectorAll('.main_img');
             let hints = document.querySelectorAll('.hint_img');
-            // console.log(images);
+
             images.forEach(function (input, index) {
                 images[index].style.display = 'none';
                 hints[index].style.display = 'block';
             });
+
+            let tmp_hints = document.querySelectorAll('.hint_img');
+
+            tmp_hints.forEach(function (img, idx) {
+                img.addEventListener("mousemove", function (e) {
+                    let mouseX = e.clientX;
+                    let mouseY = e.clientY;
+                    let imgRect = img.getBoundingClientRect();
+
+                    if (
+                        mouseX >= imgRect.left &&
+                        mouseX <= imgRect.right &&
+                        mouseY >= imgRect.top &&
+                        mouseY <= imgRect.bottom
+                    ) {
+                        imageZoom(".hint_img", idx, "zoom_result");
+                        // Mouse is within the bounds of this image
+                        // You can do something here, like showing a zoom box
+                        // For example: imageZoom(img.className, "zoom_result");
+                    }
+                });
+            });
+
+            // imageZoom("hint_img", "zoom_result");
             // let img_thing = document.getElementById('main_img');
             // let img_hint = document.getElementById('hint_img');
             // img_thing.style.display = 'none';

@@ -3,15 +3,16 @@
 {% block quiz_content %}
 
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    <style>
-        .container {
-            margin-top: 80px;
-        }
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+	<style>
+		.container {
+			margin-top: 80px;
+		}
 
 		.image-container {
 			margin-top: 50px;
-			height: 300px; /* Set the desired height for the image containers */
+			height: 300px;
+			/* Set the desired height for the image containers */
 		}
 
 
@@ -26,10 +27,11 @@
 
 
 		.draggable-option:hover {
-			background-color: lightgray; /* Change background color on hover */
+			background-color: lightgray;
+			/* Change background color on hover */
 		}
 
-		.drop-zone{
+		.drop-zone {
 			border-radius: 18px 18px 18px 18px;
 			border: 2px solid black;
 			height: 60px;
@@ -37,12 +39,12 @@
 			font-size: 15px;
 			text-align: center;
 			display: flex;
-			justify-content: center; 
+			justify-content: center;
 			align-items: center;
-			position: absolute; 
-			bottom: -80px; 
-			left: 10px; 
-			right: -5px; 
+			position: absolute;
+			bottom: -80px;
+			left: 10px;
+			right: -5px;
 			width: 90%;
 		}
 
@@ -50,29 +52,30 @@
 			border-radius: 18px 18px 18px 18px;
 			border: 2px solid black;
 			height: auto;
-            /* margin-top:100px; */
+			/* margin-top:100px; */
 			margin-top: 10px;
-            margin-bottom: -20px;
-            border: 2px solid black;
-            display: none;
+			margin-bottom: -20px;
+			border: 2px solid black;
+			display: none;
 			text-align: center;
 			/* display: flex; */
-			justify-content: center; 
+			justify-content: center;
 			align-items: center;
 			/* position: absolute;  */
-			bottom: -100px; 
-			left: 10px; 
-			right: -5px; 
+			bottom: -100px;
+			left: 10px;
+			right: -5px;
 			width: 100%;
 			padding: 5px;
-			
-        }
-		.learn-more-button{
+
+		}
+
+		.learn-more-button {
 			margin-top: 150px;
 		}
 
 		#popup p {
-			display: inline; 
+			display: inline;
 		}
 
 		.question-text {
@@ -81,41 +84,44 @@
 			margin-bottom: 10px;
 			color: rgb(139, 124, 109);
 		}
-
-
-    </style>
+	</style>
 </head>
+
 <body>
 	<div class="container">
 		<div class="question-text">{{ information.question }}</div>
 		<div class="row">
 			<div class="col-md-9 col9 row" style="display: flex;">
 				{% for pic in information.images %}
-					<div class="col-md-{{ 12 // loop.length }} image-container" style="flex: 1; position: relative;">
-						<img src="/static/{{ pic }}" class="main_img img-fluid" style="height: 100%; width: auto;">
-						<img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img img-fluid" style="height: 100%; width: auto; display: none;">
-						<div class="drop-zone" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" name="drop_{{ loop.index }}">
-							Drop Zone
-						</div>
-						<div class="info_block" id="info_block_{{ loop.index }}">
-							{{ information.explanation_text[loop.index - 1] }}
-						</div>
+				<div class="col-md-{{ 12 // loop.length }} image-container" style="flex: 1; position: relative;">
+					<img src="/static/{{ pic }}" class="main_img img-fluid" style="height: 100%; width: auto;">
+					<img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img img-fluid"
+						style="height: 100%; width: auto; display: none;">
+					<div class="drop-zone" ondrop="handleDrop(event)" ondragover="handleDragOver(event)"
+						name="drop_{{ loop.index }}">
+						Drop Zone
 					</div>
+					<div id="zoom_result" class="img-zoom-result"></div>
+					<div class="info_block" id="info_block_{{ loop.index }}">
+						{{ information.explanation_text[loop.index - 1] }}
+					</div>
+				</div>
 				{% endfor %}
 			</div>
 			<div class="col-md-3 col3 container">
 				{% for option in information.options %}
-					<div class="draggable-option" draggable="true" ondragstart="handleDragStart(event)">{{ option }}</div>
+				<div class="draggable-option" draggable="true" ondragstart="handleDragStart(event)">{{ option }}</div>
 				{% endfor %}
 			</div>
-			
+
 		</div>
 	</div>
-	
+
 	<script>
 		var information = {{ information | tojson | safe }};
-        var next_button = document.querySelector('.next-button');
+		var next_button = document.querySelector('.next-button');
 		var questionType = 'dd';
+
 		updateInputs();
 
 
@@ -123,12 +129,12 @@
 		function handleDragStart(event) {
 			event.dataTransfer.setData('text/plain', event.target.innerText);
 		}
-	
+
 		// Handle drag over event
 		function handleDragOver(event) {
 			event.preventDefault();
 		}
-	
+
 		// Handle drop event
 		function handleDrop(event) {
 			event.preventDefault();
@@ -138,7 +144,7 @@
 			console.log("dropped: " + droppedItem);
 			droppedItem.textContent = data;
 
-			if(event.target.innerHTML.includes("Drop Zone")){
+			if (event.target.innerHTML.includes("Drop Zone")) {
 				event.target.innerHTML = '';
 				event.target.appendChild(droppedItem);
 				const optionIndex = Array.from(event.target.parentElement.parentElement.nextElementSibling.children).findIndex(elem => elem.innerText === data);
@@ -159,111 +165,106 @@
 					option.addEventListener('dragstart', handleDragStart);
 				}
 			}
-			
-			
-			
 
-	
-			
 		}
 
 		function learnStuff() {
-            // Create the white screen overlay element
-            const overlay = document.createElement('div');
-            overlay.style.position = 'fixed';
-            overlay.style.top = '0';
-            overlay.style.left = '0';
-            overlay.style.width = '100%';
-            overlay.style.height = '100%';
-            overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-            overlay.style.zIndex = '9999';
-            overlay.style.display = 'flex';
-            overlay.style.alignItems = 'center';
-            overlay.style.justifyContent = 'center';
+			// Create the white screen overlay element
+			const overlay = document.createElement('div');
+			overlay.style.position = 'fixed';
+			overlay.style.top = '0';
+			overlay.style.left = '0';
+			overlay.style.width = '100%';
+			overlay.style.height = '100%';
+			overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+			overlay.style.zIndex = '9999';
+			overlay.style.display = 'flex';
+			overlay.style.alignItems = 'center';
+			overlay.style.justifyContent = 'center';
 
-            // Create the container for information
-            const infoContainer = document.createElement('div');
-            infoContainer.style.backgroundColor = 'white';
-            infoContainer.style.padding = '20px';
-            infoContainer.style.borderRadius = '10px';
-            infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
-            infoContainer.style.textAlign = 'center';
+			// Create the container for information
+			const infoContainer = document.createElement('div');
+			infoContainer.style.backgroundColor = 'white';
+			infoContainer.style.padding = '20px';
+			infoContainer.style.borderRadius = '10px';
+			infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+			infoContainer.style.textAlign = 'center';
 
-            // Display the information
-            const infoText = document.createElement('p');
-            infoText.textContent = information.more_info;
+			// Display the information
+			const infoText = document.createElement('p');
+			infoText.textContent = information.more_info;
 
-            // Close button
-            const closeButton = document.createElement('button');
-            closeButton.textContent = 'Close';
-            closeButton.style.marginTop = '20px';
-            closeButton.style.padding = '10px 20px';
-            closeButton.style.border = 'none';
-            closeButton.style.backgroundColor = 'gray';
-            closeButton.style.color = 'white';
-            closeButton.style.borderRadius = '5px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.addEventListener('click', function() {
-                overlay.style.display = 'none'; // Hide the overlay when close button is clicked
-            });
+			// Close button
+			const closeButton = document.createElement('button');
+			closeButton.textContent = 'Close';
+			closeButton.style.marginTop = '20px';
+			closeButton.style.padding = '10px 20px';
+			closeButton.style.border = 'none';
+			closeButton.style.backgroundColor = 'gray';
+			closeButton.style.color = 'white';
+			closeButton.style.borderRadius = '5px';
+			closeButton.style.cursor = 'pointer';
+			closeButton.addEventListener('click', function () {
+				overlay.style.display = 'none'; // Hide the overlay when close button is clicked
+			});
 
-            // Add information and close button to the container
-            infoContainer.appendChild(infoText);
-            infoContainer.appendChild(closeButton);
+			// Add information and close button to the container
+			infoContainer.appendChild(infoText);
+			infoContainer.appendChild(closeButton);
 
-            // Add the container to overlay
-            overlay.appendChild(infoContainer);
+			// Add the container to overlay
+			overlay.appendChild(infoContainer);
 
-            // Add overlay to body
-            document.body.appendChild(overlay);
-        }
-  
-        function checkSubmit() {
-			
-            if (information.answered == 0) {
+			// Add overlay to body
+			document.body.appendChild(overlay);
+		}
+
+		function checkSubmit() {
+
+			if (information.answered == 0) {
 				let canSubmit = true;
-                var dropInputs = document.querySelectorAll('.drop-zone');
-				
-                dropInputs.forEach(function(input, index) {
-                    var inputValue = input.textContent;
+				var dropInputs = document.querySelectorAll('.drop-zone');
+
+				dropInputs.forEach(function (input, index) {
+					var inputValue = input.textContent;
 					console.log(input.textContent);
-                    if (inputValue.includes("Drop Zone") || inputValue == '') {
+					if (inputValue.includes("Drop Zone") || inputValue == '') {
 						canSubmit = false;
-						
-                    }else{
+
+					} else {
 						// input.style.display = 'none';
-                        // document.getElementById('info_block_' + (index + 1)).style.display = 'flex';
+						// document.getElementById('info_block_' + (index + 1)).style.display = 'flex';
 					}
-                    if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
-                        document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
-                    } else {
-                        document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
-                    }
-                    information.user_answers[index] = inputValue;
+					if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
+						document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
+					} else {
+						document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
+					}
+					information.user_answers[index] = inputValue;
 					console.log(information.user_answers);
-                });
-				if(canSubmit == true){
-					dropInputs.forEach(function(input, index){
+				});
+				if (canSubmit == true) {
+					dropInputs.forEach(function (input, index) {
 						input.style.display = 'none';
 						document.getElementById('info_block_' + (index + 1)).style.display = 'flex';
 					});
 					information.answered = 1;
-					
+
 					submitted = true;
 					submitQuiz();
 					next_button.style.display = 'block';
-				}else{
+				} else {
 					alert("Fucking answer");
 				}
-                
-                
-            }
-        }
+
+
+			}
+		}
 
 		function updateInputs() {
 			if (information.answered == 1) {
 				var dropInputs = document.querySelectorAll('.drop-zone');
-				dropInputs.forEach(function(input, index) {
+				dropInputs.forEach(function (input, index) {
 					input.disabled = true;
 					var inputValue = information.user_answers[index];
 					input.textContent = inputValue;
@@ -284,30 +285,30 @@
 					var optionIndex = information.options.findIndex(option => option.toLowerCase() === inputValue.toLowerCase());
 					if (optionIndex !== -1) {
 						var draggableOptions = document.querySelectorAll('.draggable-option');
-						draggableOptions.forEach(function(option) {
+						draggableOptions.forEach(function (option) {
 							if (option.textContent.toLowerCase() === inputValue.toLowerCase()) {
 								option.remove();
 							}
 						});
 					}
 				});
-				next_button.style.display = 'block';
+				// next_button.style.display = 'block';
 			} else {
-				next_button.style.display = 'none';
+				// next_button.style.display = 'none';
 			}
 		}
 
 		function reset() {
 			if (!information.answered) {
 				var dropZones = document.querySelectorAll('.drop-zone');
-				dropZones.forEach(function(dropZone) {
+				dropZones.forEach(function (dropZone) {
 					dropZone.textContent = 'Drop Zone';
 				});
 
 				var draggableOptionsContainer = document.querySelector('.container .col3');
-				draggableOptionsContainer.innerHTML = ''; 
+				draggableOptionsContainer.innerHTML = '';
 
-				information.options.forEach(function(optionText) {
+				information.options.forEach(function (optionText) {
 					var draggableOption = document.createElement('div');
 					draggableOption.classList.add('draggable-option');
 					draggableOption.draggable = true;
@@ -318,8 +319,33 @@
 				});
 			}
 		}
-		
+
+		let tmp_imgs = document.querySelectorAll('.main_img');
+		let tmp_hints = document.querySelectorAll('.hint_img');
+
+		tmp_imgs.forEach(function (img, idx) {
+			img.addEventListener("mousemove", function (e) {
+				let mouseX = e.clientX;
+				let mouseY = e.clientY;
+				let imgRect = img.getBoundingClientRect();
+
+				if (
+					mouseX >= imgRect.left &&
+					mouseX <= imgRect.right &&
+					mouseY >= imgRect.top &&
+					mouseY <= imgRect.bottom
+				) {
+					imageZoom(".main_img", idx, "zoom_result");
+					// Mouse is within the bounds of this image
+					// You can do something here, like showing a zoom box
+					// For example: imageZoom(img.className, "zoom_result");
+				}
+			});
+		});
+
+
 	</script>
+
 </body>
 
 {% endblock %}

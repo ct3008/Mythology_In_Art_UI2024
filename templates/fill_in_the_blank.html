@@ -1,6 +1,7 @@
 {% extends "quiz_layout.html" %}
 
 {% block quiz_content %}
+
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <style>
@@ -15,26 +16,26 @@
             border: 2px solid black;
             display: none;
             padding: 5px;
-            
+
         }
 
         .fib-input {
             /* adjust width to make everything uniform */
-            width: 100%; 
-        
+            width: 100%;
+
         }
 
         #popup p {
-			display: inline; /* or inline-block */
-		}
+            display: inline;
+            /* or inline-block */
+        }
 
         .question-text {
-			font-weight: bold;
-			font-size: 35px;
-			margin-bottom: 10px;
-			color: rgb(139, 124, 109);
-		}
-
+            font-weight: bold;
+            font-size: 35px;
+            margin-bottom: 10px;
+            color: rgb(139, 124, 109);
+        }
     </style>
 </head>
 
@@ -44,26 +45,29 @@
         <div class="row">
             <div class="col-md-6 col-6 container">
                 <div class="image">
-                    <img class="main_img img-fluid" src= "/static/{{ information.images[0] }}" alt="img">
-                    <img class="hint_img img-fluid" src= "/static/{{ information.hints[0] }}" alt="hint" style="display: none;">
+                    <img class="main_img img-fluid" src="/static/{{ information.images[0] }}" alt="img">
+
+                    <img class="hint_img img-fluid" src="/static/{{ information.hints[0] }}" alt="hint"
+                        style="display: none;">
                 </div>
+                <div id="zoom_result" class="img-zoom-result"></div>
             </div>
             <div class="col-md-6 col-6 container">
                 {% for fib in information.answers %}
-                
+
                 <label> Who is figure number {{loop.index}}:
                     <input class="fib-input" list="browsers" name="fib_answer_{{ loop.index }}" />
                 </label>
-               
+
                 <datalist id="browsers">
                     {% for figure in figures.values() %}
-                        <option value="{{figure.name}}">{{figure.name}}</option>
+                    <option value="{{figure.name}}">{{figure.name}}</option>
                     {% endfor %}
                 </datalist>
 
                 <div class="info_block" id="info_block_{{ loop.index }}">
-                        {{ information.explanation_text[loop.index - 1] }}
-                    </div>
+                    {{ information.explanation_text[loop.index - 1] }}
+                </div>
 
                 {% endfor %}
             </div>
@@ -76,14 +80,27 @@
         console.log(next_button);
         var buttons = document.getElementById('buttons-id');
         var learn_more = document.getElementById('learn-more-id');
-        // console.log(information.answered);
         var questionType = 'fitb';
-        // console.log(information);
-    
-        updateInputs();
-    
-        // Disable the next button initially
+
+        let result = document.getElementsByClassName('img-zoom-result');
+        let img = document.getElementsByClassName('main_img');
         
+        img[0].addEventListener("mouseenter", function () {
+            result[0].style.display = "block";
+        });
+
+        // img[0].addEventListener("mouseleave", function () {
+        //     // Add a delay before hiding the box
+        //     setTimeout(function() {
+        //         result[0].style.display = "none";
+        //     }, 200); // Adjust the delay time as needed (in milliseconds)
+        // });
+
+
+        updateInputs();
+
+        // Disable the next button initially
+
         function learnStuff() {
             // Create the white screen overlay element
             const overlay = document.createElement('div');
@@ -120,7 +137,7 @@
             closeButton.style.color = 'white';
             closeButton.style.borderRadius = '5px';
             closeButton.style.cursor = 'pointer';
-            closeButton.addEventListener('click', function() {
+            closeButton.addEventListener('click', function () {
                 overlay.style.display = 'none'; // Hide the overlay when close button is clicked
             });
 
@@ -139,17 +156,17 @@
             if (information.answered == 0) {
                 let canSubmit = true;
                 var fibInputs = document.querySelectorAll('.fib-input');
-                fibInputs.forEach(function(input, index) {
+                fibInputs.forEach(function (input, index) {
                     var inputValue = input.value.trim();
                     console.log(inputValue);
-                    
+
                     if (inputValue == '') {
                         canSubmit = false;
                         //document.getElementById('info_block_' + (index + 1)).style.display = 'block';
-                    } else{
+                    } else {
                         if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
                             document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
-                        } 
+                        }
                         else {
                             document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
                         }
@@ -157,32 +174,32 @@
                         information.user_answers[index] = inputValue;
                     }
                 });
-                if (canSubmit){
-                    fibInputs.forEach(function(input, index) {
+                if (canSubmit) {
+                    fibInputs.forEach(function (input, index) {
                         document.getElementById('info_block_' + (index + 1)).style.display = 'block';
                         input.disabled = true;
                     });
                     information.answered = 1;
                     // console.log(information);
-                    
+
                     submitted = true;
-        
+
                     // Call submitQuiz function after updating user answers
                     submitQuiz();
                     // replaceButtons();
                     next_button.style.display = 'block';
-                }else{
+                } else {
                     alert("Fucking answer");
                 }
-                
-                
+
+
             }
         }
-    
+
         function updateInputs() {
-            if(information.answered == 1){
+            if (information.answered == 1) {
                 var fibInputs = document.querySelectorAll('.fib-input');
-                fibInputs.forEach(function(input, index) {
+                fibInputs.forEach(function (input, index) {
                     input.disabled = true;
                     input.value = information.user_answers[index];
                     var inputValue = input.value;
@@ -195,32 +212,46 @@
                         document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
                     }
                 });
-                next_button.style.display = 'block';
+                // next_button.style.display = 'block';
                 // buttons.style.display = 'none';
                 // reset_button.style.display = 'none';
                 // submit_button.style.display = 'none';
                 // learn_more.style.display = 'block';
 
-            }else{
-                next_button.style.display = 'none';
+            } else {
+                // next_button.style.display = 'none';
             }
-            
+
         }
-    
+
         function reset() {
             if (!information.answered) {
                 var infoBlocks = document.querySelectorAll('.info_block');
                 var fibInputs = document.querySelectorAll('.fib-input');
-                infoBlocks.forEach(function(block) {
+                infoBlocks.forEach(function (block) {
                     block.style.display = 'none';
                 });
-                fibInputs.forEach(function(input, index) {
+                fibInputs.forEach(function (input, index) {
                     input.value = '';
                 });
             }
         }
+
+
+        // imageZoom("main_img", "zoom_result");
     </script>
-    
+
+    <script>
+        let tmp_img = document.getElementsByClassName("main_img")[0];
+        let tmp_hint = document.getElementsByClassName("hint_img")[0];
+        if (tmp_img.style.display == "none") {
+            imageZoom(".hint_img",0, "zoom_result");
+        } else {
+            imageZoom(".main_img",0, "zoom_result");
+        }
+
+    </script>
+
 </body>
 
 {% endblock %}

@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(239, 235, 224);
+	background-color: rgb(239, 235, 224);
 }
 
 #home {
@@ -25,17 +25,17 @@ body {
 }
 
 .learn-button:hover {
-    border-color: rgb(239, 235, 224);
-    color: black;
-    background-color: rgb(227, 217, 199);
+	border-color: rgb(239, 235, 224);
+	color: black;
+	background-color: rgb(227, 217, 199);
 }
 
 .navbar {
-    background-color: rgb(139, 124, 109) !important;
+	background-color: rgb(139, 124, 109) !important;
 }
 
 .navbar-brand {
-    color: white !important;
+	color: white !important;
 }
 
 #start_learning {
@@ -47,33 +47,33 @@ body {
 }
 
 #start_learning:hover {
-    border-color: rgb(239, 235, 224);
-    color: black;
-    background-color: rgb(227, 217, 199);
+	border-color: rgb(239, 235, 224);
+	color: black;
+	background-color: rgb(227, 217, 199);
 }
 
-.navbar-button{
-    color: black;
-    background-color: rgb(239, 235, 224);
-    border-color: rgb(227, 217, 199);
+.navbar-button {
+	color: black;
+	background-color: rgb(239, 235, 224);
+	border-color: rgb(227, 217, 199);
 }
 
 .navbar-button:hover {
-    border-color: rgb(239, 235, 224);
-    color: black;
-    background-color: rgb(227, 217, 199);
+	border-color: rgb(239, 235, 224);
+	color: black;
+	background-color: rgb(227, 217, 199);
 }
 
-.learn-button{
-    color: black;
-    background-color: rgb(139, 124, 109);
-    border-color: rgb(139, 124, 109);
+.learn-button {
+	color: black;
+	background-color: rgb(139, 124, 109);
+	border-color: rgb(139, 124, 109);
 	width: 20%;
 }
 
 .figureName {
-    justify-content: center;
-    font-size: 40px;
+	justify-content: center;
+	font-size: 40px;
 	padding: 0px 0px 10px 0px;
 }
 
@@ -92,19 +92,19 @@ body {
 	/* margin-right: 20px; */
 	width: 70%;
 	height: 50px;
-    font-size: 20px;
-    font-family: tahoma;
+	font-size: 20px;
+	font-family: tahoma;
 	border-radius: 18px 18px 18px 18px;
 	/* background-color: rgb(139, 124, 109);
 	border-color: rgb(139, 124, 109); */
 	border-color: rgb(239, 235, 224);
-    color: black;
-    background-color: rgb(227, 217, 199);
+	color: black;
+	background-color: rgb(227, 217, 199);
 
 }
 
 #hint_button:hover {
-    background-color: rgb(139, 124, 109);
+	background-color: rgb(139, 124, 109);
 	border-color: rgb(139, 124, 109);
 
 }
@@ -115,7 +115,8 @@ body {
 	transform: translateY(-50%);
 	left: 10px;
 	display: flex;
-	align-items: center; /* Center the buttons vertically */
+	align-items: center;
+	/* Center the buttons vertically */
 	z-index: 9999;
 	/* position: absolute; */
 	/* background-color: black; */
@@ -125,7 +126,7 @@ body {
 
 .navigation-buttons button:hover {
 	background-color: rgb(139, 124, 109);
-    border-color: rgb(139, 124, 109);
+	border-color: rgb(139, 124, 109);
 }
 
 .side {
@@ -143,4 +144,36 @@ body {
 
 .column {
 	max-height: 100%;
+}
+
+.img-zoom-lens {
+	position: absolute;
+	/* border: 1px solid #d4d4d4; */
+	width: 60px;
+	height: 60px;
+}
+
+.img-zoom-result {
+    position: fixed;
+    /* Set dimensions as needed */
+    width: 125px;
+    height: 125px;
+    /* border: 1px solid #d4d4d4; */
+    /* display: none; */
+    z-index: 1000; /* Above other content */
+	/* cursor: none; */
+	/* margin-left: 50px; */
+	/* margin-top: 50px; */
+	/* margin-right: 100px;
+	margin-bottom: 100px; */
+}
+
+
+.image {
+	position: relative;
+	overflow: hidden;
+	/* cursor: zoom-in; */
+	display: flex;
+	justify-content: bottom;
+	/* cursor: none; */
 }

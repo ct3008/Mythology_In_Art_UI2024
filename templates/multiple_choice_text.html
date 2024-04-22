@@ -9,7 +9,7 @@
 		}
 
 		.image {
-			width: 100%;
+			width: 80%;
 			height: auto;
 		}
 
@@ -17,7 +17,8 @@
 			font-weight: bold;
 			font-size: 35px;
 			margin-bottom: 10px;
-			color:rgb(139, 124, 109);
+			color: rgb(139, 124, 109);
+			margin-top: 100px;
 		}
 
 		.quiz-content {
@@ -53,8 +54,8 @@
 			width: 90%;
 			padding: 5px;
 		}
-		
-		.font{
+
+		.font {
 			font-size: 20px;
 		}
 	</style>
@@ -65,11 +66,13 @@
 	<div class="container-fluid">
 		<div class="question-text">{{ information.question }}</div>
 		<div class="row">
-			<div class="col-9" style="flex: 1; position: relative;">
+			<div class="col-8 align-items-center justify-content-center" style="flex: 1; position: relative;">
 				<img class="main_img image" src="/static/{{ information.image }}" alt="Question Image">
-				<img class="hint_img image" src=" /static/{{ information.hints }}" alt="zeus_hint" style="display: none;">
+				<img class="hint_img image" src=" /static/{{ information.hints }}" alt="zeus_hint"
+					style="display: none;">
 			</div>
-			<div class="col-3 align-items-center justify-content-center" style="flex: 1; position: relative;">
+			<div id="zoom_result" class="img-zoom-result"></div>
+			<div class="col-4 align-items-center justify-content-center" style="flex: 1; position: relative;">
 				<form class="options" action="{{ url_for('submit_answer', question_id=information.id) }}" method="post">
 					{% for option in information.options %}
 					<div class="col-12">
@@ -156,14 +159,14 @@
 					}
 					input.disabled = true;
 				});
-				next_button.style.display = 'block';
+				// next_button.style.display = 'block';
 				// buttons.style.display = 'none';
 				// reset_button.style.display = 'none';
 				// submit_button.style.display = 'none';
 				// learn_more.style.display = 'block';
 
 			} else {
-				next_button.style.display = 'none';
+				// next_button.style.display = 'none';
 			}
 
 		}
@@ -183,55 +186,67 @@
 		}
 
 		function learnStuff() {
-            // Create the white screen overlay element
-            const overlay = document.createElement('div');
-            overlay.style.position = 'fixed';
-            overlay.style.top = '0';
-            overlay.style.left = '0';
-            overlay.style.width = '100%';
-            overlay.style.height = '100%';
-            overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-            overlay.style.zIndex = '9999';
-            overlay.style.display = 'flex';
-            overlay.style.alignItems = 'center';
-            overlay.style.justifyContent = 'center';
+			// Create the white screen overlay element
+			const overlay = document.createElement('div');
+			overlay.style.position = 'fixed';
+			overlay.style.top = '0';
+			overlay.style.left = '0';
+			overlay.style.width = '100%';
+			overlay.style.height = '100%';
+			overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+			overlay.style.zIndex = '9999';
+			overlay.style.display = 'flex';
+			overlay.style.alignItems = 'center';
+			overlay.style.justifyContent = 'center';
 
-            // Create the container for information
-            const infoContainer = document.createElement('div');
-            infoContainer.style.backgroundColor = 'white';
-            infoContainer.style.padding = '20px';
-            infoContainer.style.borderRadius = '10px';
-            infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
-            infoContainer.style.textAlign = 'center';
+			// Create the container for information
+			const infoContainer = document.createElement('div');
+			infoContainer.style.backgroundColor = 'white';
+			infoContainer.style.padding = '20px';
+			infoContainer.style.borderRadius = '10px';
+			infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+			infoContainer.style.textAlign = 'center';
 
-            // Display the information
-            const infoText = document.createElement('p');
-            infoText.textContent = information.more_info;
+			// Display the information
+			const infoText = document.createElement('p');
+			infoText.textContent = information.more_info;
 
-            // Create a close button
-            const closeButton = document.createElement('button');
-            closeButton.textContent = 'Close';
-            closeButton.style.marginTop = '20px';
-            closeButton.style.padding = '10px 20px';
-            closeButton.style.border = 'none';
-            closeButton.style.backgroundColor = 'gray';
-            closeButton.style.color = 'white';
-            closeButton.style.borderRadius = '5px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.addEventListener('click', function() {
-                overlay.style.display = 'none'; // Hide the overlay when close button is clicked
-            });
+			// Create a close button
+			const closeButton = document.createElement('button');
+			closeButton.textContent = 'Close';
+			closeButton.style.marginTop = '20px';
+			closeButton.style.padding = '10px 20px';
+			closeButton.style.border = 'none';
+			closeButton.style.backgroundColor = 'gray';
+			closeButton.style.color = 'white';
+			closeButton.style.borderRadius = '5px';
+			closeButton.style.cursor = 'pointer';
+			closeButton.addEventListener('click', function () {
+				overlay.style.display = 'none'; // Hide the overlay when close button is clicked
+			});
 
-            // Append information and close button to the container
-            infoContainer.appendChild(infoText);
-            infoContainer.appendChild(closeButton);
+			// Append information and close button to the container
+			infoContainer.appendChild(infoText);
+			infoContainer.appendChild(closeButton);
 
-            // Append the container to the overlay
-            overlay.appendChild(infoContainer);
+			// Append the container to the overlay
+			overlay.appendChild(infoContainer);
 
-            // Append the overlay to the body
-            document.body.appendChild(overlay);
-        }
+			// Append the overlay to the body
+			document.body.appendChild(overlay);
+		}
+	</script>
+
+	<script>
+		let tmp_img = document.getElementsByClassName("main_img")[0];
+		let tmp_hint = document.getElementsByClassName("hint_img")[0];
+		if (tmp_img.style.display == "none") {
+			imageZoom(".hint_img", 0, "zoom_result");
+		} else {
+			imageZoom(".main_img", 0, "zoom_result");
+		}
+		// imageZoom(".main_img", 0, "zoom_result");
+
 	</script>
 
 </body>
