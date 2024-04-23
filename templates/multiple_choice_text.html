@@ -29,7 +29,7 @@
 		}
 
 		.options {
-			margin: 50px;
+			/* margin: 50px; */
 			align-items: center;
 			justify-content: center;
 		}
@@ -41,7 +41,7 @@
 			width: 100px;
 			width: 70%;
 			/* margin-top:100px; */
-			margin-bottom: 5px;
+			margin-bottom: 0px;
 			border: 2px solid black;
 			display: none;
 			text-align: center;
@@ -57,6 +57,11 @@
 
 		.font {
 			font-size: 20px;
+		}
+
+		.margin {
+			/* margin-top: -50px; */
+			/* margin-bottom/: 20px; */
 		}
 	</style>
 </head>
@@ -75,7 +80,7 @@
 			<div class="col-4 align-items-center justify-content-center" style="flex: 1; position: relative;">
 				<form class="options" action="{{ url_for('submit_answer', question_id=information.id) }}" method="post">
 					{% for option in information.options %}
-					<div class="col-12">
+					<div class="margin">
 						<input type="radio" id="{{ option }}" name="answer" value="{{ option }}">
 						<label class="font" for="{{ option }}">{{ option }}</label>
 						<div class="info_block" id="info_block_{{ loop.index }}">
@@ -119,13 +124,14 @@
 						console.log(selectedOption);
 						// document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
 						if (selectedOption == information.answers[0]) {
-							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
+							// document.getElementById('info_block_' + (index + 1)).style.borderColor = '#50c878';
+							document.getElementById('info_block_' + (index + 1)).style.border = '4px solid #50c878';
 						} else {
-							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
+							document.getElementById('info_block_' + (index + 1)).style.border = '4px solid red';
 						}
 						canSubmit = true;
 					} else if (input.value == information.answers[0]) {
-						document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
+						document.getElementById('info_block_' + (index + 1)).style.border = '4px solid #50c878';
 					}
 				});
 				if (canSubmit) {
@@ -158,12 +164,12 @@
 						input.checked = true;
 						// document.getElementById('info_block_' + (index + 1)).style.display = 'block';  // Display the info block corresponding to the selected option
 						if (input.value == information.answers[0]) {
-							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
+							document.getElementById('info_block_' + (index + 1)).style.border = '4px solid #50c878';
 						} else {
-							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
+							document.getElementById('info_block_' + (index + 1)).style.border = '4px solid red';
 						}
 					} else if (input.value == information.answers[0]) {
-						document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
+						document.getElementById('info_block_' + (index + 1)).style.border = '4px solid #50c878';
 					}
 					input.disabled = true;
 				});

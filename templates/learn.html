@@ -32,7 +32,7 @@
 					{% if (figure.id | int) < figures|length %}
 						<a class="btn btn-secondary learn-button" href="/learn/{{figure.id | int + 1}}">Next</a>
 					{% else %}
-						<a class="btn btn-secondary learn-button" href="/quiz">Take Quiz</a>
+						<a class="btn btn-secondary learn-button" href="/quiz/0">Take Quiz</a>
 					{% endif %}
 				</div>
 			</div>
