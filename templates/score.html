@@ -2,18 +2,157 @@
 
 {% block content %}
 <head>
-	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-	<style>
-		.container{
-			margin-top: 10px;;
-		}
-	</style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <style>
+        /* Center the content horizontally and vertically */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            /* Adjust margin if needed */
+            margin-top: 10px;
+            text-align: center; /* Center text horizontally */
+        }
+
+        .score-history {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .row {
+            margin-top: 20px;
+            
+        }
+
+        button {
+            border-radius: 18px 18px 18px 18px;
+            width: 250px;
+            height: 60px;
+            border-color: rgb(239, 235, 224);
+            color: black;
+            background-color: rgb(227, 217, 199);
+            font-family: tahoma;
+        }
+
+        button:hover{
+            background-color: rgb(139, 124, 109);
+            border-color: rgb(139, 124, 109);
+        }
+
+        .score-history {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .score-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .score-item {
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .score {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .divider {
+            margin: 0 5px;
+        }
+
+        .total-score {
+            color: #2ecc71;
+        }
+
+        .date {
+            color: #aaa;
+        }
+
+        .score_text {
+            font-family: tahoma;
+            font-size: 20px;
+
+        }
+
+        .score_number {
+            margin-bottom: 50px;
+            font-size: 25px;
+        }
+
+        /* Add any additional styles here */
+
+    </style>
 </head>
 
 <body>
-	<div class="container">
-		<!-- insult player if they do bad job -->
-		GOOD JOB Score = {{score}} / {{total_score}}
-	</div>
+    <div class="container">
+        <!-- Display dynamic message based on score -->
+        <div class="score_text">
+            {% if score / total_score < 1/3 %}
+                <!-- <p>Too fucking bad, so fucking sad.</p> -->
+                </p>Better go hit the books again...</p>
+            {% elif 1/3 <= score / total_score < 2/3 %}
+                <p>Not the worst.</p>
+            {% elif 2/3 <= score <= (total_score-1/total_score) %}
+                <p>Wowza, nice!</p>
+            {% else %}
+                
+                <img src="https://media2.giphy.com/avatars/Chomchomishappy/d4lswWUMdMGw.gif" alt="Perfect Score">
+                <p> Technically perfect. But you'll never be as perfect as a raccoon. </p>
+            
+            {% endif %}
+        </div>
+        
+
+        <p class="score_number">Score: {{score}} / {{total_score}}</p>
+        
+        <div class="score-history">
+            <h3>Score History:</h3>
+            <ul class="score-list">
+                {% for score_info, date_info in combined_data %}
+                    <li class="score-item">
+                        <span class="score">{{ score_info }}</span>
+                        <span class="divider">/</span>
+                        <span class="total-score">{{ total_score }}</span>
+                        <span class="date">{{ date_info }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Buttons for restarting quiz and going to learn page -->
+        <div class="row">
+            <button onclick="restartQuiz()">Restart Quiz</button>
+            <button onclick="goToLearnPage()">Relearn</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript functions to handle button clicks
+        function restartQuiz() {
+            // Redirect to the restart quiz route
+            window.location.href = '/restart_quiz';
+        }
+
+        function goToLearnPage() {
+            // Redirect to the learning page with ID 0
+            window.location.href = '/learn';
+        }
+    </script>
 </body>
 {% endblock %}
