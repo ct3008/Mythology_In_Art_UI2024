@@ -100,7 +100,7 @@ multiple_choice_text = [
 	"question": "To which mythological figure does this piece of art belong?",
 	"answers": ["Hermes"],
 	"explanation_text": ["Hermes can be identified by his traveler's cap and winged sandals.", "Apollo can be identified by lyre, bow and arrow.", "Dionysus can be indentified by “exotic” animals and clothing, wines, vines and grapes."],
-	"more_info": "....background, forklores...",
+	"more_info": "This painting piece of the god Hermes are on the inside of a Kylie, a type of Ancient Greek cup. It's decorated with a festive scene on the outside and was made in Athens by potter Pamphaios and painter Ambrosios Painter around 510 BC. The cup, found in Vulci, is now in the Munich State Collection of Antiquities, inventory number 2614. It's made of clay and mentioned in a book on red-figure vase painters by John D. Beazley.",
 	"hints": "hermes3_annotated.jpg",
     "answered": 0,
     "user_answers":['']
@@ -112,7 +112,7 @@ multiple_choice_text = [
 	"question": "To which mythological figure does this piece of art belong?",
 	"answers": ["Artemis"],
 	"explanation_text": ["Athena can be identified by breastplate, helmet, shield and spear.", "Zeus can be identified by his lightning bolt and sceptre.", "Artemis can be identified by her bow and arrow."],
-	"more_info": "....background, forklores...",
+	"more_info": "The painting of Artemis is on a bell krater, a type of ancient Greek vase for mixing wine and water, housed in the Museum of Fine Arts, Boston, under the catalogue number Boston 10.185. Made around 470 B.C., it features the Attic red-figure style and is known as the name vase of the Pan Painter, a celebrated artist of the Early Classical period. This piece highlights the artistic and cultural achievements of ancient Greece.",
 	"hints": "artemis1_annotated.jpg",
     "answered": 0,
     "user_answers":['']
@@ -124,7 +124,7 @@ multiple_choice_text = [
 	"question": "To which mythological figure does this piece of art belong?",
 	"answers": ["Dionysus"],
 	"explanation_text": ["Poseidon can be identified by trident and horses.", "Dionysus can be identified by vines, maenad and satyrs (his followers).", "Hephaestus can be identified by forging weapons and donkey."],
-	"more_info": "....background, forklores...",
+	"more_info": "This piece is attributed to the painter Makron and can be found within the Antikensammlung Berlin museum collection in catalog number Berlin F2290. It depicts Dionysus crowned with a wreath of ivy and holding a fruiting grapevine in one hand and thyrsos (pine-cone tipped staff) in the other. He is accompanied by a Satyr playing a double-flute.",
 	"hints": "dionysus6_annotated.jpg",
     "answered": 0,
     "user_answers":['']

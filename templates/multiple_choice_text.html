@@ -101,7 +101,7 @@
 		var questionType = 'mct';
 		// console.log(information);
 
-		
+
 		updateInputs();
 
 		// Disable the next button initially
@@ -124,6 +124,8 @@
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
 						}
 						canSubmit = true;
+					} else if (input.value == information.answers[0]) {
+						document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
 					}
 				});
 				if (canSubmit) {
@@ -160,6 +162,8 @@
 						} else {
 							document.getElementById('info_block_' + (index + 1)).style.borderColor = 'red';
 						}
+					} else if (input.value == information.answers[0]) {
+						document.getElementById('info_block_' + (index + 1)).style.borderColor = 'green';
 					}
 					input.disabled = true;
 				});
