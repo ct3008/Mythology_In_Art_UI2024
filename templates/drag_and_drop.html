@@ -93,7 +93,6 @@
 		<div class="row">
 			<div class="col-md-9 col9 row" style="display: flex;">
 				{% for pic in information.images %}
-				<div id="zoom_result" class="img-zoom-result"></div>
 				<div class="col-md-{{ 12 // loop.length }} image-container" style="flex: 1; position: relative;">
 					<img src="/static/{{ pic }}" class="main_img img-fluid" style="height: 100%; width: auto;">
 					<img src="/static/{{ information.hints[loop.index - 1] }}" class="hint_img img-fluid"
@@ -107,6 +106,7 @@
 					</div>
 				</div>
 				{% endfor %}
+				<div id="zoom_result" class="img-zoom-result"></div>
 			</div>
 			<div class="col-md-3 col3 container">
 				{% for option in information.options %}
@@ -118,9 +118,13 @@
 	</div>
 
 	<script>
+		// $(document).ready(function () {
+		// 	window.location.reload();
+		// });
 		var information = {{ information | tojson | safe }};
 		var next_button = document.querySelector('.next-button');
 		var questionType = 'dd';
+		
 
 		updateInputs();
 
@@ -254,7 +258,7 @@
 					submitQuiz();
 					next_button.style.display = 'block';
 				} else {
-					alert("Fucking answer");
+					alert("Please answer the question before submitting.");
 				}
 
 

@@ -83,21 +83,21 @@ function imageZoom(imgID, imgIdx, resultID) {
 		// console.log(img.width);
 		// console.log(x, y);
 		/* Prevent the lens from being positioned outside the image: */
-		if (x > img.width - 5) {
+		if (x > img.width - 10) {
 			x = img.width - lens.offsetWidth;
 			result.style.display = 'none';
 			return;
 		}
-		if (x < 0) {
+		if (x < 5) {
 			x = 0;
 			result.style.display = 'none';
 			return;
 		}
-		if (y > img.height - 5) {
+		if (y > img.height - 10) {
 			y = img.height - lens.offsetHeight; result.style.display = 'none';
 			return;
 		}
-		if (y < 0) {
+		if (y < 5) {
 			y = 0;
 			result.style.display = 'none';
 			return;
@@ -107,8 +107,8 @@ function imageZoom(imgID, imgIdx, resultID) {
 		lens.style.left = x + "px";
 		lens.style.top = y + "px";
 		/* Set the position of the result box to follow the cursor: */
-		result.style.left = (e.pageX + 20) + "px";
-		result.style.top = (e.pageY + 20) + "px";
+		result.style.left = (e.pageX + 10) + "px";
+		result.style.top = (e.pageY + 10) + "px";
 		result.style.display = 'block';
 		/* Display what the lens "sees": */
 		result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";

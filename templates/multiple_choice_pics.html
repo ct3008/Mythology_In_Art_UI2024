@@ -83,13 +83,20 @@
 	</div>
 
 	<script>
+		// $(document).ready(function () {
+		// 	window.location.reload();
+		// });
+
 		var information = {{ information | tojson | safe }};
 		var next_button = document.querySelector('.next-button');
 		var buttons = document.getElementById('buttons-id');
 		var learn_more = document.getElementById('learn-more-id');
 		// console.log(information.answered);
 		var questionType = 'mcp';
+		var result_box = document.getElementById('zoom_result');
 		// console.log(information);
+
+		
 
 		updateInputs();
 
@@ -128,7 +135,7 @@
 					});
 					next_button.style.display = 'block';
 				} else {
-					alert("Fucking answer");
+					alert("Please answer the question before submitting.");
 					console.log("No option selected");
 				}
 

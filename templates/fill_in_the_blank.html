@@ -75,6 +75,9 @@
     </div>
 
     <script>
+        // $(document).ready(function () {
+		// 	window.location.reload();
+		// });
         var information = {{ information | tojson | safe }};
         var next_button = document.querySelector('.next-button');
         console.log(next_button);
@@ -84,6 +87,7 @@
 
         let result = document.getElementsByClassName('img-zoom-result');
         let img = document.getElementsByClassName('main_img');
+        
         
         img[0].addEventListener("mouseenter", function () {
             result[0].style.display = "block";
@@ -189,7 +193,7 @@
                     // replaceButtons();
                     next_button.style.display = 'block';
                 } else {
-                    alert("Fucking answer");
+                    alert("Please answer the question before submitting.");
                 }
 
 
