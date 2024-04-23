@@ -24,6 +24,41 @@ body {
 	padding: 0px 15px 0px 0px;
 }
 
+.side {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	box-sizing: border-box;
+}
+
+.div-column {
+	max-width: 100%;
+	max-height: 83%;
+	text-align: center;
+}
+
+.column {
+	max-height: 100%;
+}
+
+.learn_img {
+	display: block;
+	max-width: 250px;
+	max-height: 300px;
+	width: auto;
+	height: auto;
+}
+
+.div_learn_img {
+	text-align: center;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.div_description {
+	margin-top: -100px;
+}
+
 .learn-button:hover {
 	border-color: rgb(239, 235, 224);
 	color: black;
@@ -64,11 +99,11 @@ body {
 	background-color: rgb(227, 217, 199);
 }
 
-.learn-button {
-	color: black;
-	background-color: rgb(139, 124, 109);
-	border-color: rgb(139, 124, 109);
-	width: 20%;
+.learn-button{
+    color: white;
+    background-color: rgb(139, 124, 109);
+    border-color: rgb(139, 124, 109);
+	width: 100%;
 }
 
 .figureName {
