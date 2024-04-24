@@ -211,6 +211,127 @@ figures = {
    }
 }
 
+all_images = {
+    "zeus1.jpg": {
+        "symbols":{
+            "lightning bolt":[15,155],
+            "sceptre":[15,50]
+        }
+    },
+    "zeus3.jpg": {
+        "symbols":{
+            "lightning bolt":[10,80],
+            "eagle":[20,210]
+        }
+    },
+    "poseidon1.jpg": {
+        "symbols":{
+            "trident":[10,190],
+            "horses":[90,230]
+        }
+    },
+    "poseidon5.jpg": {
+        "symbols":{
+            "trident":[100,155],
+            "sea creatures":[135,70]
+        }
+    },  
+    "hades2.jpg": {
+        "symbols":{
+            "cornucopia":[90,140],
+        }
+    }, 
+    "hades5.jpg": {
+        "symbols":{
+            "scepter":[100,210]
+        }
+    }, 
+    "athena3.jpg": {
+        "symbols":{
+            "shield":[200,50],
+            "spear":[50,180],
+            "helmet":[50,80],
+
+        }
+    }, 
+    "athena5.jpg": {
+        "symbols":{
+            "helmet":[20,100]
+        }
+    },
+    "hermes1.jpg": {
+        "symbols":{
+            "caduceus":[20,60],
+            "petasos":[110,50],
+            "winged sandals":[210,30]
+        }
+    },
+    "hermes2.jpg": {
+        "symbols":{
+            "caduceus":[10,100],
+            "petasos":[40,40],
+            "winged sandals":[230,60]
+        }
+    },
+    "herakles1.jpg": {
+        "symbols":{
+            "lion skin":[10,100],
+            "bat":[40,185]
+        }
+    },
+    "herakles5.jpg": {
+        "symbols":{
+            "lion skin":[200,40],
+            "bat":[40,120]
+        }
+    },
+    "apollo1.jpg": {
+        "symbols":{
+            "lyre":[50,100],
+        }
+    },
+    "apollo2.jpg": {
+        "symbols":{
+            "lyre":[110,150],
+            "laurel":[20,170],
+            "bow and arrow":[40,220]
+        }
+    },
+    "artemis2.jpg": {
+        "symbols":{
+            "wild animals":[150,70],
+            "bow and arrow":[50,170],
+        }
+    },
+    "artemis5.jpg": {
+        "symbols":{
+            "wild animals":[190,70],
+        }
+    },
+    "dionysus1.jpg": {
+        "symbols":{
+            "'exotic' animals":[140,70],
+            "'exotic' clothing":[20,100],
+        }
+    },
+    "dionysus4.jpg": {
+        "symbols":{
+            "'exotic' animals":[100,170],
+        }
+    },
+    "hephaistos1.jpg": {
+        "symbols":{
+            "forged weapons":[30,50],
+            "donkey":[100,170],
+        }
+    },
+    "hephaistos2.jpg": {
+        "symbols":{
+            "forging weapons":[115,190]
+        }
+    },
+}
+
 # figures_list = []
 # for v in figures.values():
 #     figures_list.append(v['name'])
@@ -301,7 +422,7 @@ def contents():
 def learn(id):
 	user_sequence.append("learn/"+id)
 	user_progress["learn/"+id] = datetime.datetime.now()
-	return render_template('learn.html', figures=figures,  figure=figures[id])
+	return render_template('learn.html', figures=figures,  figure=figures[id], images=all_images)
 
 # @app.route('/quiz')
 # def quiz_home():
