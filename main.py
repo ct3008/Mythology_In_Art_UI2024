@@ -214,7 +214,7 @@ figures = {
 all_images = {
     "zeus1.jpg": {
         "symbols":{
-            "lightning bolt":[15,155],
+            "lightning bolt":[15,155], #[-y, x]
             "sceptre":[15,50]
         }
     },
