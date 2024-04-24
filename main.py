@@ -20,10 +20,10 @@ fill_in_the_blank = [
    {"id": 1,
 	"images": ["herakles6.jpg"],
     "question": "Fill in the Blank",
-	"answers": ["Apollo", "Herakles", "Artemis"], #names left to right,
+	"answers": ["Athena", "Herakles", "Artemis"], #names left to right,
 	"hints": ["herakles6_annotated.jpg"],
 	"more_info":"This is depicts Herakles, Artemis and the Cerynitian Hind, Athenian black-figure amphora from 6th century BC. \n The Elaphos Kerynitis (Cerynitian Hind) was a golden-horned deer sacred to the goddess Artemis. Herakles was sent to fetch it as one of his twelve labours. After chasing the animal for a full year he finally captured it on Mount Artemision in Arkadia (Arcadia). The goddess Artemis complained about the treatment of her deer whose horn had broken off by the hero in the struggle. He nevertheless managed to persuade her to let him borrow it for the completion of his Labour. According to some the hind was one of five golden-horned deer gifted to Artemis by the Nymph Taygete. The other four drew the chariot of the goddess. The hind may once have been assigned a Constellation like the other beasts of Herakles' labours.", 
-	"explanation_text": ["Apollo: same apparel as his twin Artemis", "Herakles: lion skin", "Artemis: bow and her twin Apollo"],
+	"explanation_text": ["Athena: helmet", "Herakles: lion skin", "Artemis: bow and her twin Apollo"],
     "answered": 0,
     "user_answers":['','','']
 	},
