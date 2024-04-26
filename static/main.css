@@ -11,10 +11,6 @@ body {
 	text-align: center;
 }
 
-#specific {
-	font-weight: bold;
-}
-
 #learn_buttons {
 	bottom: 10px;
 	display: flex;
@@ -31,18 +27,8 @@ body {
 	box-sizing: border-box;
 }
 
-.div-column {
-	max-width: 100%;
-	max-height: 83%;
-	text-align: center;
-}
-
-.column {
-	max-height: 100%;
-}
-
 .learn_img {
-	display: block;
+	display: inline-block;
 	max-width: 250px;
 	max-height: 300px;
 	width: auto;
@@ -52,11 +38,17 @@ body {
 .div_learn_img {
 	text-align: center;
 	display: flex;
-	justify-content: space-evenly;
+	align-items: center;
+	margin-top: -10px;
 }
 
 .div_description {
-	margin-top: -100px;
+	font-size: 18px;
+}
+
+#specific {
+	font-weight: bold;
+	font-size: 20px;
 }
 
 .learn-button:hover {
@@ -173,7 +165,7 @@ body {
 
 .div-column {
 	max-width: 100%;
-	max-height: 100%;
+	max-height: 83%;
 	text-align: center;
 }
 
