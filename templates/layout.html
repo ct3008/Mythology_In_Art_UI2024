@@ -33,8 +33,8 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 		<div class="container-fluid p-2 ml-2">
 			<a class="navbar-brand" href="/">Greek Mythology in Art</a>
-			<div>
-				<div class="btn-group px-2">
+			<div class="ml-auto">
+				<div class="btn-group">
 					<a class="btn btn-secondary navbar-button" href="/learn">Table of Contents</a>
 					<a class="btn btn-secondary dropdown-toggle dropdown-toggle-split navbar-button"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
@@ -45,10 +45,12 @@
 						{% endfor %}
 					</div>
 				</div>
-				<a class="btn btn-secondary navbar-button px-2" href="/quiz/0">Take Quiz</a>
+				<a class="btn btn-secondary navbar-button" href="/quiz/0">Take Quiz</a>
+
 			</div>
 		</div>
 	</nav>
+	
 
 	<div class=" mt-5 pt-3">
 		{% block content %}

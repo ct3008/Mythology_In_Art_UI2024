@@ -83,25 +83,15 @@ function imageZoom(imgID, imgIdx, resultID) {
 		// console.log(img.width);
 		// console.log(x, y);
 		/* Prevent the lens from being positioned outside the image: */
-		if (x > img.width - 10) {
-			x = img.width - lens.offsetWidth;
+		if (x > img.width - 10 || x < 5 || y > img.height - 10 || y < 5) {
+			// x = img.width - lens.offsetWidth;
 			result.style.display = 'none';
 			return;
 		}
-		if (x < 5) {
-			x = 0;
-			result.style.display = 'none';
-			return;
-		}
-		if (y > img.height - 10) {
-			y = img.height - lens.offsetHeight; result.style.display = 'none';
-			return;
-		}
-		if (y < 5) {
-			y = 0;
-			result.style.display = 'none';
-			return;
-		}
+		if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+    	if (x < 0) {x = 0;}
+    	if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+    	if (y < 0) {y = 0;}
 		// console.log("why didnt get into this point?");
 		/* Set the position of the lens: */
 		lens.style.left = x + "px";
