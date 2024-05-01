@@ -20,15 +20,16 @@
 	<div class="row g-4">
 		<div class="col-md-6">
 			{% for figure in figures.values() %}
-			    {% if not loop.index is divisibleby 2 %}
-			    	<a class="dropdown-item h4" href="/learn/{{ figure.id }}">
+				{% if not loop.index is divisibleby 2 %}
+				<a class="dropdown-item h4" href="/learn/{{ figure.id }}">
 					<div class="d-flex align-items-center justify-content-center p-2">
 						<div class="name-text p-2 text-start col-6">{{ figure.name }}</div>
-						<img class="w-25 p-2 col-6" src="/static/{{figure.name}}crop.jpg"  />
+						<img class="w-25 p-2 col-6" src="/static/{{figure.name}}Table.jpg" alt="{{ figure.name }}" />
+						<!-- <div class="name-text p-2 text-start col-6">{{ figure.name }}</div> -->
 					</div>
 					<br>
 				</a>
-			    {% endif %}
+				{% endif %}
 			{% endfor %}
 		</div>
 		<div class="col-md-6">
@@ -36,8 +37,12 @@
 			    {% if loop.index is divisibleby 2 %}
 			    	<a class="dropdown-item h4" href="/learn/{{ figure.id }}">
 					<div class="d-flex align-items-center p-2">
+						<img class="w-25 p-2 col-6" src="/static/{{figure.name}}Table.jpg"  />
 						<div class="name-text p-2 text-start col-6">{{ figure.name }}</div>
-						<img class="w-25 p-2 col-6" src="/static/{{figure.name}}crop.jpg"  />
+						<!-- <div class="name-text p-2 text-start col-6 d-flex flex-column justify-content-center">
+							<div>{{ figure.name }}</div>
+						</div> -->
+						
 					</div>
 					<br>
 				</a>
