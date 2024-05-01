@@ -33,20 +33,23 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 		<div class="container-fluid p-2">
 			<a class="navbar-brand" href="/">Greek Mythology in Art</a>
-			<a class="btn btn-secondary navbar-button" href="/quiz/0">Take Quiz</a>
-			<div class="btn-group">
-				<a class="btn btn-secondary navbar-button" href="/learn">Table of Contents</a>
-				<a class="btn btn-secondary dropdown-toggle dropdown-toggle-split navbar-button"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
-				</a>
-				<div class="dropdown-menu">
-					{% for figure in figures.values() %}
-						<a class="dropdown-item" href="/learn/{{figure.id}}">{{figure.name}}</a>
-					{% endfor %}
+			<div class="ml-auto">
+				<div class="btn-group">
+					<a class="btn btn-secondary navbar-button" href="/learn">Table of Contents</a>
+					<a class="btn btn-secondary dropdown-toggle dropdown-toggle-split navbar-button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
+					</a>
+					<div class="dropdown-menu">
+						{% for figure in figures.values() %}
+							<a class="dropdown-item" href="/learn/{{figure.id}}">{{figure.name}}</a>
+						{% endfor %}
+					</div>
 				</div>
+				<a class="btn btn-secondary navbar-button" href="/quiz/0">Take Quiz</a>
 			</div>
 		</div>
 	</nav>
+	
 
 	<div class=" mt-5 pt-3">
 		{% block content %}
