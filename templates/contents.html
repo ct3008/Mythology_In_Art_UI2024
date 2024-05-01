@@ -2,11 +2,49 @@
 
 
 {% block content %}
+	<style>
+		.name-text {
+			font-weight: bold;
+			font-size: 30px;
+			margin-bottom: 10px;
+			color: rgb(139, 124, 109);
+		}
+		.title-text {
+			font-weight: bold;
+			font-size: 50px;
+			margin-bottom: 10px;
+		}
+	</style>
 	<div class="container mt-5 text-center">
-        <h1 class="p-5">Table of Contents</h1>
-		{% for figure in figures.values() %}
-			<a class="dropdown-item h4 p-2" href="/learn/{{figure.id}}">{{figure.name}}</a>
-		{% endfor %}
+        <h1 class="p-5 title-text">Table of Contents</h1>
+	<div class="row g-4">
+		<div class="col-md-6">
+			{% for figure in figures.values() %}
+			    {% if not loop.index is divisibleby 2 %}
+			    	<a class="dropdown-item h4" href="/learn/{{ figure.id }}">
+					<div class="d-flex align-items-center justify-content-center p-2">
+						<div class="name-text p-2 text-start col-6">{{ figure.name }}</div>
+						<img class="w-25 p-2 col-6" src="/static/{{figure.name}}crop.jpg"  />
+					</div>
+					<br>
+				</a>
+			    {% endif %}
+			{% endfor %}
+		</div>
+		<div class="col-md-6">
+			{% for figure in figures.values() %}
+			    {% if loop.index is divisibleby 2 %}
+			    	<a class="dropdown-item h4" href="/learn/{{ figure.id }}">
+					<div class="d-flex align-items-center p-2">
+						<div class="name-text p-2 text-start col-6">{{ figure.name }}</div>
+						<img class="w-25 p-2 col-6" src="/static/{{figure.name}}crop.jpg"  />
+					</div>
+					<br>
+				</a>
+			    {% endif %}
+			{% endfor %}
+		</div>
+	    </div>
 	</div>
 
 {% endblock %}
