@@ -44,22 +44,22 @@ drag_and_drop = [
    {"id": 0,
     "question": "Drag the Correct Name to Each Image",
 	"images": ["HephDion_h.jpg","HephDion_d.jpg"],
-	"options": ["Dionysus","Hephaestus","Artemis", "Athena"],
-	"answers": ["Hephaestus","Dionysus"], # from left to right
+	"options": ["Dionysus","Hephaistos","Artemis", "Athena"],
+	"answers": ["Hephaistos","Dionysus"], # from left to right
 	"hints": ["HephDion_h_annotated.jpg","HephDion_d_annotated.jpg"],
-	"more_info": "Held in the Toledo Museum of Art. Originates from 430-420 B.C. \n It depicts Hephaestus' return to Olympus atop a donkey. He is led by Thionysus and a Satyriscus (child Satyr) playing a flute. \n 'Hephaistos refused to listen to any other of the gods save Dionysos - in him he reposed the fullest trust - and after making him drunk Dionysos brought him to heaven' - Pausanias, Guide to Greece 1.20.3.", 
-	"explanation_text": ["Hephaestus: hammer and tongs (forging tools)", "Dionysus: wine cup, thyrsus staff, and satyr"],
+	"more_info": "Held in the Toledo Museum of Art. Originates from 430-420 B.C. \n It depicts Hephaistos' return to Olympus atop a donkey. He is led by Thionysus and a Satyriscus (child Satyr) playing a flute. \n 'Hephaistos refused to listen to any other of the gods save Dionysos - in him he reposed the fullest trust - and after making him drunk Dionysos brought him to heaven' - Pausanias, Guide to Greece 1.20.3.", 
+	"explanation_text": ["Hephaistos: hammer and tongs (forging tools)", "Dionysus: wine cup, thyrsus staff, and satyr"],
     "answered": 0,
     "user_answers":['','']
    },
    {"id": 1,
     "question": "Drag the Correct Name to Each Image",
 	"images": ["HAZ_z.jpg","HAZ_a.jpg","HAZ_h.jpg"],
-	"options": ["Hades","Zeus", "Dionysus","Athena", "Hermes","Hephaestus"],
-	"answers": ["Zeus", "Athena", "Hephaestus"], # from left to right
+	"options": ["Hades","Zeus", "Dionysus","Athena", "Hermes","Hephaistos"],
+	"answers": ["Zeus", "Athena", "Hephaistos"], # from left to right
 	"hints": ["HAZ_z_annotated.jpg","HAZ_a_annotated.jpg","HAZ_h_annotated.jpg"],
-	"more_info": "Held in the British Museum in London. Dates ca. 555 - 550 B.C. \n Hephaestus births Athena from the skull of Zeus with the blow of an axe. The king of the gods is seated on a throne decorated with the head of a swan and brandishes a lightning-bolt in his outstretched hand. Athena springs forth from his head, born ready-equipped with a shield. Hephaestus waves a hand, imitating an Eileithyia (birth-goddess), and holds a double-headed axe or mallet. He wears a short workman's chiton and boots.", 
-	"explanation_text": ["Zeus: lightning bolt", "Athena: emerging from Zeus' head", "Hephaestus: forging hammer."],
+	"more_info": "Held in the British Museum in London. Dates ca. 555 - 550 B.C. \n Hephaistos births Athena from the skull of Zeus with the blow of an axe. The king of the gods is seated on a throne decorated with the head of a swan and brandishes a lightning-bolt in his outstretched hand. Athena springs forth from his head, born ready-equipped with a shield. Hephaistos waves a hand, imitating an Eileithyia (birth-goddess), and holds a double-headed axe or mallet. He wears a short workman's chiton and boots.", 
+	"explanation_text": ["Zeus: lightning bolt", "Athena: emerging from Zeus' head", "Hephaistos: forging hammer."],
     "answered": 0,
     "user_answers":['','','']
    }
@@ -120,10 +120,10 @@ multiple_choice_text = [
 {
     "id": 2,
 	"image": "dionysus6.jpg",
-	"options": ["Poseidon", "Dionysus", "Hephaestus"],
+	"options": ["Poseidon", "Dionysus", "Hephaistos"],
 	"question": "To which mythological figure does this piece of art belong?",
 	"answers": ["Dionysus"],
-	"explanation_text": ["Poseidon can be identified by trident and horses.", "Dionysus can be identified by vines, maenad and satyrs (his followers).", "Hephaestus can be identified by forging weapons and donkey."],
+	"explanation_text": ["Poseidon can be identified by trident and horses.", "Dionysus can be identified by vines, maenad and satyrs (his followers).", "Hephaistos can be identified by forging weapons and donkey."],
 	"more_info": "This piece is attributed to the painter Makron and can be found within the Antikensammlung Berlin museum collection in catalog number Berlin F2290. It depicts Dionysus crowned with a wreath of ivy and holding a fruiting grapevine in one hand and thyrsos (pine-cone tipped staff) in the other. He is accompanied by a Satyr playing a double-flute.",
 	"hints": "dionysus6_annotated.jpg",
     "answered": 0,
@@ -176,7 +176,7 @@ figures = {
    },
    "6": {
       "id": "6",
-      "name": "Hephaestus",
+      "name": "Hephaistos",
       "description": "Hephaistos is the god of craftsman (specifically hard crafts, counterbalancing Athena). He has a physical disability and is often seen being carried by a donkey after being kicked out of Mount Olympus. He is married to Aphrodite and is Hera's son.",
       "symbols": ["forging weapons", "donkey", "Often with Athena and Zeus (during Athena's birth)"],
 	   "data": ["hephaistos1.jpg","hephaistos2.jpg","hephaistos3.jpg","hephaistos4.jpg","hephaistos5.jpg","hephaistosDionysus.jpg"]
@@ -261,15 +261,15 @@ all_images = {
     },
     "hermes1.jpg": {
         "symbols":{
-            "caduceus":[20,60],
-            "petasos":[110,50],
+            "petasos":[20,60],
+            "caduceus":[110,50],
             "winged sandals":[210,30]
         }
     },
     "hermes2.jpg": {
         "symbols":{
-            "caduceus":[10,100],
-            "petasos":[40,40],
+            "petasos":[10,100],
+            "caduceus":[40,40],
             "winged sandals":[230,60]
         }
     },
