@@ -152,7 +152,6 @@ body {
 	left: 10px;
 	display: flex;
 	align-items: center;
-	/* Center the buttons vertically */
 	z-index: 9999;
 	/* position: absolute; */
 	/* background-color: black; */
@@ -192,7 +191,6 @@ body {
 
 .img-zoom-result {
     position: fixed;
-    /* Set dimensions as needed */
     width: 125px;
     height: 125px;
     /* border: 1px solid #d4d4d4; */

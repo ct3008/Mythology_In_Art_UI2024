@@ -12,7 +12,6 @@
 		.image-container {
 			margin-top: 0px;
 			height: 300px;
-			/* Set the desired height for the image containers */
 		}
 
 
@@ -28,7 +27,6 @@
 
 		.draggable-option:hover {
 			background-color: lightgray;
-			/* Change background color on hover */
 		}
 
 		.drop-zone {
@@ -129,17 +127,17 @@
 		updateInputs();
 
 
-		// Handle drag start event
+		// drag start event
 		function handleDragStart(event) {
 			event.dataTransfer.setData('text/plain', event.target.innerText);
 		}
 
-		// Handle drag over event
+		// drag over event
 		function handleDragOver(event) {
 			event.preventDefault();
 		}
 
-		// Handle drop event
+		// drop event
 		function handleDrop(event) {
 			event.preventDefault();
 			const data = event.dataTransfer.getData('text/plain');
@@ -163,7 +161,7 @@
 				if (optionIndex !== -1) {
 					const option = event.target.parentElement.parentElement.nextElementSibling.children[optionIndex];
 					option.innerHTML = temp;
-					// Remove existing event listener before adding a new one
+					// removes existing event listener before adding a new one
 					option.removeEventListener('dragstart', handleDragStart);
 					option.draggable = true;
 					option.addEventListener('dragstart', handleDragStart);
@@ -173,7 +171,7 @@
 		}
 
 		function learnStuff() {
-			// Create the white screen overlay element
+			// white screen overlay element
 			const overlay = document.createElement('div');
 			overlay.style.position = 'fixed';
 			overlay.style.top = '0';
@@ -186,7 +184,7 @@
 			overlay.style.alignItems = 'center';
 			overlay.style.justifyContent = 'center';
 
-			// Create the container for information
+			// container for information
 			const infoContainer = document.createElement('div');
 			infoContainer.style.backgroundColor = 'white';
 			infoContainer.style.padding = '20px';
@@ -194,11 +192,11 @@
 			infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
 			infoContainer.style.textAlign = 'center';
 
-			// Display the information
+			// display info
 			const infoText = document.createElement('p');
 			infoText.textContent = information.more_info;
 
-			// Close button
+			// close button style + functionality
 			const closeButton = document.createElement('button');
 			closeButton.textContent = 'Close';
 			closeButton.style.marginTop = '20px';
@@ -209,17 +207,12 @@
 			closeButton.style.borderRadius = '5px';
 			closeButton.style.cursor = 'pointer';
 			closeButton.addEventListener('click', function () {
-				overlay.style.display = 'none'; // Hide the overlay when close button is clicked
+				overlay.style.display = 'none';
 			});
 
-			// Add information and close button to the container
 			infoContainer.appendChild(infoText);
 			infoContainer.appendChild(closeButton);
-
-			// Add the container to overlay
 			overlay.appendChild(infoContainer);
-
-			// Add overlay to body
 			document.body.appendChild(overlay);
 		}
 
@@ -273,19 +266,17 @@
 					var inputValue = information.user_answers[index];
 					input.textContent = inputValue;
 
-					// Hide the drop zone and display the corresponding info block
 					if (inputValue !== '') {
 						input.style.display = 'none';
 						document.getElementById('info_block_' + (index + 1)).style.display = 'flex';
 					}
-					// Check if the user answer matches the correct answer and style accordingly
 					if (inputValue.toLowerCase() == information.answers[index].toLowerCase()) {
 						document.getElementById('info_block_' + (index + 1)).style.border = '4px solid #50c878';
 					} else {
 						document.getElementById('info_block_' + (index + 1)).style.border = '4px solid red';
 					}
 
-					// Remove the option already taken by user_answers
+					// remove option already taken by user_answers
 					var optionIndex = information.options.findIndex(option => option.toLowerCase() === inputValue.toLowerCase());
 					if (optionIndex !== -1) {
 						var draggableOptions = document.querySelectorAll('.draggable-option');
@@ -340,9 +331,8 @@
 					mouseY <= imgRect.bottom
 				) {
 					imageZoom(".main_img", idx, "zoom_result");
-					// Mouse is within the bounds of this image
-					// You can do something here, like showing a zoom box
-					// For example: imageZoom(img.className, "zoom_result");
+					// Mouse is within the bounds of image
+					
 				}
 			});
 		});

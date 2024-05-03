@@ -109,9 +109,6 @@
 
 		updateInputs();
 
-		// Disable the next button initially
-
-
 		function checkSubmit() {
 			if (information.answered == 0) {
 				var radioInputs = document.querySelectorAll('input[name="answer"]');
@@ -213,7 +210,6 @@
 			overlay.style.alignItems = 'center';
 			overlay.style.justifyContent = 'center';
 
-			// Create the container for information
 			const infoContainer = document.createElement('div');
 			infoContainer.style.backgroundColor = 'white';
 			infoContainer.style.padding = '20px';
@@ -221,11 +217,9 @@
 			infoContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
 			infoContainer.style.textAlign = 'center';
 
-			// Display the information
 			const infoText = document.createElement('p');
 			infoText.textContent = information.more_info;
 
-			// Create a close button
 			const closeButton = document.createElement('button');
 			closeButton.textContent = 'Close';
 			closeButton.style.marginTop = '20px';
@@ -236,17 +230,12 @@
 			closeButton.style.borderRadius = '5px';
 			closeButton.style.cursor = 'pointer';
 			closeButton.addEventListener('click', function () {
-				overlay.style.display = 'none'; // Hide the overlay when close button is clicked
+				overlay.style.display = 'none';
 			});
 
-			// Append information and close button to the container
 			infoContainer.appendChild(infoText);
 			infoContainer.appendChild(closeButton);
-
-			// Append the container to the overlay
 			overlay.appendChild(infoContainer);
-
-			// Append the overlay to the body
 			document.body.appendChild(overlay);
 		}
 	</script>

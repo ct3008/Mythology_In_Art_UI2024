@@ -147,7 +147,7 @@ figures = {
    "2": {
       "id": "2",
       "name": "Artemis",
-      "description": "Artemis is the goddess of hunting, childhood and adolescence (for females), and wild animals. Shes is associated with childbirth, blood, and is also a destroyer and nurturer. She is Zeus' daughter.",
+      "description": "Artemis is the goddess of hunting, childhood and adolescence (for females), and wild animals. She is associated with childbirth, blood, and is also a destroyer and nurturer. She is Zeus' daughter.",
       "symbols": ["bow and arrow", "wild animals (alive and dead)", "Often with Apollo (her twin)"],
       "data": ["artemis2.jpg", "artemis5.jpg", "artemis1.jpg", "artemis3.jpg", "artemis4.jpg", "apolloArtemis.jpg"]
 
@@ -170,7 +170,7 @@ figures = {
    "5": {
       "id": "5",
       "name": "Hades",
-      "description": "Hades is the ruler of the Underworld. He is he is seen as a figure of earth fertility and riches. Hades is married to Persephone.",
+      "description": "Hades is the ruler of the Underworld. He is seen as a figure of earth fertility and riches. Hades is married to Persephone.",
       "symbols": ["scepter", "cornucopia", "riches", "Often shown with Persephone or Kerberos"],
       "data": ["hades2.jpg", "hades5.jpg", "hades1.jpg", "hades3.jpg", "hades4.jpg"]
    },
@@ -192,7 +192,7 @@ figures = {
       "id": "8",
       "name": "Hermes",
       "description": "Hermes is the god of crossing boundaries (figuratively and literally) and is the son of Zeus. He is associated with transitions and changes, and is the messenger and trickster god. Hermes also assists with the transition between life and death (takes people to the Underworld).",
-      "symbols": ["caduceus (wand/scepter)", "traveler's cap (petasos)", "winged sandals"],
+      "symbols": ["caduceus (wand/scepter)", "petasos (traveler's cap)", "winged sandals"],
       "data": ["hermes1.jpg", "hermes2.jpg", "hermes3.jpg", "hermes4.jpg", "hermes5.jpg"],
    },
    "9": {
@@ -454,28 +454,28 @@ def learn(id):
 def quiz(question_number):
    #  start question number at 1 and just subtract 1 when accessing indices?
     if question_number < len(fill_in_the_blank):
-        information = fill_in_the_blank[question_number]  # Render the first question
+        information = fill_in_the_blank[question_number]
         if question_number > 0:
             prev_answered = fill_in_the_blank[question_number - 1]['answered']
         else:
             prev_answered = 1
         return render_template('fill_in_the_blank.html', figures=figures, information=information, prev_answered=prev_answered, question_id=question_number)
     elif question_number < (len(fill_in_the_blank) + len(drag_and_drop)):
-        information = drag_and_drop[question_number - len(fill_in_the_blank)]  # Render the first question
+        information = drag_and_drop[question_number - len(fill_in_the_blank)]
         if question_number > 0:
             prev_answered = drag_and_drop[question_number - len(fill_in_the_blank) - len(drag_and_drop)]['answered']
         else:
             prev_answered = 1
         return render_template('drag_and_drop.html', figures=figures, information=information, prev_answered=prev_answered, question_id=question_number)
     elif question_number < (len(fill_in_the_blank) + len(drag_and_drop) + len(multiple_choice_pics)):
-        information = multiple_choice_pics[question_number - len(fill_in_the_blank) - len(drag_and_drop)]  # Render the first question
+        information = multiple_choice_pics[question_number - len(fill_in_the_blank) - len(drag_and_drop)]
         if question_number > 0:
             prev_answered = multiple_choice_pics[question_number - len(fill_in_the_blank) - len(drag_and_drop) - len(multiple_choice_pics)]['answered']
         else:
             prev_answered = 1
         return render_template('multiple_choice_pics.html', figures=figures, information=information, prev_answered=prev_answered, question_id=question_number)
     elif question_number < (len(fill_in_the_blank) + len(drag_and_drop) + len(multiple_choice_pics) + len(multiple_choice_text)):
-        information = multiple_choice_text[question_number - len(fill_in_the_blank) - len(drag_and_drop) - len(multiple_choice_pics)]  # Render the first question
+        information = multiple_choice_text[question_number - len(fill_in_the_blank) - len(drag_and_drop) - len(multiple_choice_pics)]
         if question_number > 0:
             prev_answered = multiple_choice_text[question_number - len(fill_in_the_blank) - len(drag_and_drop) - len(multiple_choice_pics) - len(multiple_choice_text)]['answered']
         else:
@@ -493,7 +493,7 @@ def submit_answer(question_id):
 
 @app.route('/restart_quiz')
 def restart_quiz():
-    # Restart quiz
+    # restart quiz
     score, _ = calc_score()
     all_scores.append(score)
     formatted_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -528,7 +528,6 @@ def update_information(id, questionType):
     elif questionType == 'mct':
         information = multiple_choice_text[id]
     information['user_answers'] = data['user_answers']
-    # print(data)
     information['answered'] = 1
     
     # data = request.json  # Get data sent from the client
