@@ -13,7 +13,7 @@ fill_in_the_blank = [
 	"answers": ["Athena", "Poseidon"], #names left to right,
 	"hints": ["PoseidonAthena_annotated.jpg"],
 	"more_info":"Currently held in Cabinet des Médailles, Paris, this piece is dated from ca 540 - 530 B.C. \n Athena competed with Poseidon to be the patron deity of Athens, which was yet unnamed, in a version of one founding myth. They agreed that each would give the Athenians one gift and that the Athenians would choose the gift they preferred. Poseidon struck the ground with his trident and a salt water spring sprang up; this gave them a means of trade and water - Athens at its height was a significant sea power, defeating the Persian fleet at the Battle of Salamis - but the water was salty and not very good for drinking. Athena, however, offered them the first domesticated olive tree. The Athenians (or their king, Cecrops) accepted the olive tree and with it the patronage of Athena, for the olive tree brought wood, oil, and food. Robert Graves was of the opinion that 'Poseidon's attempts to take possession of certain cities are political myths' which reflect the conflict between matriarchal and patriarchal religions.", 
-	"explanation_text": ["Athena: snake-trimmed vest, spear, and helmet", "Poseidon: trident"],
+	"explanation_text": ["Athena: aegis (breastplate), spear, and helmet", "Poseidon: trident"],
     "answered": 0,
     "user_answers":['','']
 	},
@@ -23,7 +23,7 @@ fill_in_the_blank = [
 	"answers": ["Athena", "Herakles", "Artemis"], #names left to right,
 	"hints": ["herakles6_annotated.jpg"],
 	"more_info":"This is depicts Herakles, Artemis and the Cerynitian Hind, Athenian black-figure amphora from 6th century BC. \n The Elaphos Kerynitis (Cerynitian Hind) was a golden-horned deer sacred to the goddess Artemis. Herakles was sent to fetch it as one of his twelve labours. After chasing the animal for a full year he finally captured it on Mount Artemision in Arkadia (Arcadia). The goddess Artemis complained about the treatment of her deer whose horn had broken off by the hero in the struggle. He nevertheless managed to persuade her to let him borrow it for the completion of his Labour. According to some the hind was one of five golden-horned deer gifted to Artemis by the Nymph Taygete. The other four drew the chariot of the goddess. The hind may once have been assigned a Constellation like the other beasts of Herakles' labours.", 
-	"explanation_text": ["Athena: helmet", "Herakles: lion skin", "Artemis: bow and her twin Apollo"],
+	"explanation_text": ["Athena: helmet", "Herakles: lion skin", "Artemis: bow and arrow"],
     "answered": 0,
     "user_answers":['','','']
 	},
@@ -33,7 +33,7 @@ fill_in_the_blank = [
 	"answers": ["Hermes", "Apollo", "Herakles", "Athena"], #names left to right,
 	"hints": ["HAHA_annotated.jpg"],
 	"more_info":"Found in museum collection Antikensammlung Berlin. Originated from around 500 B.C. \n Heracles, accompanied by the gods Hermes, Apollo and Athena, is ascending to Olympus. Hermes carries a ram and the herald's wand as he looks back at Apollo. Apollo, who holds a lyre, is attired in woman's robes and veiled. A deer stands behind him. Heracles, wearing lion skin, has a club in his hand and a quiver hung over his shoulder. Behind him stands Athena holding a spear in her hand.", 
-	"explanation_text": ["Hermes: caduceus and winged slippers", "Apollo: lyre", "Herakles: lionskin pelt and bat", "Athena: spear"],
+	"explanation_text": ["Hermes: caduceus and winged slippers", "Apollo: lyre", "Herakles: lionskin and bat", "Athena: spear"],
     "answered": 0,
     "user_answers":['','','','']
 	}
@@ -48,7 +48,7 @@ drag_and_drop = [
 	"answers": ["Hephaistos","Dionysus"], # from left to right
 	"hints": ["HephDion_h_annotated.jpg","HephDion_d_annotated.jpg"],
 	"more_info": "Held in the Toledo Museum of Art. Originates from 430-420 B.C. \n It depicts Hephaistos' return to Olympus atop a donkey. He is led by Thionysus and a Satyriscus (child Satyr) playing a flute. \n 'Hephaistos refused to listen to any other of the gods save Dionysos - in him he reposed the fullest trust - and after making him drunk Dionysos brought him to heaven' - Pausanias, Guide to Greece 1.20.3.", 
-	"explanation_text": ["Hephaistos: hammer and tongs (forging tools)", "Dionysus: wine cup, thyrsus staff, and satyr"],
+	"explanation_text": ["Hephaistos: hammer, tongs (forging tools), and donkey", "Dionysus: wine cup, thyrsus staff, and satyr"],
     "answered": 0,
     "user_answers":['','']
    },
@@ -71,7 +71,7 @@ multiple_choice_pics = [
 	"pic_options": ["zeus5_1.jpg", "zeus5_2.jpg", "zeus5_3.jpg"],
 	"question": "Find Zeus",
 	"answers": ["zeus5_1.jpg"], #0, 1, 2,... answers index of pic options
-	"explanation_text": ["Zeus can be identified by his lightning bolt.", "This is Ganymedes holding an oinochoe jug.", "This is Hestia holding a flower the branch of a chaste-tree."],
+	"explanation_text": ["Zeus can be identified by his lightning bolt and scepter.", "This is Ganymedes holding an oinochoe jug.", "This is Hestia holding a flower the branch of a chaste-tree."],
 	"more_info": "The painting is from a kylix, a type of Greek drinking cup, is displayed at the National Archaeological Museum of Tarquinia and holds the catalogue number RC6848. It's part of the Attic Red Figure pottery style and is believed to be the work of Oltos, an artist from the Archaic period of ancient Greece. The cup's detailed red images against a black backdrop are typical of this style and era, capturing a piece of history in its design.",
 	"hints": ["zeus5_annotated_1.jpg","zeus5_annotated_2.jpg", "zeus5_annotated_3.jpg"],
     "answered": 0,
@@ -82,7 +82,7 @@ multiple_choice_pics = [
 	"pic_options": ["hades_mcp1.jpg", "hades_mcp2.jpg", "hades_mcp3.jpg"],
 	"question": "Find Hades",
 	"answers": ["hades_mcp3.jpg"], #0, 1, 2,... answers index of pic options
-	"explanation_text": ["This is Zeus with his sceptre.", "This is Apollo with bow and arrow, and laurel on his head.", "Hades can be identified by the riches and cornucopia."],
+	"explanation_text": ["This is Zeus with his scepter.", "This is Apollo with bow and arrow, and laurel on his head.", "Hades can be identified by the riches and cornucopia."],
 	"more_info": "The painting with Hades is on a jar called pelike in The National Archaeological Museum in Athens, with the identification number Athens 16346. It features the red-figure pottery style and is thought to have been painted by the Orestes Painter, a known artist from ancient Greece's Classical period. The exact date it was made isn't recorded, but its style reflects that era's art.",
 	"hints": ["hades_mcp1_annotated.jpg", "hades_mcp2_annotated.jpg", "hades_mcp3_annotated.jpg"],
     "answered": 0,
@@ -99,7 +99,7 @@ multiple_choice_text = [
 	"options": ["Hermes", "Apollo", "Dionysus"],
 	"question": "To which mythological figure does this piece of art belong?",
 	"answers": ["Hermes"],
-	"explanation_text": ["Hermes can be identified by his traveler's cap and winged sandals.", "Apollo can be identified by lyre, bow and arrow.", "Dionysus can be indentified by “exotic” animals and clothing, wines, vines and grapes."],
+	"explanation_text": ["Hermes can be identified by his traveler's cap, winged sandals, and caduceus (wand/scepter).", "Apollo can be identified by lyre, bow and arrow.", "Dionysus can be indentified by “exotic” animals and clothing, wines, vines and grapes."],
 	"more_info": "This painting piece of the god Hermes are on the inside of a Kylie, a type of Ancient Greek cup. It's decorated with a festive scene on the outside and was made in Athens by potter Pamphaios and painter Ambrosios Painter around 510 BC. The cup, found in Vulci, is now in the Munich State Collection of Antiquities, inventory number 2614. It's made of clay and mentioned in a book on red-figure vase painters by John D. Beazley.",
 	"hints": "hermes3_annotated.jpg",
     "answered": 0,
@@ -111,7 +111,7 @@ multiple_choice_text = [
 	"options": ["Athena", "Zeus", "Artemis"],
 	"question": "To which mythological figure does this piece of art belong?",
 	"answers": ["Artemis"],
-	"explanation_text": ["Athena can be identified by breastplate, helmet, shield and spear.", "Zeus can be identified by his lightning bolt and sceptre.", "Artemis can be identified by her bow and arrow."],
+	"explanation_text": ["Athena can be identified by breastplate, helmet, shield and spear.", "Zeus can be identified by his lightning bolt and scepter.", "Artemis can be identified by her bow and arrow."],
 	"more_info": "The painting of Artemis is on a bell krater, a type of ancient Greek vase for mixing wine and water, housed in the Museum of Fine Arts, Boston, under the catalogue number Boston 10.185. Made around 470 B.C., it features the Attic red-figure style and is known as the name vase of the Pan Painter, a celebrated artist of the Early Classical period. This piece highlights the artistic and cultural achievements of ancient Greece.",
 	"hints": "artemis1_annotated.jpg",
     "answered": 0,
@@ -192,7 +192,7 @@ figures = {
       "id": "8",
       "name": "Hermes",
       "description": "Hermes is the god of crossing boundaries (figuratively and literally) and is the son of Zeus. He is associated with transitions and changes, and is the messenger and trickster god. Hermes also assists with the transition between life and death (takes people to the Underworld).",
-      "symbols": ["caduceus (wand/sceptre)", "traveler's cap (petasos)", "winged sandals"],
+      "symbols": ["caduceus (wand/scepter)", "traveler's cap (petasos)", "winged sandals"],
       "data": ["hermes1.jpg", "hermes2.jpg", "hermes3.jpg", "hermes4.jpg", "hermes5.jpg"],
    },
    "9": {
@@ -206,7 +206,7 @@ figures = {
       "id": "10",
       "name": "Zeus",
       "description": "Zeus is the ruler of the cosmos. He is related to right and wrong, justice, political wisdom, law, kingship, and oaths, in addition to physical, social and mental powers. Zeus is married to Hera.",
-      "symbols": ["lightning bolt", "sceptre", "eagle"],
+      "symbols": ["lightning bolt", "scepter", "eagle"],
       "data": ["zeus1.jpg", "zeus3.jpg", "zeus2.jpg", "zeus4.jpg", "zeus5.jpg", "athenaZeusHephaistos.jpg"]
    }
 }
@@ -215,7 +215,7 @@ all_images = {
     "zeus1.jpg": {
         "symbols":{
             "lightning bolt":[70,80],
-            "sceptre":[35,90]
+            "scepter":[35,90]
         }
     },
     "zeus3.jpg": {
