@@ -214,120 +214,120 @@ figures = {
 all_images = {
     "zeus1.jpg": {
         "symbols":{
-            "lightning bolt":[15,155], #[-y, x]
-            "sceptre":[15,50]
+            "lightning bolt":[70,80],
+            "sceptre":[35,90]
         }
     },
     "zeus3.jpg": {
         "symbols":{
-            "lightning bolt":[10,80],
-            "eagle":[20,210]
+            "lightning bolt":[20,90],
+            "eagle":[80,80]
         }
     },
     "poseidon1.jpg": {
         "symbols":{
-            "trident":[10,190],
-            "horses":[90,230]
+            "trident":[60,90],
+            "horses":[20,30]
         }
     },
     "poseidon5.jpg": {
         "symbols":{
-            "trident":[100,155],
-            "sea creatures":[135,70]
+            "trident":[60,50],
+            "sea creatures":[35,45]
         }
     },  
     "hades2.jpg": {
         "symbols":{
-            "cornucopia":[90,140],
+            "cornucopia":[40,60],
         }
     }, 
     "hades5.jpg": {
         "symbols":{
-            "scepter":[100,210]
+            "scepter":[70,60]
         }
     }, 
     "athena3.jpg": {
         "symbols":{
-            "shield":[200,50],
-            "spear":[50,180],
+            "shield":[30,10],
+            "spear":[65,85],
             "helmet":[50,80],
 
         }
     }, 
     "athena5.jpg": {
         "symbols":{
-            "helmet":[20,100]
+            "helmet":[50,90]
         }
     },
     "hermes1.jpg": {
         "symbols":{
-            "petasos":[20,60],
-            "caduceus":[110,50],
-            "winged sandals":[210,30]
+            "petasos":[35,80],
+            "caduceus":[30,50],
+            "winged sandals":[30,20]
         }
     },
     "hermes2.jpg": {
         "symbols":{
-            "petasos":[10,100],
-            "caduceus":[40,40],
-            "winged sandals":[230,60]
+            "petasos":[60,95],
+            "caduceus":[40,70],
+            "winged sandals":[40,10]
         }
     },
     "herakles1.jpg": {
         "symbols":{
-            "lion skin":[10,100],
-            "bat":[40,185]
+            "lion skin":[55,70],
+            "bat":[65,65]
         }
     },
     "herakles5.jpg": {
         "symbols":{
-            "lion skin":[200,40],
-            "bat":[40,120]
+            "lion skin":[35,30],
+            "bat":[60,70]
         }
     },
     "apollo1.jpg": {
         "symbols":{
-            "lyre":[50,100],
+            "lyre":[60,70],
         }
     },
     "apollo2.jpg": {
         "symbols":{
-            "lyre":[110,150],
-            "laurel":[20,170],
-            "bow and arrow":[40,220]
+            "lyre":[50,50],
+            "laurel":[50,90],
+            "bow and arrow":[85,90]
         }
     },
     "artemis2.jpg": {
         "symbols":{
-            "wild animals":[150,70],
-            "bow and arrow":[50,170],
+            "wild animals":[40,30],
+            "bow and arrow":[65,70],
         }
     },
     "artemis5.jpg": {
         "symbols":{
-            "wild animals":[190,70],
+            "wild animals":[35,20],
         }
     },
     "dionysus1.jpg": {
         "symbols":{
-            "'exotic' animals":[140,70],
-            "'exotic' clothing":[20,100],
+            "'exotic' animals":[30,50],
+            "'exotic' clothing":[50,80],
         }
     },
     "dionysus4.jpg": {
         "symbols":{
-            "'exotic' animals":[100,170],
+            "'exotic' animals":[50,40],
         }
     },
     "hephaistos1.jpg": {
         "symbols":{
-            "forged weapons":[30,50],
-            "donkey":[100,170],
+            "forged weapons":[55,70],
+            "donkey":[70,40],
         }
     },
     "hephaistos2.jpg": {
         "symbols":{
-            "forging weapons":[115,190]
+            "forging weapons":[70,40]
         }
     },
 }

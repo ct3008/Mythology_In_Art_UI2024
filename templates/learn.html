@@ -86,7 +86,7 @@
 							<div class="col-6">
 								<img class="img-fluid learn_img img-responsive" src="/static/{{figure.data[i]}}" />
 								{% for symbol, coords in images[figure.data[i]].symbols.items() %}
-									<i class="fa fa-eye position-absolute text-info" style="top:{{coords[0]}}px;left:{{coords[1]}}px">
+									<i class="fa fa-eye position-absolute text-info" style="left:{{coords[0]}}%;bottom:{{coords[1]}}%">
 										<span class="tooltiptext" style="font-family: tahoma;"> {{symbol}} </span>
 									</i>
 								{% endfor %}
